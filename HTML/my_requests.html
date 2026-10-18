@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Active Requests &amp; Submitted Orders — ShamsTech Jo</title>
+  <!-- Fonts: Inter (text) and Lexend (headings) - identical to Home screen -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/my_requests.css">
+  <link rel="stylesheet" href="/css/ux.css">
+  <link rel="stylesheet" href="/css/tracking.css"> <!-- UX layer: loads last -->
+</head>
+<body>
+<!-- =====================================================
+     SHAMSTECH JO - MY ACTIVE REQUESTS PAGE (html/my_requests.html)
+     Explanation of what was done in this file:
+     1. Opens when the user clicks "View All Submitted Requests" in
+        the "My Active Orders & Tracking" section on the Client Home
+        Page (html/client_home.html).
+     2. Replicates the exact layout of screenshot "client-erqu 1"
+        while matching the User's Home Screen typography, colors,
+        and frame design.
+     3. Displays the logged-in user's name (e.g., "Ahmed") in the
+        top navbar button with the dropdown menu.
+     4. Clicking the Solar Installation Request card or the
+        "Compare Proposals (3)" button opens html/request_offers.html
+        where all competing company offers are compared side by side.
+     ===================================================== -->
+<svg style="display:none" aria-hidden="true">
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-17.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+<symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10M7 17 17 7"/></symbol>
+<symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></symbol>
+<symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="i-badge-check" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></symbol>
+<!-- Profile: added the user icon used by the new 'Profile' menu item. -->
+<symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+<symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+<symbol id="i-cpu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></symbol>
+<symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></symbol>
+<symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+<symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+<symbol id="i-log-out" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
+<symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+</svg>
+
+<div class="req-wrapper">
+  <!-- ========== NAVBAR (Main Home Screen links + Logged-In User Name & Arrow Dropdown) ========== -->
+  <header class="navbar solid" id="navbar">
+    <!-- NAVBAR (client): the same navbar on every client page. Links go to the sections of client_home.html (no separate pages). Source of truth: client_home.html. -->
+    <div class="container">
+      <a href="/html/client_home.html" class="brand">
+        <span class="brand-icon"><svg class="icon"><use href="#i-sun"/></svg></span>
+        <span>
+          <span class="brand-name display">SHAMS<b>TECH</b></span>
+          <span class="brand-sub">JORDAN · شمس الأردن</span>
+        </span>
+      </a>
+      <nav class="nav-links">
+        <a href="/html/client_home.html#quick-services">Services</a>
+        <a href="/html/client_home.html#active-orders">How it works</a>
+        <a href="/html/client_home.html#used-marketplace">Marketplace</a>
+        <a href="/html/client_home.html#weather-advisor">About</a>
+      </nav>
+
+      <!-- Client Name with an Arrow Dropdown -->
+      <div class="nav-actions">
+        <div class="client-menu-wrap" id="client-menu-wrap">
+          <button type="button" class="client-name-btn" id="client-name-btn">
+            <span class="client-avatar display" id="nav-user-avatar">A</span>
+            <span class="display" id="nav-user-name">Ahmad Ali</span>
+            <svg class="icon client-arrow"><use href="#i-chevron-down"/></svg>
+          </button>
+
+          <div class="client-dropdown" id="client-dropdown">
+            <div class="dropdown-label">Account &amp; History</div>
+            <a href="/html/client_home.html" class="dropdown-item">
+              <svg class="icon"><use href="#i-sun"/></svg>
+              <span>User's Home Page</span>
+            </a>
+            <a href="/html/my_requests.html" class="dropdown-item">
+              <svg class="icon"><use href="#i-badge-check"/></svg>
+              <span>My Submitted Requests</span>
+            </a>
+            <a href="/html/history_archives.html" class="dropdown-item">
+              <svg class="icon"><use href="#i-box"/></svg>
+              <span>History &amp; Archives</span>
+            </a>
+            <!-- Profile: the old 'Settings' dropdown item is now 'Profile' and opens profile.html. -->
+            <a href="/html/profile.html" class="dropdown-item">
+              <svg class="icon"><use href="#i-user"/></svg>
+              <span>Profile</span>
+            </a>
+
+            <div class="dropdown-label">Available Services</div>
+            <a href="/html/request_solar.html?service=solar" class="dropdown-item">
+              <svg class="icon"><use href="#i-zap"/></svg>
+              <span>Request Solar System</span>
+            </a>
+            <a href="/html/request_solar.html?service=maintenance" class="dropdown-item">
+              <svg class="icon"><use href="#i-wrench"/></svg>
+              <span>Solar Maintenance &amp; Repair</span>
+            </a>
+            <a href="/html/request_solar.html?service=cleaning" class="dropdown-item">
+              <svg class="icon"><use href="#i-sun"/></svg>
+              <span>Panel Cleaning</span>
+            </a>
+            <a href="/html/request_solar.html?service=other" class="dropdown-item">
+              <svg class="icon"><use href="#i-settings"/></svg>
+              <span>Other Services</span>
+            </a>
+            <!-- Removed: the 'Used Marketplace / Selling Used Parts' item was taken out of the services dropdown (requested). -->
+
+            <a href="/html/home.html" class="dropdown-item logout">
+              <svg class="icon"><use href="#i-log-out"/></svg>
+              <span>Log Out</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <button class="menu-btn" id="menu-btn" aria-label="Menu">
+        <svg class="icon i-open"><use href="#i-menu"/></svg>
+        <svg class="icon i-close"><use href="#i-x"/></svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="/html/client_home.html">User's Home Page</a>
+      <a href="/html/my_requests.html">My Submitted Requests</a>
+      <a href="/html/history_archives.html">History &amp; Archives</a>
+      <a href="/html/profile.html">Profile</a>
+      <a href="/html/request_solar.html?service=solar">Request Solar System</a>
+      <a href="/html/request_solar.html?service=maintenance">Solar Maintenance</a>
+      <a href="/html/request_solar.html?service=cleaning">Panel Cleaning</a>
+      <a href="/html/request_solar.html?service=other">Other Services</a>
+      <a href="/html/home.html" class="nav-cta">Log Out</a>
+    </div>
+  </header>
+
+  <!-- ========== ACTIVE REQUESTS MAIN CONTENT (Matches client-erqu 1) ========== -->
+  <main class="requests-main">
+    <div class="container">
+      <div class="requests-frame-card">
+        <div class="requests-header">
+          <h1 class="display">Active Requests</h1>
+          <p>Follow up on your submitted solar requests, compare company bids, and monitor ongoing projects.</p>
+        </div>
+
+        <!-- Filter Tabs Row -->
+        <div class="requests-filter-bar">
+          <div class="requests-tabs">
+            <button type="button" class="req-filter-tab display active" data-filter="all" id="tab-req-all">All Active Requests (2)</button>
+            <button type="button" class="req-filter-tab display" data-filter="bids" id="tab-req-bids">Open for Proposals (1)</button>
+            <!-- Tab renamed: 'In Execution' is now 'Under Process'. -->
+            <button type="button" class="req-filter-tab display" data-filter="execution" id="tab-req-exec">Under Process (1)</button>
+          </div>
+          <a href="/html/history_archives.html?tab=requests" class="archive-history-btn display" id="toggle-archive-btn">
+            <!-- History button: shorter label (one clear pill button, kept on the right). -->
+            <span>⏱ History</span>
+          </a>
+        </div>
+
+        <div id="requests-toast" class="req-toast display"></div>
+
+        <!-- Submitted Requests Cards -->
+        <div class="submitted-requests-list" id="submitted-requests-list">
+          <!-- REQUEST 1: New On-Grid Solar System Installation (Open for Proposals -> Click to open request_offers.html) -->
+          <!-- Demo request edits: the date is labelled "Submitted", and the 3 info items (data-m1/m2/m3 + the boxes below) are what the client fills in the form: system type, roof & property, contact phone (they were budget, timeline, bill). -->
+          <article class="submitted-req-card highlight-bids"
+                   data-id="#REQ-2026-0892"
+                   data-title="New On-Grid Solar System Installation (5.5 kWp)"
+                   data-meta="ID: #REQ-2026-0892 • Location: Irbid, Eastern District • Submitted: Oct 06, 2026"
+                   data-icon="#i-zap"
+                   data-m1-label="SYSTEM TYPE"
+                   data-m1-val="On-Grid System"
+                   data-m2-label="ROOF &amp; PROPERTY"
+                   data-m2-val="Private Property"
+                   data-m3-label="CONTACT PHONE"
+                   data-m3-val="0795 824 190"
+                   data-category="bids">
+            <div class="sub-req-top">
+              <div class="sub-req-title-group">
+                <span class="sub-req-icon">
+                  <svg class="icon"><use href="#i-zap"/></svg>
+                </span>
+                <div>
+                  <h2 class="display" onclick="window.location.href='/html/request_offers.html'">
+                    New On-Grid Solar System Installation (5.5 kWp)
+                  </h2>
+                  <!-- Demo request: date labelled 'Submitted'. -->
+                  <p class="sub-req-meta">ID: #REQ-2026-0892 • Location: Irbid, Eastern District • Submitted: Oct 06, 2026</p>
+                </div>
+              </div>
+              <span class="sub-req-badge offers-ready display">● 3 Offers Received</span>
+            </div>
+
+            <!-- 3-Column Metrics Strip -->
+            <div class="sub-req-metrics">
+              <div class="metric-item">
+                <!-- Demo request: info boxes show what the client filled in (system type, roof & property, phone). -->
+                <span>SYSTEM TYPE</span>
+                <strong class="display">On-Grid System</strong>
+              </div>
+              <div class="metric-item">
+                <span>ROOF &amp; PROPERTY</span>
+                <strong class="display">Private Property</strong>
+              </div>
+              <div class="metric-item">
+                <span>CONTACT PHONE</span>
+                <strong class="display">0795 824 190</strong>
+              </div>
+            </div>
+
+            <!-- Status & Top Recommendation Callout -->
+            <div class="sub-req-status-box">
+              <p>⚡ <strong>Status:</strong> Certified companies have submitted 3 technical &amp; financial proposals. Select the most suitable offer to begin.</p>
+              <p class="rec-highlight">★ Recommended Offer available starting at 3,450 JOD (Philadelphia Solar Jordan).</p>
+            </div>
+
+            <!-- Actions Row -->
+            <div class="sub-req-actions">
+              <div class="sub-req-btn-group">
+                <a href="/html/request_offers.html" class="btn-compare-offers display">
+                  <span>Compare Proposals (3)</span>
+                  <svg class="icon"><use href="#i-arrow-right"/></svg>
+                </a>
+                <!-- Removed: the 'Edit Request' button. A request cannot be edited after it is sent, only deleted. -->
+                <button type="button" class="btn-req-outline display" data-req-action="complete">
+                  <span>✓ Mark Completed</span>
+                </button>
+              </div>
+              <button type="button" class="btn-cancel-req display" data-req-action="cancel">Cancel / Delete Request</button>
+            </div>
+          </article>
+
+          <!-- REQUEST 2: Solar Panel Cleaning & Efficiency Maintenance (In Execution) -->
+          <article class="submitted-req-card"
+                   data-id="#REQ-2026-0914"
+                   data-title="Solar Panel Cleaning &amp; Efficiency Maintenance"
+                   data-meta="ID: #REQ-2026-0914 • Location: Amman, Abdoun • Oct 08, 2026"
+                   data-icon="#i-badge-check"
+                   data-m1-label="AGREED PRICE"
+                   data-m1-val="45 JOD"
+                   data-m2-label="ASSIGNED CONTRACTOR"
+                   data-m2-val="Jordan SunWash Ltd."
+                   data-m3-label="SCHEDULED VISIT"
+                   data-m3-val="Oct 12, 10:00 AM"
+                   data-category="execution">
+            <div class="sub-req-top">
+              <div class="sub-req-title-group">
+                <span class="sub-req-icon amber">
+                  <svg class="icon"><use href="#i-badge-check"/></svg>
+                </span>
+                <div>
+                  <h2 class="display">Solar Panel Cleaning &amp; Efficiency Maintenance</h2>
+                  <p class="sub-req-meta">ID: #REQ-2026-0914 • Location: Amman, Abdoun • Oct 08, 2026</p>
+                </div>
+              </div>
+              <!-- Status renamed: 'In Execution' is now 'Under Process'. -->
+              <span class="sub-req-badge in-execution display">● Under Process</span>
+            </div>
+
+            <!-- 3-Column Metrics Strip -->
+            <div class="sub-req-metrics">
+              <div class="metric-item">
+                <span>AGREED PRICE</span>
+                <strong class="display">45 JOD</strong>
+              </div>
+              <div class="metric-item">
+                <span>ASSIGNED CONTRACTOR</span>
+                <strong class="display contractor-link">Jordan SunWash Ltd.</strong>
+              </div>
+              <div class="metric-item">
+                <span>SCHEDULED VISIT</span>
+                <strong class="display">Oct 12, 10:00 AM</strong>
+              </div>
+            </div>
+
+            <!-- Status Callout -->
+            <div class="sub-req-status-box">
+              <p>✓ <strong>Status:</strong> Specialized soft-wash maintenance team assigned. Scheduled to arrive at 10:00 AM using deionized water.</p>
+            </div>
+
+            <!-- Actions Row -->
+            <div class="sub-req-actions">
+              <div class="sub-req-btn-group">
+                <button type="button" class="btn-track-work display" data-toast="Team Status: Jordan SunWash Ltd. vehicle is scheduled and confirmed for Thursday 10:00 AM.">
+                  <span>Track Team Status</span>
+                </button>
+                <button type="button" class="btn-req-outline display" data-req-action="view-accepted" data-offer-id="#REQ-2026-0914">
+                  <span>View Accepted Offer</span>
+                </button>
+                <button type="button" class="btn-req-outline display" data-req-action="complete">
+                  <span>✓ Mark Completed</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <p class="requests-footnote">
+          💡 All submitted requests and accepted proposals are protected under ShamsTech’s Certified Workmanship Guarantee.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========== ACCEPTED OFFER DETAILS & COMPANY PDF MODAL ========== -->
+  <div class="req-modal-backdrop" id="accepted-offer-modal-backdrop" aria-hidden="true">
+    <div class="req-modal-card" role="dialog" aria-modal="true" aria-labelledby="accepted-offer-modal-title">
+      <button type="button" class="req-modal-close" id="close-accepted-offer-modal" aria-label="Close">✕</button>
+
+      <span class="sub-req-badge in-execution display" style="margin-bottom:0.75rem;">● Accepted Offer — In Execution</span>
+      <h2 class="display" id="accepted-offer-modal-title" style="font-size:1.3rem;font-weight:700;color:var(--forest);margin-bottom:1rem;">Accepted Contractor Proposal</h2>
+
+      <div class="accepted-offer-header">
+        <span class="comp-avatar-badge display" id="ao-avatar">SE</span>
+        <div>
+          <h3 class="display" id="ao-company-name" style="font-size:1.1rem;font-weight:700;color:var(--forest);">SunEnergy Jordan Ltd.</h3>
+          <p id="ao-company-rating" style="font-size:12.5px;color:#15803d;font-weight:600;margin-top:0.15rem;">★ 4.6 (84 Reviews) • Licensed Solar Contractor</p>
+        </div>
+      </div>
+
+      <div class="accepted-offer-metrics">
+        <div class="accepted-metric-box highlight">
+          <span>AGREED TURNKEY PRICE</span>
+          <strong class="display" id="ao-price">3,200 JOD</strong>
+        </div>
+        <div class="accepted-metric-box">
+          <span>EXECUTION TIMELINE</span>
+          <strong class="display" id="ao-timeline">⏱ 35 Business Days</strong>
+        </div>
+      </div>
+
+      <div class="accepted-scope-box">
+        <p class="display" style="font-weight:700;color:var(--forest);margin-bottom:0.3rem;">✓ Accepted Technical Scope &amp; Offer Details:</p>
+        <p id="ao-scope">“12x 460W Longi Solar Panels + Growatt 5kW On-Grid Inverter. Standard galvanized steel mounting structure, 5-year installation warranty.”</p>
+        <p id="ao-bonus" style="margin-top:0.35rem;font-weight:600;color:#14532d;"></p>
+      </div>
+
+      <!-- Company Proposal PDF Section -->
+      <div class="accepted-pdf-box">
+        <div class="accepted-pdf-row">
+          <div class="accepted-pdf-info">
+            <span class="pdf-icon-badge display">PDF</span>
+            <div>
+              <strong class="display" id="ao-pdf-name" style="display:block;font-size:13px;color:var(--forest);">SunEnergy_Jordan_Proposal.pdf</strong>
+              <span style="font-size:11.5px;color:rgba(22,33,27,0.62);">Official Signed Technical &amp; Financial Offer PDF</span>
+            </div>
+          </div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <button type="button" class="btn-req-outline display" id="ao-preview-pdf-btn" style="padding:0.5rem 0.9rem;font-size:12px;">
+              <span>👁 View PDF</span>
+            </button>
+            <button type="button" class="btn-compare-offers display" id="ao-download-pdf-btn" style="padding:0.5rem 0.95rem;font-size:12px;">
+              <span>📄 Download PDF</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="accepted-pdf-preview" id="ao-pdf-preview-box">
+          <p class="display" style="font-weight:700;color:var(--forest);margin-bottom:0.35rem;">📄 Official Company Proposal Document Preview</p>
+          <p id="ao-pdf-preview-text" style="line-height:1.55;"></p>
+        </div>
+      </div>
+
+      <!-- Contractor Contact Info -->
+      <div class="accepted-contact-box">
+        <div class="accepted-contact-row">
+          <span>Project Manager:</span>
+          <strong class="display" id="ao-manager">Eng. Rami Al-Zoubi</strong>
+        </div>
+        <div class="accepted-contact-row">
+          <span>Direct Phone:</span>
+          <strong class="display" id="ao-phone" style="color:#1d4ed8;">📞 +962 79 512 9090</strong>
+        </div>
+        <div class="accepted-contact-row">
+          <span>Official Email:</span>
+          <strong id="ao-email">✉️ bids@sunenergy.jo</strong>
+        </div>
+        <div class="accepted-contact-row">
+          <span>Office Location:</span>
+          <strong id="ao-loc">📍 Amman, Mecca Street · Building 84</strong>
+        </div>
+      </div>
+
+      <div style="margin-top:1.35rem;display:flex;justify-content:flex-end;">
+        <button type="button" class="btn-track-work display" id="ao-done-btn" style="width:100%;justify-content:center;">
+          <span>Close Offer Details</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== CANCEL / DELETE REQUEST CONFIRMATION MODAL ========== -->
+  <div class="req-modal-backdrop" id="cancel-confirm-modal-backdrop" aria-hidden="true">
+    <div class="req-modal-card confirm-card" role="dialog" aria-modal="true" aria-labelledby="cancel-confirm-title">
+      <div class="confirm-icon-circle">🗑</div>
+      <h2 class="display" id="cancel-confirm-title" style="font-size:1.35rem;font-weight:700;color:var(--forest);">Delete This Request?</h2>
+      <p id="cancel-confirm-sub" style="margin-top:0.45rem;font-size:13.5px;color:rgba(22,33,27,0.68);line-height:1.55;">
+        Are you sure you want to cancel and delete <strong id="cancel-confirm-req-name" style="color:var(--forest);">this request</strong>? It will be moved to your Requests History.
+      </p>
+      <div class="confirm-modal-actions">
+        <button type="button" class="btn-danger-solid display" id="confirm-delete-req-btn">
+          <span>Yes, Delete</span>
+        </button>
+        <button type="button" class="btn-req-outline display" id="cancel-delete-req-btn" style="justify-content:center;">
+          <span>No, Keep It</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== WIDE FOOTER WITH "COMPANY CONNECT" ========== -->
+  <footer class="footer grain">
+    <div class="blob blob-c"></div>
+    <div class="container footer-inner">
+      <div class="footer-grid">
+        <div>
+          <a href="/html/home.html" class="brand"><span class="brand-icon"><svg class="icon"><use href="#i-sun"/></svg></span><span class="brand-name display">SHAMS<b>TECH</b></span></a>
+          <p class="footer-about">Jordan’s marketplace connecting homes and businesses with certified solar companies — for installation, maintenance, cleaning and second-life parts.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/html/request_solar.html?service=solar">Installation</a></li>
+            <li><a href="/html/request_solar.html?service=maintenance">Solar Maintenance</a></li>
+            <li><a href="/html/request_solar.html?service=cleaning">Cleaning</a></li>
+            <li><a href="/html/request_solar.html?service=other">Other Services</a></li>
+            <li><a href="/html/used_market.html">Used Marketplace</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Account</h4>
+          <ul>
+            <li><a href="/html/client_home.html">User's Home Page</a></li>
+            <li><a href="/html/my_requests.html">My Submitted Requests</a></li>
+            <li><a href="/html/browse_market.html">Public Equipment List</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company Connect</h4>
+          <ul class="company-connect-list">
+            <li><a href="tel:+96265000000" class="footer-contact-link"><svg class="icon"><use href="#i-phone"/></svg><span>+962 6 500 0000</span></a></li>
+            <li><a href="mailto:hello@shamstech.jo" class="footer-contact-link"><svg class="icon"><use href="#i-mail"/></svg><span>hello@shamstech.jo</span></a></li>
+            <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Amman,+Jordan" target="_blank" rel="noopener noreferrer" class="footer-contact-link"><svg class="icon"><use href="#i-map-pin"/></svg><span>Amman, Jordan (Google Maps)</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 ShamsTech Jo. All rights reserved.</p><p>POWERED BY THE SUN · شمس الأردن</p></div>
+    </div>
+  </footer>
+</div>
+
+
+  <!-- TRACKING DRAWER (read-only: the client only follows; the company moves the stages) -->
+  <div class="trk-backdrop" id="trk-backdrop">
+    <aside class="trk-drawer" role="dialog" aria-labelledby="trk-title">
+      <header>
+        <div><span class="svc-chip" id="trk-chip"></span><h2 class="display" id="trk-title"></h2><p id="trk-sub"></p></div>
+        <button type="button" class="req-modal-close" id="trk-close" aria-label="Close">✕</button>
+      </header>
+      <p class="trk-note">You are following this project live. The company updates each stage.</p>
+      <ol class="trk-steps" id="trk-steps"></ol>
+      <div class="trk-done-box" id="trk-done-box" style="display:none">
+        <p><strong>The company delivered your project.</strong> Check the work, then confirm.</p>
+        <button type="button" class="btn btn-gold display" id="trk-done"><span>Done</span></button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- EVALUATION SCREEN: opens after Done. Rate the company and its work, then Submit or Skip; the request moves to History -->
+  <div class="trk-backdrop" id="rev-backdrop">
+    <div class="trk-modal rv-modal" role="dialog" aria-labelledby="rev-title">
+      <h2 class="display" id="rev-title">Evaluate <span id="rev-company"></span></h2>
+      <p class="rv-sub">Rate the company and how the work was carried out.</p>
+      <div class="rv-overall"><b id="rv-avg">–</b><span>/ 5 overall</span></div>
+      <div id="rev-criteria"></div>
+      <div class="rv-rec"><span>Would you recommend this company?</span><button type="button" data-rec="1">Yes</button><button type="button" data-rec="0">No</button></div>
+      <textarea id="rev-text" rows="3" placeholder="Tell us more about the company and the work (optional)"></textarea>
+      <div class="trk-row"><button type="button" class="btn-req-outline display" id="rev-skip"><span>Skip</span></button><button type="button" class="btn btn-gold display" id="rev-send"><span>Submit evaluation</span></button></div>
+    </div>
+  </div>
+
+  <!-- REQUEST DETAILS POPUP: opens when the client clicks a request (title or "View Request") -->
+  <div class="trk-backdrop" id="rd-backdrop">
+    <div class="trk-modal rd-modal" role="dialog" aria-labelledby="rd-title">
+      <header class="rd-head">
+        <div><span class="svc-chip" id="rd-chip"></span><h2 class="display" id="rd-title"></h2><p id="rd-sub"></p></div>
+        <button type="button" class="req-modal-close" id="rd-close" aria-label="Close">✕</button>
+      </header>
+      <div id="rd-photos-wrap"><h4 class="rd-h">Photos you uploaded</h4><div class="rd-photos" id="rd-photos"></div></div>
+      <div class="req-detail-grid" id="rd-grid"></div>
+      <div class="trk-row"><button type="button" class="btn-req-outline display" id="rd-close2"><span>Close</span></button><a class="btn btn-gold display" id="rd-offers" href="/html/request_offers.html"><span>Compare Proposals</span></a></div>
+    </div>
+  </div>
+<script src="/js/theme.js"></script>
+<script src="/js/my_requests.js"></script>
+<!-- Tracking: shared stage data, client tracking layer (request_tracking.js) and photo viewer (lightbox.js). -->
+<script src="/js/tracking_flows.js"></script>
+<script src="/js/request_tracking.js"></script>
+<script src="/js/lightbox.js"></script>
+</body>
+</html>

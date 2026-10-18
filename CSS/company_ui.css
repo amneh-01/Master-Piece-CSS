@@ -1,0 +1,136 @@
+/* =====================================================================
+   SHAMSTECH JO - COMPANY HOME CLEAN-UP (css/company_ui.css)
+   Loaded last on company_home.html and company_proposals.html.
+   What changed and why:
+   1. KPI strip: one glass strip in the hero with 4 cells (label + icon,
+      big number, short description). One palette (cream + gold), no colored
+      boxes. The numbers count up when the page opens (js/count_up.js).
+   2. Bids table: calmer header, tidy rows, neutral status pills,
+      all action buttons the same size and style.
+   3. Section header buttons ("View All ...") share one outline style.
+   Only styling changed: no text or element was removed.
+   ===================================================================== */
+
+/* ---------- 1. KPI STRIP ----------
+   One glass strip inside the dark hero with 4 cells separated by thin lines.
+   Each cell: label (small caps) with its icon on the right, then the number (counts up, js/count_up.js),
+   then a short description. No colored boxes. */
+.company-kpi-grid {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin-top: 1.75rem;
+  border: 1px solid rgba(255,255,255,.14); border-radius: 1.25rem; overflow: hidden;
+  background: rgba(255,255,255,.06); backdrop-filter: blur(8px);
+}
+.company-kpi-card {
+  display: flex; flex-direction: column; gap: .55rem; min-width: 0;
+  padding: 1.15rem 1.5rem 1.2rem; border-radius: 0; border: 0; box-shadow: none; background: none; color: var(--cream);
+}
+.company-kpi-card + .company-kpi-card { border-left: 1px solid rgba(255,255,255,.12); }
+.company-kpi-card::before { display: none; }
+.company-kpi-card:hover { transform: none; background: rgba(255,255,255,.04); }
+.kpi-top-row { display: flex; flex-direction: row-reverse; justify-content: space-between; align-items: center; gap: .75rem; }
+.kpi-icon-badge, .kpi-icon-badge.gold, .kpi-icon-badge.amber, .kpi-icon-badge.green, .kpi-icon-badge.blue, .kpi-icon-badge.forest {
+  display: inline-flex; width: auto; height: auto; border: 0; border-radius: 0; background: none; color: var(--gold-2);
+}
+.kpi-icon-badge .icon { width: 1.2rem; height: 1.2rem; stroke: var(--gold-2); }
+.company-kpi-label { font-size: 11.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: rgba(242,237,223,.72); }
+.company-kpi-val-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem .5rem; }
+.company-kpi-num { font-size: clamp(1.9rem, 2.4vw, 2.5rem); line-height: 1; font-weight: 600; letter-spacing: -.02em; color: var(--gold-2); font-variant-numeric: tabular-nums; }
+.company-kpi-unit { font-size: 13px; font-weight: 600; color: rgba(242,237,223,.72); }
+.company-kpi-tag, .company-kpi-tag.gold, .company-kpi-tag.amber, .company-kpi-tag.green, .company-kpi-tag.blue, .company-kpi-tag.muted {
+  flex-basis: 100%; margin: .35rem 0 0; padding: 0; background: none; border: 0; border-radius: 0;
+  color: rgba(242,237,223,.62); font-size: 12.5px; font-weight: 500;
+}
+
+/* ---------- 2. SECTION HEADERS ---------- */
+.comp-sec-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.25rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+.comp-sec-title-wrap p { max-width: 62ch; color: rgba(22,33,27,.66); }
+/* every "View All ..." button looks the same: forest outline, fills on hover */
+.comp-sec-header .btn-gold, .comp-sec-header .btn-table-outline {
+  background: transparent; color: var(--forest); border: 1.5px solid rgba(12,36,26,.3); box-shadow: none; min-width: 0;
+}
+.comp-sec-header .btn-gold:hover, .comp-sec-header .btn-table-outline:hover { background: var(--forest); color: var(--cream); border-color: var(--forest); transform: none; }
+
+/* ---------- 3. BIDS TABLE ---------- */
+.bids-table-card { background: #fff; border: 1px solid var(--ux-line); border-radius: 1.25rem; overflow: hidden; box-shadow: var(--ux-shadow); }
+.bids-table thead tr { background: var(--forest); }
+.bids-table th { padding: 1rem 1.4rem; font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--cream); }
+.bids-table td { padding: 1.1rem 1.4rem; border-top: 1px solid var(--ux-line); }
+.bids-table tbody tr:nth-child(even) { background: transparent; }       /* no zebra: calmer */
+.bids-table tbody tr:hover { background: rgba(12,36,26,.04); }
+.bid-client-name { color: rgba(22,33,27,.8); }
+.bid-offer-val { font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; color: var(--forest); }
+
+/* status pills: same neutral look; only "negotiation" is filled because it needs attention */
+.bid-status-pill, .bid-status-pill.review, .bid-status-pill.eval {
+  background: transparent; color: var(--forest); border: 1px solid rgba(12,36,26,.28); padding: .3rem .85rem;
+}
+.bid-status-pill.negotiation { background: var(--forest); color: var(--cream); border: 1px solid var(--forest); }
+
+/* action buttons: same size and style (Modify Offer / View Details) */
+.bids-table .btn-table-outline, .bids-table .btn-table-solid {
+  display: inline-flex; justify-content: center; align-items: center; min-width: 132px; padding: .6rem 1.1rem;
+  border-radius: 999px; font-size: 13px; font-weight: 600; background: transparent; color: var(--forest);
+  border: 1.5px solid rgba(12,36,26,.3); box-shadow: none;
+}
+.bids-table .btn-table-outline:hover, .bids-table .btn-table-solid:hover { background: var(--forest); color: var(--cream); border-color: var(--forest); }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1100px) {
+  .company-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .company-kpi-card:nth-child(3) { border-left: 0; }
+  .company-kpi-card:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.12); }
+}
+@media (max-width: 600px) { .company-kpi-grid { grid-template-columns: 1fr; } .company-kpi-card + .company-kpi-card { border-left: 0; border-top: 1px solid rgba(255,255,255,.12); } .bids-table td, .bids-table th { padding: .9rem 1rem; } }
+
+
+/* =====================================================================
+   BIDS PAGE (company_proposals.html): header, status tiles, filter toolbar, cards in the service design.
+   Same look as the other pages: eyebrow + title, cream cards, forest/gold palette.
+   ===================================================================== */
+.bp-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem; flex-wrap: wrap; margin: 1rem 0 1.5rem; }
+.bp-head h1 { font-size: clamp(1.9rem, 4vw, 2.7rem); letter-spacing: -.02em; color: var(--forest); }
+.bp-sub { max-width: 62ch; margin-top: .5rem; color: rgba(22,33,27,.68); }
+
+/* status tiles = filter by status */
+.bp-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; margin-bottom: 1rem; }
+.bp-stat { display: grid; gap: .15rem; text-align: left; padding: .95rem 1.2rem; border-radius: 1rem; background: var(--cream-2); border: 1px solid var(--ux-line); transition: border-color .18s ease, background-color .18s ease; }
+.bp-stat b { font-size: 1.9rem; line-height: 1; font-weight: 600; color: var(--forest); font-variant-numeric: tabular-nums; }
+.bp-stat span { font-size: 13px; color: rgba(22,33,27,.65); }
+.bp-stat:hover { border-color: rgba(201,162,39,.6); }
+.bp-stat.active { background: var(--forest); border-color: var(--forest); }
+.bp-stat.active b { color: var(--gold-2); }
+.bp-stat.active span { color: rgba(242,237,223,.8); }
+
+/* filter toolbar */
+.bp-toolbar { display: grid; gap: .9rem; padding: 1.1rem 1.25rem; margin-bottom: 1.5rem; border-radius: 1.25rem; background: var(--cream-2); border: 1px solid var(--ux-line); }
+.bp-row { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; }
+.bp-search { flex: 1; min-width: 240px; display: flex; align-items: center; gap: .6rem; padding: 0 1rem; border-radius: 999px; background: #fff; border: 1.5px solid var(--ux-line); }
+.bp-search:focus-within { border-color: var(--gold); box-shadow: var(--ux-ring); }
+.bp-search .icon { width: 1.1rem; height: 1.1rem; stroke: rgba(22,33,27,.55); flex: none; }
+.bp-search input { flex: 1; min-height: 44px; border: 0; background: none; box-shadow: none; padding: 0; font: inherit; }
+.bp-search input:focus { box-shadow: none; }
+.bp-sort { min-height: 46px; padding: 0 1rem; border-radius: 999px; }
+.bp-chips { gap: .5rem; }
+.bp-chip { display: inline-flex; align-items: center; gap: .45rem; min-height: 38px; padding: 0 .95rem; border-radius: 999px; border: 1.5px solid var(--ux-line); background: #fff; font-size: 13px; font-weight: 600; color: var(--forest); transition: border-color .18s ease, background-color .18s ease; }
+.bp-chip .dot { width: .6rem; height: .6rem; border-radius: 50%; background: var(--svc); }
+.bp-chip i { font-style: normal; min-width: 1.4rem; padding: .05rem .4rem; border-radius: 999px; background: rgba(12,36,26,.08); font-size: 11.5px; text-align: center; }
+.bp-chip:hover { border-color: var(--svc, var(--gold)); }
+.bp-chip.active { background: var(--forest); border-color: var(--forest); color: var(--cream); }
+.bp-chip.active i { background: rgba(255,255,255,.18); }
+.bp-meta { justify-content: space-between; font-size: 13px; color: rgba(22,33,27,.65); }
+.bp-clear { color: var(--forest); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+/* cards: service design (colored border + icon) and neutral status pills */
+.proposal-item-card.svc-card { border: 2px solid var(--svc); }
+.proposal-item-card.svc-card:hover { border-color: var(--svc); box-shadow: 0 0 0 4px color-mix(in srgb, var(--svc) 20%, transparent), var(--ux-shadow-up); }
+.proposal-item-card[data-svc="other"] .svc-chip { color: #3b2f00; }
+.proposal-badge-wrap { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+.proposal-status-pill, .proposal-status-pill.review { background: transparent; color: var(--forest); border: 1px solid rgba(12,36,26,.28); }
+.proposal-status-pill.progress { background: transparent; color: var(--forest); border: 1.5px solid var(--forest); }
+.proposal-status-pill.accepted { background: var(--forest); color: var(--cream); border: 1px solid var(--forest); }
+.offer-metric-card .val, .offer-metric-card .val.gold, .offer-metric-card .val.green { color: var(--forest); }
+.bp-empty { text-align: center; padding: 3.5rem 1.5rem; border-radius: 1.5rem; border: 1.5px dashed var(--ux-line); background: var(--cream-2); color: rgba(22,33,27,.65); }
+.bp-empty h3 { font-size: 1.25rem; color: var(--forest); margin-bottom: .4rem; }
+
+@media (max-width: 900px) { .bp-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .bp-stats { grid-template-columns: 1fr; } .bp-sort { width: 100%; } }

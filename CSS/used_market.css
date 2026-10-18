@@ -1,0 +1,860 @@
+/* =====================================================
+   SHAMSTECH JO - USED MARKETPLACE CSS (css/used_market.css)
+   Matches the Home Screen design system (Lexend & Inter fonts,
+   --forest, --cream, --cream-2, --gold palette, Navbar with
+   Client Name + Arrow dropdown, and Footer) while implementing
+   the Featured Listings, Sell to Platform Direct form, and
+   6-card Used Solar Equipment & Panels Market grid.
+   ===================================================== */
+@import url('/css/request_solar.css');
+
+.market-page-main {
+  flex: 1;
+  padding: 2.5rem 0 5rem;
+}
+
+/* Section Title with Vertical Gold Accent Bar (Matches client-mark 1) */
+.mk-sec-head {
+  margin-bottom: 1.5rem;
+}
+
+.mk-sec-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mk-gold-bar {
+  width: 4px;
+  height: 1.65rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--gold-2), var(--gold));
+}
+
+.mk-sec-title-row h2 {
+  font-size: 1.55rem;
+  font-weight: 600;
+  color: var(--forest);
+  letter-spacing: -0.02em;
+}
+
+.mk-sec-sub {
+  margin-top: 0.3rem;
+  padding-left: 1.15rem;
+  font-size: 14.5px;
+  color: rgba(22, 33, 27, 0.62);
+}
+
+/* ========== 1. FEATURED LISTINGS (SPONSORED / TOP DEALS) ========== */
+.featured-deals-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.featured-deal-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  padding: 1.5rem;
+  border-radius: 1.75rem;
+  background: var(--cream-2);
+  border: 1.5px solid rgba(201, 162, 39, 0.55);
+  box-shadow: 0 20px 42px -26px rgba(12, 36, 26, 0.25);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.featured-deal-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+  box-shadow: 0 26px 50px -24px rgba(12, 36, 26, 0.35);
+}
+
+.featured-deal-img {
+  width: 100%;
+  height: 10.5rem;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: var(--cream);
+  border: 1px solid rgba(22, 33, 27, 0.08);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.featured-deal-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.featured-deal-card:hover .featured-deal-img img {
+  transform: scale(1.05);
+}
+
+.featured-deal-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.featured-deal-info h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--forest);
+  cursor: pointer;
+}
+
+.featured-deal-info h3:hover {
+  color: var(--gold);
+}
+
+.featured-deal-meta {
+  margin-top: 0.25rem;
+  font-size: 13.5px;
+  color: rgba(22, 33, 27, 0.6);
+}
+
+.featured-deal-price {
+  margin-top: 0.6rem;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--forest);
+}
+
+.featured-deal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+/* Harmonized Distinct Button Colors (Not the same dark green everywhere) */
+.btn-contact-seller {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.15rem;
+  border-radius: 0.85rem;
+  background: var(--cream);
+  border: 1px solid rgba(22, 33, 27, 0.18);
+  color: var(--forest);
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.btn-contact-seller:hover {
+  border-color: var(--gold);
+  background: rgba(201, 162, 39, 0.12);
+}
+
+.btn-instant-buy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.85rem;
+  background: rgba(34, 139, 87, 0.14);
+  border: 1px solid rgba(34, 139, 87, 0.35);
+  color: #14532d;
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.btn-instant-buy:hover {
+  background: #1b5e3a;
+  border-color: #1b5e3a;
+  color: var(--cream);
+}
+
+/* ========== THREE SELLER ACTION BUTTONS: EDIT, SOLD, DELETE ========== */
+.btn-user-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.56rem 1.05rem;
+  border-radius: 0.85rem;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-user-action .icon {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+/* 1. Edit Button (Warm Gold / Cream Accent) */
+.btn-item-edit {
+  background: rgba(201, 162, 39, 0.16);
+  border: 1px solid rgba(201, 162, 39, 0.48);
+  color: var(--forest);
+}
+
+.btn-item-edit:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--forest);
+  transform: translateY(-2px);
+}
+
+/* 2. Sold Button (Fresh Emerald Accent) */
+.btn-item-sold {
+  background: rgba(34, 139, 87, 0.14);
+  border: 1px solid rgba(34, 139, 87, 0.38);
+  color: #14532d;
+}
+
+.btn-item-sold:hover:not(:disabled) {
+  background: #1b5e3a;
+  border-color: #1b5e3a;
+  color: var(--cream);
+  transform: translateY(-2px);
+}
+
+.btn-item-sold:disabled,
+.featured-deal-card.is-sold .btn-item-sold {
+  background: #1b5e3a;
+  border-color: #1b5e3a;
+  color: var(--cream);
+  opacity: 0.9;
+  cursor: default;
+}
+
+/* 3. Delete Button (Soft Coral / Red Accent) */
+.btn-item-delete {
+  background: rgba(185, 28, 28, 0.08);
+  border: 1px solid rgba(185, 28, 28, 0.28);
+  color: #991b1b;
+}
+
+.btn-item-delete:hover {
+  background: #b91c1c;
+  border-color: #b91c1c;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Sold State Styling on the Item Card */
+.featured-deal-card.is-sold {
+  border-color: rgba(22, 33, 27, 0.22);
+  background: rgba(242, 237, 223, 0.75);
+}
+
+.featured-deal-card.is-sold .featured-deal-img img {
+  filter: grayscale(35%);
+  opacity: 0.85;
+}
+
+.deal-status-badge {
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(34, 139, 87, 0.12);
+  border: 1px solid rgba(34, 139, 87, 0.3);
+  color: #14532d;
+  font-weight: 600;
+}
+
+.deal-status-badge.sold-badge {
+  background: rgba(180, 83, 9, 0.15);
+  border-color: rgba(180, 83, 9, 0.4);
+  color: #92400e;
+}
+
+/* ========== MODALS: EDIT LISTING MODAL (Image 2 Style) & CONFIRM POPUP ========== */
+.um-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(8, 22, 15, 0.68);
+  backdrop-filter: blur(7px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.um-modal-backdrop.open {
+  display: flex;
+}
+
+/* Edit Listing Modal Card — Styled identically to Image 2 (Sell to Platform Direct) */
+.um-edit-modal-card {
+  width: 100%;
+  max-width: 56rem;
+  margin-bottom: 0;
+  box-shadow: 0 34px 70px -20px rgba(6, 18, 12, 0.6);
+  animation: umModalPop 0.25s ease forwards;
+}
+
+@keyframes umModalPop {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.um-edit-modal-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 3.5rem;
+}
+
+.um-modal-close-btn {
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.15rem;
+  height: 2.15rem;
+  border-radius: 50%;
+  border: 1px solid rgba(242, 237, 223, 0.24);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--cream);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.um-modal-close-btn:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--forest);
+}
+
+.um-field-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.um-field-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(22, 33, 27, 0.68);
+  padding-left: 0.35rem;
+}
+
+/* Confirmation Modal Card for Delete & Sold */
+.um-confirm-card {
+  position: relative;
+  width: 100%;
+  max-width: 28rem;
+  background: var(--cream-2);
+  border: 1.5px solid rgba(201, 162, 39, 0.45);
+  border-radius: 1.85rem;
+  padding: 2.25rem 2rem 1.9rem;
+  text-align: center;
+  box-shadow: 0 32px 64px -18px rgba(6, 18, 12, 0.55);
+  animation: umModalPop 0.24s ease forwards;
+}
+
+.um-confirm-close {
+  position: absolute;
+  top: 1.15rem;
+  right: 1.15rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  border: 1px solid rgba(22, 33, 27, 0.14);
+  background: var(--cream);
+  color: var(--forest);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.um-confirm-close:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.um-confirm-icon {
+  width: 3.6rem;
+  height: 3.6rem;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(185, 28, 28, 0.12);
+  border: 1.5px solid rgba(185, 28, 28, 0.3);
+  color: #b91c1c;
+}
+
+.um-confirm-icon.sold-mode {
+  background: rgba(34, 139, 87, 0.14);
+  border-color: rgba(34, 139, 87, 0.38);
+  color: #15803d;
+}
+
+.um-confirm-icon .icon {
+  width: 1.65rem;
+  height: 1.65rem;
+}
+
+.um-confirm-card h3 {
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+.um-confirm-msg {
+  margin-top: 0.55rem;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(22, 33, 27, 0.7);
+}
+
+.um-confirm-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.65rem;
+}
+
+.btn-um-cancel {
+  flex: 1;
+  padding: 0.8rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(22, 33, 27, 0.2);
+  background: var(--cream);
+  color: var(--forest);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-um-cancel:hover {
+  border-color: var(--gold);
+  background: rgba(201, 162, 39, 0.12);
+}
+
+.btn-um-confirm {
+  flex: 1;
+  padding: 0.8rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid #b91c1c;
+  background: #b91c1c;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-um-confirm:hover {
+  background: #991b1b;
+  border-color: #991b1b;
+}
+
+.btn-um-confirm.sold-mode {
+  background: #1b5e3a;
+  border-color: #1b5e3a;
+  color: var(--cream);
+}
+
+.btn-um-confirm.sold-mode:hover {
+  background: #14532d;
+  border-color: #14532d;
+}
+
+/* ========== 2. SELL TO PLATFORM DIRECT BOX ========== */
+.sell-direct-box {
+  margin-bottom: 3.5rem;
+  border-radius: 2rem;
+  border: 1.5px solid rgba(22, 33, 27, 0.16);
+  background: var(--cream-2);
+  overflow: hidden;
+  box-shadow: 0 24px 48px -28px rgba(12, 36, 26, 0.24);
+}
+
+.sell-direct-header {
+  padding: 1.15rem 1.75rem;
+  background: linear-gradient(135deg, #123524 0%, #0c241a 100%);
+  color: var(--cream);
+  text-align: center;
+  font-size: 15.5px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border-bottom: 1px solid rgba(227, 199, 102, 0.25);
+}
+
+.sell-direct-body {
+  padding: 2rem 1.75rem;
+}
+
+.sell-direct-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.sell-direct-grid select.req-input {
+  cursor: pointer;
+}
+
+.sell-upload-full {
+  grid-column: 1 / -1;
+}
+
+.sell-upload-zone-wrapper {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* Multi-photo Small Square Previews with Delete 'X' Button */
+.sell-photos-preview-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  border-radius: 1.15rem;
+  background: rgba(22, 33, 27, 0.05);
+  border: 1.5px dashed rgba(201, 162, 39, 0.45);
+  align-items: center;
+}
+
+.sell-photo-thumb-card {
+  position: relative;
+  width: 82px;
+  height: 82px;
+  border-radius: 0.95rem;
+  border: 2px solid var(--gold);
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(12, 36, 26, 0.16);
+  flex-shrink: 0;
+  animation: thumbPop 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes thumbPop {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.sell-photo-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: calc(0.95rem - 2px);
+  display: block;
+}
+
+.sell-photo-remove-btn {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #dc2626;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.55);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s;
+  z-index: 10;
+  line-height: 1;
+}
+
+.sell-photo-remove-btn:hover {
+  background: #991b1b;
+  transform: scale(1.18);
+}
+
+.sell-upload-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.15rem;
+  border-radius: 1.1rem;
+  background: linear-gradient(135deg, rgba(227, 199, 102, 0.38), rgba(201, 162, 39, 0.24));
+  border: 1.5px dashed var(--gold);
+  color: var(--forest);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.sell-upload-btn:hover {
+  background: rgba(201, 162, 39, 0.38);
+}
+
+.sell-upload-btn .icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--forest);
+}
+
+/* Warm Solar Gold Submit Button (Distinct from dark green navbar/headers) */
+.sell-submit-btn {
+  width: 100%;
+  margin-top: 1.25rem;
+  padding: 1rem 1.75rem;
+  border-radius: 1.1rem;
+  background: linear-gradient(135deg, #d4af37 0%, #c9a227 55%, #b08915 100%);
+  color: var(--forest);
+  font-size: 15px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  box-shadow: 0 14px 28px -10px rgba(201, 162, 39, 0.5);
+  transition: all 0.3s ease;
+}
+
+.sell-submit-btn:hover {
+  background: linear-gradient(135deg, #e3c766 0%, #d4af37 100%);
+  transform: translateY(-2px);
+}
+
+/* ========== 3. SEARCH BAR & 6-CARD MARKETPLACE GRID ========== */
+.market-search-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.market-search-input-wrap {
+  position: relative;
+  flex: 1;
+}
+
+.market-search-input-wrap .icon {
+  position: absolute;
+  left: 1.15rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(22, 33, 27, 0.45);
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.market-search-input {
+  width: 100%;
+  padding: 0.95rem 1.2rem 0.95rem 2.95rem;
+  border-radius: 1.15rem;
+  border: 1px solid rgba(22, 33, 27, 0.16);
+  background: var(--cream-2);
+  font: 15px/1.45 Inter, system-ui, sans-serif;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.market-search-input:focus {
+  border-color: var(--gold);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.16);
+}
+
+.market-search-btn {
+  padding: 0.95rem 2.25rem;
+  border-radius: 1.15rem;
+  background: linear-gradient(135deg, #1f5c3e 0%, #143d29 100%);
+  color: var(--cream);
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.market-search-btn:hover {
+  background: linear-gradient(135deg, #28704c 0%, #1b4d35 100%);
+}
+
+/* 6-Card Equipment Grid */
+.market-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.mk-item-card {
+  background: var(--cream-2);
+  border: 1px solid rgba(22, 33, 27, 0.1);
+  border-radius: 1.75rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  cursor: pointer;
+}
+
+.mk-item-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(201, 162, 39, 0.55);
+  box-shadow: 0 24px 48px -24px rgba(12, 36, 26, 0.32);
+}
+
+.mk-item-img {
+  border-radius: 1.25rem;
+  overflow: hidden;
+  aspect-ratio: 16 / 11;
+  background: var(--cream);
+  margin-bottom: 1.1rem;
+}
+
+.mk-item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s ease;
+}
+
+.mk-item-card:hover .mk-item-img img {
+  transform: scale(1.06);
+}
+
+.mk-item-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+.mk-item-sub {
+  margin-top: 0.25rem;
+  font-size: 13px;
+  color: rgba(22, 33, 27, 0.58);
+}
+
+.mk-item-note {
+  margin-top: 0.2rem;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1f5c3e;
+}
+
+.mk-item-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1.15rem;
+  padding-top: 0.95rem;
+  border-top: 1px solid rgba(22, 33, 27, 0.08);
+}
+
+.mk-item-price {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--forest);
+}
+
+/* View Details Button: Warm Gold-Tinted / Emerald Transition */
+.mk-view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.55rem 1.05rem;
+  border-radius: 0.75rem;
+  background: rgba(201, 162, 39, 0.18);
+  border: 1px solid rgba(201, 162, 39, 0.45);
+  color: var(--forest);
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.mk-item-card:hover .mk-view-btn,
+.mk-view-btn:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--forest);
+}
+
+/* Pagination Row */
+.mk-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2.75rem;
+}
+
+.mk-page-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid rgba(22, 33, 27, 0.16);
+  background: var(--cream-2);
+  color: var(--forest);
+  font-size: 13.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.mk-page-btn:hover {
+  border-color: var(--gold);
+  background: rgba(201, 162, 39, 0.15);
+}
+
+.mk-page-btn.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--forest);
+}
+
+@media (min-width: 640px) {
+  .featured-deal-card {
+    flex-direction: row;
+    align-items: center;
+  }
+  .featured-deal-img {
+    width: 10.5rem;
+    height: 9rem;
+  }
+  .sell-direct-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .market-search-row {
+    flex-direction: row;
+  }
+  .market-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .featured-deals-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .market-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

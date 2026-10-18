@@ -1,0 +1,61 @@
+/* =====================================================================
+   SHAMSTECH JO - PAGE POLISH (css/pages_ux.css)
+   Client home (latest requests + marketplace), form errors, AI result.
+   Same tokens as the rest of the site.
+   ===================================================================== */
+
+/* ---------- HOME: latest 2 requests in the service design ---------- */
+.client-section .head-row { align-items: flex-end; gap: 1.25rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.client-section .head-row .title { letter-spacing: -.02em; }
+.orders-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 1.25rem; }
+.ho-card { display: grid; gap: 1.1rem; padding: 1.5rem; border-radius: 1.4rem; background: var(--cream-2); border: 2px solid var(--svc); box-shadow: var(--ux-shadow); transition: transform .2s ease, box-shadow .2s ease; }
+.ho-card:hover { transform: translateY(-3px); box-shadow: 0 0 0 4px color-mix(in srgb, var(--svc) 20%, transparent), var(--ux-shadow-up); }
+.ho-top { display: flex; align-items: flex-start; gap: 1rem; }
+.ho-top > div { flex: 1; min-width: 0; }
+.ho-top h3 { font-size: 1.1rem; line-height: 1.3; color: var(--forest); }
+.ho-top p { font-size: 13px; color: rgba(22,33,27,.6); margin-top: .25rem; }
+.ho-ico { flex: none; display: grid; place-items: center; width: 52px; height: 52px; border-radius: 1rem; border: 2px solid var(--svc); background: color-mix(in srgb, var(--svc) 14%, #fff); }
+.ho-ico .icon { width: 24px; height: 24px; stroke: var(--svc); }
+.svc-chip { display: inline-block; margin-bottom: .35rem; padding: .22rem .7rem; border-radius: 999px; background: var(--svc, var(--forest)); color: #fff; font-size: 11.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+.ho-card[data-svc="other"] .svc-chip { color: #3b2f00; }
+.ho-badge { flex: none; padding: .3rem .8rem; border-radius: 999px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.ho-badge.open { background: var(--ux-wait-bg); color: var(--ux-wait); }
+.ho-badge.proc { background: var(--ux-info-bg); color: var(--ux-info); }
+.ho-badge.delivered { background: var(--gold); color: var(--forest); }
+.ho-info { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--ux-line); border-radius: 1rem; background: #fff; }
+.ho-info > div { padding: .8rem 1rem; min-width: 0; }
+.ho-info > div + div { border-left: 1px solid var(--ux-line); }
+.ho-info span { display: block; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: rgba(22,33,27,.55); }
+.ho-info strong { display: block; color: var(--forest); font-weight: 600; overflow-wrap: anywhere; }
+.ho-foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.ho-foot p { flex: 1; min-width: 180px; font-size: 14px; color: rgba(22,33,27,.75); }
+.ho-empty { grid-column: 1 / -1; text-align: center; padding: 2.5rem 1.5rem; border: 2px dashed var(--ux-line); border-radius: 1.4rem; }
+.ho-empty .btn { margin-top: 1rem; }
+
+/* ---------- HOME: marketplace keeps its original look; only a neutral fallback if an image is missing ---------- */
+.product-img.img-fail img { display: none; }
+.product-img.img-fail { background: linear-gradient(135deg, #ece5d2, #ddd5bd); }
+
+/* ---------- FORM VALIDATION ---------- */
+.has-error { border-color: var(--ux-bad) !important; box-shadow: 0 0 0 3px rgba(180,35,24,.15) !important; }
+.sanad-upload-box.has-error { background: var(--ux-bad-bg); }
+.req-error { margin: .4rem 0 0; font-size: 13px; font-weight: 500; color: var(--ux-bad); }
+.req-error::before { content: '⚠ '; }
+
+/* ---------- AI DIAGNOSIS RESULT ---------- */
+.ai-top { display: flex; gap: .6rem; align-items: center; flex-wrap: wrap; margin-bottom: .6rem; }
+.ai-sev { padding: .25rem .8rem; border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+.ai-sev.high { background: var(--ux-bad-bg); color: var(--ux-bad); }
+.ai-sev.medium { background: var(--ux-wait-bg); color: var(--ux-wait); }
+.ai-sev.low { background: var(--ux-ok-bg); color: var(--ux-ok); }
+.ai-conf { font-size: 13px; color: rgba(22,33,27,.65); }
+.ai-block { margin-top: 1rem; }
+.ai-block h4 { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: rgba(22,33,27,.55); margin-bottom: .35rem; }
+.ai-block ul { padding-left: 1.1rem; display: grid; gap: .3rem; }
+.ai-suggest { margin-top: 1.4rem; padding: 1.2rem; border-radius: 1.2rem; border: 2px solid var(--svc); background: color-mix(in srgb, var(--svc) 9%, #fff); display: grid; gap: .8rem; }
+.ai-suggest small { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: rgba(22,33,27,.6); }
+.ai-suggest h4 { font-size: 1.15rem; color: var(--forest); }
+.ai-suggest .ho-ico { margin-right: .25rem; }
+.ai-suggest-row { display: flex; gap: .9rem; align-items: center; }
+.ai-note { margin-top: 1rem; font-size: 12.5px; color: rgba(22,33,27,.55); }
+@media (max-width: 640px) { .ho-info { grid-template-columns: 1fr; } .ho-info > div + div { border-left: 0; border-top: 1px solid var(--ux-line); } }

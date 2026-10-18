@@ -1,0 +1,2 @@
+.company-license-name { margin-top: .45rem; min-height: 2.7rem; padding: .65rem .8rem; border: 1px solid var(--ux-line); border-radius: .65rem; background: rgba(22,33,27,.035); color: var(--forest); overflow-wrap: anywhere; }
+@media (max-width: 860px) { .company-license-name { min-height: 2.5rem; } }

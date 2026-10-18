@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Details &amp; Contractor Offers — ShamsTech Jo</title>
+  <!-- Fonts: Inter (text) and Lexend (headings) - identical to Home screen -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/request_offers.css">
+</head>
+<body>
+<!-- =====================================================
+     SHAMSTECH JO - REQUEST DETAILS & CONTRACTOR OFFERS PAGE
+     File: html/request_offers.html
+     Explanation of what was done in this file:
+     1. Opens when the user selects a request on html/my_requests.html
+        (or clicks "View Bids" on html/client_home.html).
+     2. Displays all solar companies that have submitted technical
+        and financial proposals (#REQ-2026-0892) matching screenshot
+        "clint-instal-comp 1".
+     3. Clicking "Accept Best Proposal" or "Accept Proposal" on any
+        company opens the "Proposal Accepted Successfully!" modal
+        matching screenshot "clint-instal-comp 2", unlocking the
+        company's Project Manager, Direct Phone, Email, and Location.
+     ===================================================== -->
+<svg style="display:none" aria-hidden="true">
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-17.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+<symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5m7 7-7-7 7-7"/></symbol>
+<symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="i-badge-check" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></symbol>
+<!-- Profile: added the user icon used by the new 'Profile' menu item. -->
+<symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+<symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+<symbol id="i-cpu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></symbol>
+<symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></symbol>
+<symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+<symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+<symbol id="i-log-out" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
+<symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+</svg>
+
+<div class="req-wrapper">
+  <!-- ========== NAVBAR (Main Home Screen links + Logged-in User Name & Arrow Dropdown) ========== -->
+  <header class="navbar solid" id="navbar">
+    <!-- NAVBAR (client): the same navbar on every client page. Links go to the sections of client_home.html (no separate pages). Source of truth: client_home.html. -->
+    <div class="container">
+      <a href="/html/client_home.html" class="brand">
+        <span class="brand-icon"><svg class="icon"><use href="#i-sun"/></svg></span>
+        <span>
+          <span class="brand-name display">SHAMS<b>TECH</b></span>
+          <span class="brand-sub">JORDAN · شمس الأردن</span>
+        </span>
+      </a>
+      <nav class="nav-links">
+        <a href="/html/client_home.html#quick-services">Services</a>
+        <a href="/html/client_home.html#active-orders">How it works</a>
+        <a href="/html/client_home.html#used-marketplace">Marketplace</a>
+        <a href="/html/client_home.html#weather-advisor">About</a>
+      </nav>
+
+      <!-- Client Name with an Arrow Dropdown -->
+      <div class="nav-actions">
+        <div class="client-menu-wrap" id="client-menu-wrap">
+          <button type="button" class="client-name-btn" id="client-name-btn">
+            <span class="client-avatar display" id="nav-user-avatar">A</span>
+            <span class="display" id="nav-user-name">Ahmad Ali</span>
+            <svg class="icon client-arrow"><use href="#i-chevron-down"/></svg>
+          </button>
+
+          <div class="client-dropdown" id="client-dropdown">
+            <div class="dropdown-label">Account &amp; History</div>
+            <a href="/html/client_home.html" class="dropdown-item">
+              <svg class="icon"><use href="#i-sun"/></svg>
+              <span>User's Home Page</span>
+            </a>
+            <a href="/html/my_requests.html" class="dropdown-item">
+              <svg class="icon"><use href="#i-badge-check"/></svg>
+              <span>My Submitted Requests</span>
+            </a>
+            <a href="/html/history_archives.html" class="dropdown-item">
+              <svg class="icon"><use href="#i-box"/></svg>
+              <span>History &amp; Archives</span>
+            </a>
+            <!-- Profile: the old 'Settings' dropdown item is now 'Profile' and opens profile.html. -->
+            <a href="/html/profile.html" class="dropdown-item">
+              <svg class="icon"><use href="#i-user"/></svg>
+              <span>Profile</span>
+            </a>
+
+            <div class="dropdown-label">Available Services</div>
+            <a href="/html/request_solar.html?service=solar" class="dropdown-item">
+              <svg class="icon"><use href="#i-zap"/></svg>
+              <span>Request Solar System</span>
+            </a>
+            <a href="/html/request_solar.html?service=maintenance" class="dropdown-item">
+              <svg class="icon"><use href="#i-wrench"/></svg>
+              <span>Solar Maintenance &amp; Repair</span>
+            </a>
+            <a href="/html/request_solar.html?service=cleaning" class="dropdown-item">
+              <svg class="icon"><use href="#i-sun"/></svg>
+              <span>Panel Cleaning</span>
+            </a>
+            <a href="/html/request_solar.html?service=other" class="dropdown-item">
+              <svg class="icon"><use href="#i-settings"/></svg>
+              <span>Other Services</span>
+            </a>
+            <!-- Removed: the 'Used Marketplace / Selling Used Parts' item was taken out of the services dropdown (requested). -->
+
+            <a href="/html/home.html" class="dropdown-item logout">
+              <svg class="icon"><use href="#i-log-out"/></svg>
+              <span>Log Out</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <button class="menu-btn" id="menu-btn" aria-label="Menu">
+        <svg class="icon i-open"><use href="#i-menu"/></svg>
+        <svg class="icon i-close"><use href="#i-x"/></svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="/html/client_home.html">User's Home Page</a>
+      <a href="/html/my_requests.html">My Submitted Requests</a>
+      <a href="/html/history_archives.html">History &amp; Archives</a>
+      <a href="/html/profile.html">Profile</a>
+      <a href="/html/request_solar.html?service=solar">Request Solar System</a>
+      <a href="/html/request_solar.html?service=maintenance">Solar Maintenance</a>
+      <a href="/html/request_solar.html?service=cleaning">Panel Cleaning</a>
+      <a href="/html/request_solar.html?service=other">Other Services</a>
+      <a href="/html/home.html" class="nav-cta">Log Out</a>
+    </div>
+  </header>
+
+  <!-- ========== REQUEST DETAILS & CONTRACTOR PROPOSALS COMPARISON ========== -->
+  <main class="requests-main">
+    <div class="container">
+      <!-- Back to Active Requests button -->
+      <div style="max-width:58rem;margin:0 auto 1.25rem;">
+        <a href="/html/my_requests.html" class="btn-req-outline display" style="border-radius:999px;">
+          <svg class="icon" style="width:1rem;height:1rem;color:var(--gold);"><use href="#i-arrow-left"/></svg>
+          <span>Back to Active Requests</span>
+        </a>
+      </div>
+
+      <div class="requests-frame-card">
+        <!-- Request Header -->
+        <div class="offers-top-bar">
+          <div>
+            <h1 class="display" id="offers-req-heading">Request Details &amp; Offers (#REQ-2026-0892)</h1>
+            <p id="offers-req-sub">Submitted on Oct 06, 2026 • System Size: 5.5 kWp On-Grid • Location: Irbid, Eastern District</p>
+          </div>
+          <span class="sub-req-badge offers-ready display" id="offers-status-badge">● 3 Proposals Received</span>
+        </div>
+
+        <h2 class="offers-section-label display">Contractor Proposals Comparison</h2>
+
+        <div id="offers-toast" class="req-toast display"></div>
+
+        <!-- 3 Competing Company Proposal Cards -->
+        <div class="proposals-stack">
+          <!-- COMPANY 1: Philadelphia Solar Jordan (Recommended Offer) -->
+          <article class="proposal-card recommended" data-card="ps">
+            <span class="rec-ribbon display">★ Recommended Offer</span>
+
+            <div class="comp-profile-row">
+              <span class="comp-avatar green display">PS</span>
+              <div class="comp-info">
+                <h3 class="display">Philadelphia Solar Jordan</h3>
+                <p class="comp-rating"><span class="star">★ 4.9</span> (128 Reviews) • Tier-1 Certified Installer</p>
+              </div>
+            </div>
+
+            <div class="comp-metrics-grid">
+              <div class="comp-metric-box tinted-green">
+                <span>TOTAL TURNKEY PRICE (TAX INCL.)</span>
+                <strong class="display">3,450 JOD</strong>
+              </div>
+              <div class="comp-metric-box">
+                <span>EXECUTION TIMELINE</span>
+                <strong class="display">⏱ 20 Business Days</strong>
+              </div>
+            </div>
+
+            <div class="comp-scope-box">
+              <p class="comp-scope-title display">✓ Technical Scope &amp; Offer:</p>
+              <p>“10x 550W Mono Half-Cell Panels + Huawei 5kW Hybrid-Ready Inverter. Includes full JEPCO/IDECO net-metering paperwork &amp; 10-year workmanship warranty.”</p>
+              <p class="comp-scope-bonus">✓ Free 1st-year panel wash &amp; thermal inspection included</p>
+            </div>
+
+            <div class="comp-actions-row">
+              <button type="button" class="btn-req-outline display" data-pdf="Philadelphia_Solar_Proposal_REQ0892.pdf">
+                <span>📄 Download Proposal PDF</span>
+              </button>
+              <button type="button" class="btn-accept-offer display" data-accept="ps">
+                <span>Accept Best Proposal</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- COMPANY 2: SunEnergy Jordan Ltd. -->
+          <article class="proposal-card" data-card="se">
+            <div class="comp-profile-row">
+              <span class="comp-avatar navy display">SE</span>
+              <div class="comp-info">
+                <h3 class="display">SunEnergy Jordan Ltd.</h3>
+                <p class="comp-rating"><span class="star">★ 4.6</span> (84 Reviews) • Licensed Contractor</p>
+              </div>
+            </div>
+
+            <div class="comp-metrics-grid">
+              <div class="comp-metric-box">
+                <span>TOTAL TURNKEY PRICE (TAX INCL.)</span>
+                <strong class="display">3,200 JOD</strong>
+              </div>
+              <div class="comp-metric-box">
+                <span>EXECUTION TIMELINE</span>
+                <strong class="display">⏱ 35 Business Days</strong>
+              </div>
+            </div>
+
+            <div class="comp-scope-box">
+              <p class="comp-scope-title display">✓ Technical Scope &amp; Offer:</p>
+              <p>“12x 460W Longi Solar Panels + Growatt 5kW On-Grid Inverter. Standard galvanized steel mounting structure, 5-year installation warranty.”</p>
+            </div>
+
+            <div class="comp-actions-row">
+              <button type="button" class="btn-req-outline display" data-pdf="SunEnergy_Jordan_Proposal_REQ0892.pdf">
+                <span>📄 Download Proposal PDF</span>
+              </button>
+              <button type="button" class="btn-accept-offer secondary-tone display" data-accept="se">
+                <span>Accept Proposal</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- COMPANY 3: Atlas Green Energy -->
+          <article class="proposal-card" data-card="ag">
+            <div class="comp-profile-row">
+              <span class="comp-avatar bronze display">AG</span>
+              <div class="comp-info">
+                <h3 class="display">Atlas Green Energy</h3>
+                <p class="comp-rating"><span class="star">★ 4.8</span> (96 Reviews) • Fast-Track Specialist</p>
+              </div>
+            </div>
+
+            <div class="comp-metrics-grid">
+              <div class="comp-metric-box">
+                <span>TOTAL TURNKEY PRICE (TAX INCL.)</span>
+                <strong class="display">3,900 JOD</strong>
+              </div>
+              <div class="comp-metric-box tinted-amber">
+                <span>FASTEST EXECUTION TIMELINE</span>
+                <strong class="display">⚡ 15 Business Days</strong>
+              </div>
+            </div>
+
+            <div class="comp-scope-box">
+              <p class="comp-scope-title display">✓ Technical Scope &amp; Offer:</p>
+              <p>“10x 550W Trina Vertex S Panels + Deye 6kW Hybrid Inverter. Heavy-duty rust-free aluminum rails + priority grid connection.”</p>
+            </div>
+
+            <div class="comp-actions-row">
+              <button type="button" class="btn-req-outline display" data-pdf="Atlas_Green_Energy_Proposal_REQ0892.pdf">
+                <span>📄 Download Proposal PDF</span>
+              </button>
+              <button type="button" class="btn-accept-offer secondary-tone display" data-accept="ag">
+                <span>Accept Proposal</span>
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <p class="requests-footnote">
+          🔒 Accepting a proposal locks the quoted price, unlocks direct contractor contact, and moves your request to In Execution.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========== PROPOSAL CONFIRMATION POPUP MODAL (Accept or Cancel) ========== -->
+  <div class="offer-modal-backdrop" id="offer-modal-backdrop" aria-hidden="true">
+    <div class="offer-modal-card" role="dialog" aria-modal="true" aria-labelledby="accepted-modal-title">
+      <div class="offer-check-circle">
+        <svg class="icon"><use href="#i-badge-check"/></svg>
+      </div>
+
+      <h2 class="display" id="accepted-modal-title">Proposal Accepted Successfully!</h2>
+      <p class="offer-modal-sub">Review the contractor’s official contact details below. Click <strong>Accept</strong> to confirm and move the request to <strong>In Execution</strong>, or <strong>Cancel</strong>.</p>
+
+      <!-- Unlocked Company Contact Details Box -->
+      <div class="unlocked-contractor-box">
+        <div class="unlocked-head">
+          <span class="comp-avatar green display" id="modal-comp-avatar">PS</span>
+          <div>
+            <h3 class="display" style="font-size:1.05rem;font-weight:600;color:var(--forest);" id="modal-comp-name">Philadelphia Solar Jordan</h3>
+            <p class="unlocked-verified">✓ Verified Solar Contractor</p>
+          </div>
+        </div>
+
+        <div class="unlocked-details-list">
+          <div class="unlocked-detail-row">
+            <span>Project Manager:</span>
+            <strong class="display" id="modal-comp-manager">Eng. Ahmad Al-Majali</strong>
+          </div>
+          <div class="unlocked-detail-row">
+            <span>Direct Phone Number:</span>
+            <strong class="phone-link display" id="modal-comp-phone">📞 +962 79 880 1234</strong>
+          </div>
+          <div class="unlocked-detail-row">
+            <span>Official Email:</span>
+            <strong id="modal-comp-email">✉️ projects@philadelphiasolar.jo</strong>
+          </div>
+          <div class="unlocked-detail-row">
+            <span>Office Location:</span>
+            <strong id="modal-comp-loc">📍 Amman, King Abdullah II Industrial City</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Action Buttons: Accept or Cancel -->
+      <div class="offer-modal-actions">
+        <button type="button" class="btn-track-work display" id="modal-confirm-accept-btn" style="justify-content:center;">
+          <span>✓ Accept</span>
+        </button>
+        <button type="button" class="btn-req-outline display" id="modal-cancel-btn" style="justify-content:center;">
+          <span>✕ Cancel</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== WIDE FOOTER WITH "COMPANY CONNECT" ========== -->
+  <footer class="footer grain">
+    <div class="blob blob-c"></div>
+    <div class="container footer-inner">
+      <div class="footer-grid">
+        <div>
+          <a href="/html/home.html" class="brand"><span class="brand-icon"><svg class="icon"><use href="#i-sun"/></svg></span><span class="brand-name display">SHAMS<b>TECH</b></span></a>
+          <p class="footer-about">Jordan’s marketplace connecting homes and businesses with certified solar companies — for installation, maintenance, cleaning and second-life parts.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/html/request_solar.html?service=solar">Installation</a></li>
+            <li><a href="/html/request_solar.html?service=maintenance">Maintenance</a></li>
+            <li><a href="/html/request_solar.html?service=cleaning">Cleaning</a></li>
+            <li><a href="/html/request_solar.html?service=other">Other Services</a></li>
+            <li><a href="/html/used_market.html">Used Marketplace</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Account</h4>
+          <ul>
+            <li><a href="/html/client_home.html">User's Home Page</a></li>
+            <li><a href="/html/my_requests.html">My Submitted Requests</a></li>
+            <li><a href="/html/browse_market.html">Public Equipment List</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company Connect</h4>
+          <ul class="company-connect-list">
+            <li><a href="tel:+96265000000" class="footer-contact-link"><svg class="icon"><use href="#i-phone"/></svg><span>+962 6 500 0000</span></a></li>
+            <li><a href="mailto:hello@shamstech.jo" class="footer-contact-link"><svg class="icon"><use href="#i-mail"/></svg><span>hello@shamstech.jo</span></a></li>
+            <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Amman,+Jordan" target="_blank" rel="noopener noreferrer" class="footer-contact-link"><svg class="icon"><use href="#i-map-pin"/></svg><span>Amman, Jordan (Google Maps)</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 ShamsTech Jo. All rights reserved.</p><p>POWERED BY THE SUN · شمس الأردن</p></div>
+    </div>
+  </footer>
+</div>
+
+<script src="/js/theme.js"></script>
+<script src="/js/request_offers.js"></script>
+</body>
+</html>

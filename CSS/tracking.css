@@ -1,0 +1,175 @@
+/* =====================================================================
+   SHAMSTECH JO - TRACKING + ACTIVE REQUESTS DESIGN (css/tracking.css)
+   Loaded after ux.css on my_requests.html and company_proposals.html.
+   Same tokens: --forest, --cream, --gold, --ink, Lexend/Inter.
+   ===================================================================== */
+
+/* ---------- 1. PAGE FRAME + SUMMARY TILES (client) ---------- */
+.requests-header h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); letter-spacing: -.02em; }
+.requests-header p { color: rgba(22,33,27,.7); }
+.trk-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin: 1.25rem 0; }
+.trk-summary div { padding: 1rem 1.2rem; border-radius: 1rem; background: var(--cream-2); border: 1px solid var(--ux-line); }
+.trk-summary b { display: block; font: 600 1.8rem/1 Lexend, Inter, sans-serif; color: var(--forest); }
+.trk-summary span { font-size: 13px; color: rgba(22,33,27,.65); }
+.trk-summary .alert { background: var(--gold); border-color: var(--gold); animation: trk-pulse 2s ease infinite; }
+.trk-summary .alert b, .trk-summary .alert span { color: var(--forest); }
+@keyframes trk-pulse { 50% { box-shadow: 0 0 0 6px rgba(201,162,39,.3); } }
+
+/* ---------- 2. REQUEST CARD: header > service strip > metrics > status > actions ---------- */
+.submitted-requests-list { display: grid; gap: 1.1rem; }
+.submitted-req-card { display: grid; gap: 1rem; background: var(--cream-2); }
+.sub-req-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+.sub-req-title-group { display: flex; gap: .9rem; align-items: flex-start; min-width: 0; }
+.sub-req-title-group h2 { font-size: 1.15rem; line-height: 1.3; color: var(--forest); }
+.sub-req-meta { font-size: 13px; color: rgba(22,33,27,.6); margin-top: .2rem; }
+.sub-req-metrics { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--ux-line); border-radius: 1rem; background: #fff; }
+.metric-item { padding: .85rem 1.1rem; min-width: 0; }
+.metric-item + .metric-item { border-left: 1px solid var(--ux-line); }
+.metric-item span { display: block; font-size: 11px; letter-spacing: .08em; color: rgba(22,33,27,.55); }
+.metric-item strong { display: block; font-size: 1rem; color: var(--forest); overflow-wrap: anywhere; }
+.sub-req-status-box { padding: .9rem 1.1rem; border-radius: .9rem; background: rgba(201,162,39,.12); border-left: 4px solid var(--gold); font-size: 14.5px; }
+.sub-req-status-box p + p { margin-top: .35rem; }
+.sub-req-actions { display: flex; justify-content: space-between; align-items: center; gap: .75rem; flex-wrap: wrap; }
+.sub-req-btn-group { display: flex; gap: .6rem; flex-wrap: wrap; }
+.btn-cancel-req { background: none; border: 0; color: var(--ux-bad); font-size: 13px; text-decoration: underline; text-underline-offset: 3px; min-height: 40px; box-shadow: none; }
+.trk-hide { display: none !important; }
+.submitted-req-card.is-delivered { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,162,39,.3), var(--ux-shadow); }
+.sub-req-badge.delivered { background: var(--gold); color: var(--forest); }
+
+/* ---------- 3. SERVICE TYPE + STAGE PROGRESS (on every card) ---------- */
+.trk-strip { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.trk-type { display: inline-flex; align-items: center; gap: .4rem; padding: .3rem .8rem; border-radius: 999px; background: var(--forest); color: var(--cream); font-size: 12px; font-weight: 600; letter-spacing: .04em; }
+.trk-progress { flex: 1; min-width: 220px; text-align: left; display: grid; gap: .35rem; padding: .35rem .5rem; border-radius: .7rem; }
+.trk-progress:hover { background: rgba(201,162,39,.12); }
+.trk-segs { display: flex; gap: 4px; }
+.trk-segs i { flex: 1; height: 6px; border-radius: 4px; background: rgba(22,33,27,.14); }
+.trk-segs i.on { background: var(--gold); }
+.trk-segs i.now { background: var(--forest); box-shadow: 0 0 0 3px rgba(201,162,39,.4); }
+.trk-now { font-size: 13px; color: rgba(22,33,27,.75); }
+.trk-now b { color: var(--forest); }
+
+/* ---------- 4. READ-ONLY TRACKING DRAWER + RATING SCREEN ---------- */
+.trk-backdrop { position: fixed; inset: 0; z-index: 90; display: none; background: rgba(12,36,26,.55); backdrop-filter: blur(5px); }
+.trk-backdrop.open { display: flex; }
+.trk-drawer { margin-left: auto; width: min(480px, 100%); height: 100%; overflow-y: auto; background: var(--cream-2); padding: 1.75rem; animation: trk-in .25s ease; }
+@keyframes trk-in { from { transform: translateX(40px); opacity: 0; } }
+.trk-drawer header { display: flex; justify-content: space-between; gap: 1rem; }
+.trk-drawer h2 { font-size: 1.3rem; color: var(--forest); }
+.trk-drawer header p { color: rgba(22,33,27,.65); font-size: 14px; }
+.trk-note { margin: 1rem 0; padding: .7rem 1rem; border-radius: .8rem; background: var(--ux-info-bg); color: var(--ux-info); font-size: 13.5px; }
+.trk-steps { list-style: none; margin: 1rem 0; padding: 0; position: relative; }
+.trk-steps li { display: grid; grid-template-columns: 1fr auto; gap: .75rem; padding: 0 0 1.4rem 2rem; position: relative; opacity: .5; }
+.trk-steps li::before { content: ''; position: absolute; left: 0; top: 3px; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--gold); background: var(--cream-2); z-index: 1; }
+.trk-steps li::after { content: ''; position: absolute; left: 7px; top: 20px; bottom: 0; width: 2px; background: rgba(22,33,27,.15); }
+.trk-steps li:last-child::after { display: none; }
+.trk-steps li.done, .trk-steps li.now { opacity: 1; }
+.trk-steps li.done::before { background: var(--gold); }
+.trk-steps li.done::after { background: var(--gold); }
+.trk-steps li.now::before { background: var(--forest); border-color: var(--forest); box-shadow: 0 0 0 4px rgba(201,162,39,.4); }
+.trk-steps b { display: block; color: var(--forest); }
+.trk-steps span { font-size: 13px; color: rgba(22,33,27,.65); }
+.trk-steps time { font-size: 12px; color: rgba(22,33,27,.55); white-space: nowrap; }
+.trk-done-box { padding: 1.1rem; border-radius: 1rem; background: var(--forest); color: var(--cream); }
+.trk-done-box p { margin-bottom: .8rem; }
+.trk-modal { margin: auto; width: min(440px, 92vw); padding: 1.75rem; border-radius: 1.4rem; background: var(--cream-2); }
+.trk-modal h2 { font-size: 1.3rem; color: var(--forest); }
+.trk-modal textarea { width: 100%; margin-top: 1rem; }
+.trk-stars { display: flex; gap: .3rem; margin-top: 1rem; }
+.trk-stars button { font-size: 2.2rem; line-height: 1; color: rgba(22,33,27,.2); transition: transform .15s; }
+.trk-stars button:hover { transform: scale(1.15); }
+.trk-stars button.on { color: var(--gold); }
+.trk-row { display: flex; gap: .6rem; margin-top: 1.2rem; flex-wrap: wrap; }
+.trk-row > * { flex: 1; justify-content: center; }
+
+/* ---------- 5. COMPANY: ACTIVE JOBS ---------- */
+.cj-section { margin-top: 3rem; }
+.cj-section h2 { font-size: 1.6rem; color: var(--forest); }
+.cj-section > p { color: rgba(22,33,27,.7); margin: .3rem 0 1.2rem; }
+.cj-card { padding: 1.4rem; border-radius: var(--ux-radius); border: 1px solid var(--ux-line); background: var(--cream-2); box-shadow: var(--ux-shadow); display: grid; gap: .9rem; margin-bottom: 1rem; }
+.cj-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.cj-head h3 { font-size: 1.1rem; color: var(--forest); margin-top: .5rem; }
+.cj-head p, .cj-now { font-size: 13.5px; color: rgba(22,33,27,.7); }
+.cj-state { padding: .45rem 1rem; border-radius: 999px; font-size: 13px; font-weight: 600; }
+.cj-state.wait { background: var(--ux-wait-bg); color: var(--ux-wait); }
+.cj-state.ok { background: var(--ux-ok-bg); color: var(--ux-ok); }
+.cj-empty { padding: 1.5rem; border: 1.5px dashed var(--ux-line); border-radius: 1rem; text-align: center; color: rgba(22,33,27,.6); }
+
+@media (max-width: 640px) {
+  .trk-summary { grid-template-columns: 1fr; }
+  .sub-req-metrics { grid-template-columns: 1fr; }
+  .metric-item + .metric-item { border-left: 0; border-top: 1px solid var(--ux-line); }
+  .trk-drawer { padding: 1.25rem; }
+}
+
+/* =====================================================================
+   SERVICE COLORS: green installation, orange maintenance, blue cleaning,
+   yellow other. --svc is set per card by js/request_tracking.js.
+   Card border + icon + chip all use the same color.
+   ===================================================================== */
+.submitted-req-card[data-svc] { border: 2px solid var(--svc); }
+.submitted-req-card[data-svc]:hover { border-color: var(--svc); box-shadow: 0 0 0 4px color-mix(in srgb, var(--svc) 22%, transparent), var(--ux-shadow-up); }
+.submitted-req-card[data-svc] .sub-req-icon { color: var(--svc); background: color-mix(in srgb, var(--svc) 14%, #fff); border: 2px solid var(--svc); border-radius: 1rem; }
+.submitted-req-card[data-svc] .sub-req-icon .icon { color: var(--svc); stroke: var(--svc); }
+.svc-chip { display: inline-block; margin-bottom: .35rem; padding: .22rem .7rem; border-radius: 999px; background: var(--svc, var(--forest)); color: #fff; font-size: 11.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+.submitted-req-card[data-svc="other"] .svc-chip, .trk-drawer .svc-chip { color: #fff; }
+.submitted-req-card[data-svc="other"] .svc-chip { color: #3b2f00; }
+
+/* card states: open = View Request | under process = View Tracking | delivered = Review & Confirm */
+.state-open [data-trk-open], .state-open .trk-done-btn, .state-proc .trk-done-btn { display: none !important; }
+.state-proc .btn-compare-offers:not(.trk-done-btn), .state-proc a.btn-req-outline[href*="request_solar"],
+.state-del .btn-compare-offers:not(.trk-done-btn), .state-del a.btn-req-outline[href*="request_solar"] { display: none !important; }
+.state-del .btn-track-work { background: transparent; color: var(--forest); border: 1.5px solid var(--ux-line); }
+
+/* ---------- HISTORY: one button in the same row as the filter tabs ---------- */
+.requests-tabs { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+.requests-tabs .archive-history-btn.hist-tab { display: inline-flex; align-items: center; gap: .4rem; margin: 0; text-decoration: none; background: transparent; }
+.requests-tabs .archive-history-btn.hist-tab:hover { border-color: var(--gold); transform: none; box-shadow: none; }
+
+/* ---------- EVALUATION SCREEN ---------- */
+.rv-modal { width: min(520px, 94vw); max-height: 92vh; overflow-y: auto; }
+.rv-sub { color: rgba(22,33,27,.65); font-size: 14px; margin-top: .3rem; }
+.rv-overall { display: flex; align-items: baseline; gap: .4rem; margin: 1rem 0 .4rem; }
+.rv-overall b { font: 600 2.4rem/1 Lexend, Inter, sans-serif; color: var(--forest); }
+.rv-overall span { color: rgba(22,33,27,.6); }
+.rv-row { display: flex; justify-content: space-between; align-items: center; gap: .75rem; padding: .6rem 0; border-top: 1px solid var(--ux-line); flex-wrap: wrap; }
+.rv-row > span { font-weight: 500; font-size: 14.5px; color: var(--forest); }
+.rv-row button { font-size: 1.6rem; line-height: 1; padding: 0 .1rem; color: rgba(22,33,27,.2); }
+.rv-row button.on { color: var(--gold); }
+.rv-rec { display: flex; align-items: center; gap: .5rem; padding: .8rem 0; border-top: 1px solid var(--ux-line); flex-wrap: wrap; }
+.rv-rec span { flex: 1; font-weight: 500; font-size: 14.5px; min-width: 200px; }
+.rv-rec button { padding: .4rem 1.1rem; border-radius: 999px; border: 1.5px solid var(--ux-line); font-weight: 600; }
+.rv-rec button.on { background: var(--forest); color: var(--cream); border-color: var(--forest); }
+
+/* ---------- HISTORY button: stays on the right, styled as one clear pill like the tabs ---------- */
+.archive-history-btn { display: inline-flex; align-items: center; gap: .4rem; min-height: 40px; padding: 0 1.1rem; border-radius: 999px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.requests-filter-bar { display: flex; justify-content: space-between; align-items: center; gap: .75rem; flex-wrap: wrap; }
+
+/* ---------- COMPANY REQUESTS: client requests in the same service design, with full details ---------- */
+.market-item-card.svc-card { border: 2px solid var(--svc); }
+.market-item-card.svc-card:hover { border-color: var(--svc); box-shadow: 0 0 0 4px color-mix(in srgb, var(--svc) 22%, transparent), var(--ux-shadow-up); }
+.svc-ico { display: inline-grid; place-items: center; width: 42px; height: 42px; border-radius: 1rem; border: 2px solid var(--svc); background: color-mix(in srgb, var(--svc) 14%, #fff); color: var(--svc); }
+.svc-ico .icon { width: 20px; height: 20px; stroke: var(--svc); }
+.req-detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem 1.5rem; padding: 1rem 1.2rem; margin: 1rem 0; border-radius: 1rem; background: #fff; border: 1px solid var(--ux-line); }
+.req-detail-grid div { min-width: 0; }
+.req-detail-grid span { display: block; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: rgba(22,33,27,.55); }
+.req-detail-grid strong { display: block; font-weight: 600; color: var(--forest); overflow-wrap: anywhere; line-height: 1.4; }
+@media (max-width: 640px) { .req-detail-grid { grid-template-columns: 1fr; } }
+
+/* ---------- REQUEST DETAILS POPUP + PHOTOS + PHOTO VIEWER ---------- */
+.rd-modal { width: min(660px, 94vw); max-height: 92vh; overflow-y: auto; }
+.rd-head { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; }
+.rd-head h2 { font-size: 1.3rem; color: var(--forest); }
+.rd-head p { font-size: 13px; color: rgba(22,33,27,.6); margin-top: .25rem; }
+.rd-h { margin: 1.1rem 0 .5rem; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: rgba(22,33,27,.55); }
+.rd-photos, .req-photos { display: flex; gap: .6rem; flex-wrap: wrap; }
+.rd-photos img, .req-photos img { width: 96px; height: 96px; object-fit: cover; border-radius: .8rem; border: 1px solid var(--ux-line); cursor: zoom-in; }
+.req-photos { margin: 0 0 1rem; }
+.req-detail-grid .wide { grid-column: 1 / -1; }
+.lb { position: fixed; inset: 0; z-index: 300; display: grid; place-items: center; background: rgba(0,0,0,.85); cursor: zoom-out; }
+.lb img { max-width: 92vw; max-height: 90vh; border-radius: 1rem; }
+
+/* ---------- COMPANY HOME: latest 3 requests in the service design ---------- */
+.tender-card.svc-card { border: 2px solid var(--svc); }
+.tender-card.svc-card:hover { border-color: var(--svc); box-shadow: 0 0 0 4px color-mix(in srgb, var(--svc) 22%, transparent), var(--ux-shadow-up); }
+.tender-tag-row { align-items: center; gap: .6rem; flex-wrap: wrap; }
+.tender-card[data-svc="other"] .svc-chip { color: #3b2f00; }

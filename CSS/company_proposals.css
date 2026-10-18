@@ -1,0 +1,616 @@
+/* =====================================================
+   SHAMSTECH JO - SUBMITTED PROPOSALS & OFFERS CSS (css/company_proposals.css)
+   Matches Image 3 & Design System:
+   1. Typography: Lexend (headings, badges, KPIs, buttons) & Inter (body)
+   2. Colors: Forest green (#16211b), Gold (#c9a227), Creams (#fdfbf7, #f4ede4)
+   3. Distinct Request Type Badges:
+      - Maintenance & Wash: Cyan / Sky Blue (#e0f2fe, #0369a1, #7dd3fc)
+      - Installation / Residential: Warm Solar Orange (#ffedd5, #c2410c, #fdba74)
+      - Institutional Tenders: Deep Emerald (#dcfce7, #14532d, #86efac)
+      - AI Diagnosis: Royal Purple (#f3e8ff, #6b21a8, #d8b4fe)
+   ===================================================== */
+
+@import "/css/client_home.css";
+@import "/css/company_home.css";
+
+.proposals-main {
+  min-height: calc(100vh - 80px);
+  padding: 3rem 0 5rem;
+}
+
+/* Header Block */
+.proposals-header-block {
+  margin-bottom: 2.25rem;
+}
+
+.proposals-header-block .hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(201, 162, 39, 0.16);
+  border: 1px solid rgba(201, 162, 39, 0.4);
+  color: #854d0e;
+  font-family: Lexend, sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.85rem;
+}
+
+.proposals-header-block h1 {
+  font-size: 2.35rem;
+  font-weight: 700;
+  color: var(--forest);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.proposals-header-block p {
+  margin-top: 0.5rem;
+  font-size: 15px;
+  color: rgba(22, 33, 27, 0.7);
+  max-width: 48rem;
+  line-height: 1.55;
+}
+
+/* KPI Summary Cards Grid (4 Cards) */
+.proposals-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 900px) {
+  .proposals-kpi-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+.kpi-stat-card {
+  border-radius: 1.5rem;
+  background: var(--cream-2);
+  border: 1px solid rgba(22, 33, 27, 0.12);
+  padding: 1.35rem 1.45rem;
+  box-shadow: 0 10px 24px -12px rgba(12, 36, 26, 0.12);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.kpi-stat-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+}
+
+.kpi-stat-card .kpi-icon-wrap {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.kpi-stat-card.all .kpi-icon-wrap {
+  background: rgba(201, 162, 39, 0.18);
+  color: #854d0e;
+}
+
+.kpi-stat-card.accepted .kpi-icon-wrap {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.kpi-stat-card.review .kpi-icon-wrap {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.kpi-stat-card.progress .kpi-icon-wrap {
+  background: #e0f2fe;
+  color: #0284c7;
+}
+
+.kpi-stat-label {
+  font-family: Lexend, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(22, 33, 27, 0.6);
+  display: block;
+}
+
+.kpi-stat-num {
+  font-family: Lexend, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--forest);
+  margin-top: 0.35rem;
+  line-height: 1.1;
+  display: block;
+}
+
+/* Filter Strip Box */
+.proposals-filter-bar {
+  background: var(--cream-2);
+  border: 1px solid rgba(22, 33, 27, 0.12);
+  border-radius: 1.75rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 860px) {
+  .proposals-filter-bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.type-filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.filter-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.05rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(22, 33, 27, 0.14);
+  background: #ffffff;
+  color: var(--forest);
+  font-family: Lexend, sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.filter-pill-btn:hover {
+  border-color: var(--gold);
+  background: rgba(201, 162, 39, 0.1);
+}
+
+.filter-pill-btn.active {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: var(--gold-2);
+  box-shadow: 0 8px 20px -8px rgba(12, 36, 26, 0.4);
+}
+
+.status-filter-select-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.status-filter-select {
+  appearance: none;
+  padding: 0.55rem 2.2rem 0.55rem 1.15rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(22, 33, 27, 0.16);
+  background: #ffffff;
+  color: var(--forest);
+  font-family: Lexend, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+}
+
+.status-filter-select:focus {
+  border-color: var(--gold);
+}
+
+/* Proposals Stack */
+.proposals-list-stack {
+  display: grid;
+  gap: 1.25rem;
+}
+
+/* Individual Proposal Card (Image 3) */
+.proposal-item-card {
+  background: #ffffff;
+  border-radius: 1.85rem;
+  border: 1.5px solid rgba(22, 33, 27, 0.1);
+  padding: 1.75rem 2rem;
+  box-shadow: 0 16px 36px -24px rgba(12, 36, 26, 0.18);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.proposal-item-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+  box-shadow: 0 22px 48px -20px rgba(12, 36, 26, 0.24);
+}
+
+.proposal-card-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.proposal-badge-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+/* Request Type Badges with Specific Colors */
+.card-type-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 0.55rem;
+  font-family: Lexend, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 1px solid transparent;
+}
+
+/* =====================================================
+   4 DEDICATED SERVICE TYPES & DISTINCT COLORS:
+   1. Solar Installation: Warm Solar Orange (#ffedd5, #c2410c, #fdba74)
+   2. Maintenance & Wash: Sky Blue / Cyan (#e0f2fe, #0369a1, #7dd3fc)
+   3. Wash: Pure Teal / Mint (#ccfbf1, #0f766e, #5eead4)
+   4. Maintenance: Deep Indigo (#ede9fe, #4338ca, #a5b4fc)
+   ===================================================== */
+
+/* 1. Solar Installation */
+.card-type-tag.solar-installation,
+.card-type-tag.residential,
+.card-type-tag.installation,
+.card-type-tag.tag-install {
+  background: #ffedd5;
+  color: #c2410c;
+  border-color: #fdba74;
+}
+
+/* 2. Maintenance & Wash */
+.card-type-tag.maint-wash,
+.card-type-tag.maintenance,
+.card-type-tag.tag-maint {
+  background: #e0f2fe;
+  color: #0369a1;
+  border-color: #7dd3fc;
+}
+
+/* 3. Wash */
+.card-type-tag.wash-only,
+.card-type-tag.wash,
+.card-type-tag.tag-wash {
+  background: #ccfbf1;
+  color: #0f766e;
+  border-color: #5eead4;
+}
+
+/* 4. Maintenance */
+.card-type-tag.maintenance-only,
+.card-type-tag.commercial,
+.card-type-tag.institutional,
+.card-type-tag.ai,
+.card-type-tag.tag-ai {
+  background: #ede9fe;
+  color: #4338ca;
+  border-color: #a5b4fc;
+}
+
+.proposal-order-id {
+  font-family: Lexend, sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: rgba(22, 33, 27, 0.55);
+}
+
+/* Status Pill */
+.proposal-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.95rem;
+  border-radius: 999px;
+  font-family: Lexend, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.proposal-status-pill.review {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.proposal-status-pill.accepted {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.proposal-status-pill.progress {
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+}
+
+.proposal-item-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--forest);
+  line-height: 1.35;
+  margin-bottom: 0.5rem;
+}
+
+.proposal-client-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 13.5px;
+  color: rgba(22, 33, 27, 0.68);
+  margin-bottom: 1.25rem;
+}
+
+.proposal-client-row strong {
+  color: var(--forest);
+}
+
+.proposal-client-row .dot {
+  opacity: 0.5;
+}
+
+/* =====================================================
+   UNIFIED ICON COLORS PER CARD (Image 3 Requirement):
+   "خلي كل مربع الايقونات الي جوا لون وحد اللون لكل مربه لحال"
+   Each proposal card has its own unified icon color theme!
+   ===================================================== */
+
+/* 1. Solar Installation Theme -> Warm Solar Orange (#ea580c) */
+.proposal-item-card.theme-solar {
+  border-left: 4px solid #ea580c;
+}
+.proposal-item-card.theme-solar .icon,
+.proposal-item-card.theme-solar .prop-client-loc .icon,
+.proposal-item-card.theme-solar .offer-metric-card .icon,
+.proposal-item-card.theme-solar .proposal-pdf-indicator .icon,
+.proposal-item-card.theme-solar .btn-prop-outline .icon {
+  color: #ea580c !important;
+  stroke: #ea580c !important;
+}
+
+/* 2. Maintenance & Wash Theme -> Sky Blue / Cyan (#0284c7) */
+.proposal-item-card.theme-maint-wash {
+  border-left: 4px solid #0284c7;
+}
+.proposal-item-card.theme-maint-wash .icon,
+.proposal-item-card.theme-maint-wash .prop-client-loc .icon,
+.proposal-item-card.theme-maint-wash .offer-metric-card .icon,
+.proposal-item-card.theme-maint-wash .proposal-pdf-indicator .icon,
+.proposal-item-card.theme-maint-wash .btn-prop-outline .icon {
+  color: #0284c7 !important;
+  stroke: #0284c7 !important;
+}
+
+/* 3. Wash Theme -> Aqua Teal (#0d9488) */
+.proposal-item-card.theme-wash {
+  border-left: 4px solid #0d9488;
+}
+.proposal-item-card.theme-wash .icon,
+.proposal-item-card.theme-wash .prop-client-loc .icon,
+.proposal-item-card.theme-wash .offer-metric-card .icon,
+.proposal-item-card.theme-wash .proposal-pdf-indicator .icon,
+.proposal-item-card.theme-wash .btn-prop-outline .icon {
+  color: #0d9488 !important;
+  stroke: #0d9488 !important;
+}
+
+/* 4. Maintenance Theme -> Royal Indigo (#4f46e5) */
+.proposal-item-card.theme-maintenance {
+  border-left: 4px solid #4f46e5;
+}
+.proposal-item-card.theme-maintenance .icon,
+.proposal-item-card.theme-maintenance .prop-client-loc .icon,
+.proposal-item-card.theme-maintenance .offer-metric-card .icon,
+.proposal-item-card.theme-maintenance .proposal-pdf-indicator .icon,
+.proposal-item-card.theme-maintenance .btn-prop-outline .icon {
+  color: #4f46e5 !important;
+  stroke: #4f46e5 !important;
+}
+
+/* Offer Data Grid (Horizontal row) */
+.proposal-offer-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.85rem;
+  background: var(--cream);
+  border: 1px solid rgba(22, 33, 27, 0.08);
+  border-radius: 1.35rem;
+  padding: 1.15rem 1.35rem;
+  margin-bottom: 1.35rem;
+}
+
+.offer-metric-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.offer-metric-card .metric-head {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.25rem;
+}
+
+.offer-metric-card .metric-head .icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex-shrink: 0;
+}
+
+.offer-metric-card .label {
+  font-family: Lexend, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgba(22, 33, 27, 0.6);
+  letter-spacing: 0.04em;
+  display: inline-block;
+}
+
+.offer-metric-card .val {
+  font-family: Lexend, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--forest);
+  margin-top: 0.15rem;
+  display: block;
+}
+
+.offer-metric-card .val.gold {
+  color: #854d0e;
+}
+
+.offer-metric-card .val.green {
+  color: #15803d;
+}
+
+/* Card Actions Footer */
+.proposal-card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed rgba(22, 33, 27, 0.12);
+}
+
+.proposal-pdf-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 13px;
+  color: #854d0e;
+  font-weight: 600;
+}
+
+.proposal-pdf-indicator .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.proposal-btn-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.btn-prop-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(22, 33, 27, 0.16);
+  background: #ffffff;
+  color: var(--forest);
+  font-family: Lexend, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-prop-outline:hover {
+  border-color: var(--gold);
+  background: rgba(201, 162, 39, 0.1);
+}
+
+.btn-prop-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.25rem;
+  border-radius: 999px;
+  border: 1.5px solid #143d29;
+  background: linear-gradient(135deg, #1f5c3e 0%, #12281e 100%);
+  color: #ffffff;
+  font-family: Lexend, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 18px -8px rgba(18, 53, 36, 0.5);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-prop-primary:hover {
+  background: linear-gradient(135deg, #28704c 0%, #1b4d35 100%);
+  transform: translateY(-1px);
+}
+
+/* Modal for Offer Details */
+.offer-details-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 350;
+  background: rgba(12, 36, 26, 0.88);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.offer-details-modal-backdrop.open {
+  display: flex;
+}
+
+.offer-details-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 2rem;
+  padding: 2.25rem;
+  max-width: 38rem;
+  width: 100%;
+  box-shadow: 0 35px 80px -20px rgba(0, 0, 0, 0.7);
+}
+
+.offer-details-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  border: 1px solid rgba(22, 33, 27, 0.15);
+  background: var(--cream);
+  color: var(--forest);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}

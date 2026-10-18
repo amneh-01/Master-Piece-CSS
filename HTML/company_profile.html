@@ -1,0 +1,252 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Profile — ShamsTech Jo</title>
+
+  <!-- Route Guard: Ensures ONLY Solar Companies can access this dashboard -->
+  <script>
+    (function () {
+      var role = localStorage.getItem('shamstech_user_role');
+      if (role !== 'company') {
+        if (role === 'client') {
+          // If logged in as client, redirect to client portal
+          window.location.replace('/html/client_home.html');
+        } else {
+          // If not logged in, redirect to login page with solar company tab pre-selected
+          window.location.replace('/html/login.html?role=company');
+        }
+      }
+    })();
+  </script>
+
+  <!-- Fonts: Inter (body text) and Lexend (headings & buttons) - identical to the entire ShamsTech platform -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/company_home.css">
+  <link rel="stylesheet" href="/css/ux.css">
+  <link rel="stylesheet" href="/css/tracking.css">
+  <link rel="stylesheet" href="/css/pages_ux.css">
+  <link rel="stylesheet" href="/css/profile.css"> <!-- UX layer: loads last -->
+</head>
+<body>
+<!-- =====================================================
+     SHAMSTECH JO - SOLAR COMPANY MAIN PORTAL (html/company_home.html)
+     Design, Font & Color Harmony:
+     1. Uses the exact same typography (Lexend & Inter), warm cream
+        (--cream, --cream-2) and deep forest green (--forest, --forest-2)
+        color palette, gold highlights, and rounded luxury cards as
+        the rest of ShamsTech screens.
+     2. Protected by an authentication & role guard: Accessible ONLY
+        when a Solar Company logs in via the Company Login portal.
+     3. Elevated 4 KPI Summary Cards with dedicated status icons,
+        the "Bids & Offers Submitted Status" table with interactive
+        modals, "Latest Requests & Tenders Near Your Location" with
+        instant quotation workflow, and the Used Equipment Market strip.
+     ===================================================== -->
+<svg style="display:none" aria-hidden="true">
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-17.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+<symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10M7 17 17 7"/></symbol>
+<symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="i-badge-check" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+<!-- Added: person icon for the Company Profile menu item -->
+<symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+<symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+<symbol id="i-building" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></symbol>
+<symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></symbol>
+<symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+<symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+<symbol id="i-log-out" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
+<symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+<symbol id="i-trending-up" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
+<symbol id="i-file-text" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+</svg>
+
+<div class="client-body">
+  <!-- ========== NAVBAR WITH COMPANY NAME & ARROW DROPDOWN ========== -->
+  <header class="navbar solid" id="navbar">
+    <!-- NAVBAR (company): the same navbar on every company page. Every item goes to its section of company_home.html (not a new page). Company Profile uses a person icon. Source of truth: company_home.html. -->
+    <div class="container">
+      <a href="/html/company_home.html" class="brand">
+        <span class="brand-icon"><svg class="icon"><use href="#i-sun"/></svg></span>
+        <span>
+          <span class="brand-name display">SHAMS<b>TECH</b></span>
+          <span class="brand-sub">JORDAN · شمس الأردن</span>
+        </span>
+      </a>
+      <nav class="nav-links">
+        <a href="/html/company_home.html#navbar">Company Home</a>
+        <a href="/html/company_home.html#tenders-section">Open Requests</a>
+        <a href="/html/company_home.html#bids-status-section">Submitted Proposals</a>
+        <a href="/html/company_home.html#company-market-section">Used Market</a>
+        <a href="/html/company_home.html#company-footer">About Platform</a>
+      </nav>
+
+      <!-- Company Account Button with Name + Arrow Dropdown -->
+      <div class="nav-actions">
+        <div class="client-menu-wrap" id="client-menu-wrap">
+          <button type="button" class="client-name-btn" id="client-name-btn">
+            <span class="client-avatar display" id="nav-comp-avatar">AF</span>
+            <span class="display" id="nav-comp-name">Al-Fanar Energy Co.</span>
+            <svg class="icon client-arrow"><use href="#i-chevron-down"/></svg>
+          </button>
+
+          <div class="client-dropdown" id="client-dropdown">
+            <div class="dropdown-label">Company Portal</div>
+            <a href="/html/company_home.html#navbar" class="dropdown-item">
+              <svg class="icon"><use href="#i-building"/></svg>
+              <span>Company Dashboard</span>
+            </a>
+            <a href="/html/company_home.html#bids-status-section" class="dropdown-item">
+              <svg class="icon"><use href="#i-badge-check"/></svg>
+              <span>Submitted Bids &amp; Offers</span>
+            </a>
+            <a href="/html/company_home.html#tenders-section" class="dropdown-item">
+              <svg class="icon"><use href="#i-zap"/></svg>
+              <span>Open Requests &amp; Tenders</span>
+            </a>
+            <a href="/html/company_home.html#company-market-section" class="dropdown-item">
+              <svg class="icon"><use href="#i-box"/></svg>
+              <span>Used Equipment Market</span>
+            </a>
+            <a href="/html/history_archives.html" class="dropdown-item">
+              <svg class="icon"><use href="#i-settings"/></svg>
+              <span>History &amp; Archives</span>
+            </a>
+            <!-- Company Profile: new item that opens company_profile.html -->
+            <a href="/html/company_profile.html" class="dropdown-item active" aria-current="page">
+              <svg class="icon"><use href="#i-user"/></svg>
+              <span>Company Profile</span>
+            </a>
+
+            <button type="button" class="dropdown-item logout" id="company-logout-btn" style="background:none;border:none;cursor:pointer;text-align:left;">
+              <svg class="icon"><use href="#i-log-out"/></svg>
+              <span>Log Out</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <button class="menu-btn" id="menu-btn" aria-label="Menu">
+        <svg class="icon i-open"><use href="#i-menu"/></svg>
+        <svg class="icon i-close"><use href="#i-x"/></svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="/html/company_home.html#navbar">Company Dashboard</a>
+      <a href="/html/company_home.html#tenders-section">Open Requests &amp; Tenders</a>
+      <a href="/html/company_home.html#bids-status-section">Submitted Proposals &amp; Offers</a>
+      <a href="/html/company_home.html#company-market-section">Used Equipment Market</a>
+      <a href="/html/history_archives.html">History &amp; Archives</a>
+      <!-- Company Profile: mobile menu link -->
+      <a href="/html/company_profile.html">Company Profile</a>
+      <button type="button" class="nav-cta" id="mobile-logout-btn" style="border:none;cursor:pointer;width:100%;text-align:center;">Log Out</button>
+    </div>
+  </header>
+
+  <!-- ========== COMPANY DASHBOARD MAIN CONTENT ========== -->
+  <main class="client-main">
+    <div class="container">
+      <!-- COMPANY PROFILE: shows the details entered at company sign up; the company can edit and save them (js/company_profile.js) -->
+      <section class="client-section pf-section">
+        <p class="eyebrow">Company Account</p>
+        <h1 class="title display">Company <em class="gold-text">Profile</em></h1>
+
+        <div class="pf-layout">
+          <!-- Summary card -->
+          <aside class="pf-card pf-id">
+            <span class="pf-avatar display" id="pf-avatar">AF</span>
+            <h2 class="display" id="pf-title">-</h2>
+            <span class="pf-role">Solar Company</span>
+            <ul class="pf-contact">
+              <li><svg class="icon"><use href="#i-phone"/></svg><span id="pf-s-phone">-</span></li>
+              <li><svg class="icon"><use href="#i-mail"/></svg><span id="pf-s-email">-</span></li>
+              <li><svg class="icon"><use href="#i-map-pin"/></svg><span id="pf-s-addr">-</span></li>
+            </ul>
+          </aside>
+
+          <!-- Editable details -->
+          <form class="pf-card" id="pf-form" novalidate>
+            <div class="pf-head">
+              <h2 class="display">Company information</h2>
+              <button type="button" class="btn btn-dark display" id="pf-edit"><span>Edit profile</span></button>
+            </div>
+            <p class="pf-msg" id="pf-msg" role="status"></p>
+            <div class="pf-grid">
+              <div class="pf-field"><label for="pf-name">Company name</label><input type="text" id="pf-name" data-ph="e.g. Al-Fanar Energy Co." autocomplete="organization" disabled></div>
+              <div class="pf-field"><label for="pf-reg">Commercial registration no.</label><input type="text" id="pf-reg" data-ph="e.g. 123456" disabled></div>
+              <div class="pf-field"><label for="pf-email">Company email address</label><input type="email" id="pf-email" data-ph="info@company.jo" autocomplete="email" disabled></div>
+              <div class="pf-field"><label for="pf-phone">Phone no.</label><input type="tel" id="pf-phone" data-ph="079 123 4567 or 06 123 4567" autocomplete="tel" disabled></div>
+              <div class="pf-field"><label for="pf-city">Governorate</label><select id="pf-city" disabled><option value="Amman">Amman</option><option value="Irbid">Irbid</option><option value="Zarqa">Zarqa</option><option value="Madaba">Madaba</option><option value="Aqaba">Aqaba</option></select></div>
+              <div class="pf-field"><label for="pf-license-file">Business license</label>
+                <p class="pf-license"><svg class="icon"><use href="#i-building"/></svg><span id="pf-license">Not uploaded yet</span></p>
+                <input type="file" id="pf-license-file" class="pf-file" accept=".pdf,.jpg,.jpeg,.png">
+                <p class="pf-hint pf-file">Choose a file only if you want to replace the license.</p>
+              </div>
+              <div class="pf-field wide"><label for="pf-area">Office address details (area, street, building)</label><input type="text" id="pf-area" data-ph="e.g. Wasfi Al-Tal Street, Building 24" autocomplete="street-address" disabled></div>
+            </div>
+            <div class="pf-actions">
+              <button type="button" class="btn-req-outline display" id="pf-cancel"><span>Cancel</span></button>
+              <button type="submit" class="btn btn-gold display" id="pf-save"><span>Save changes</span></button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer grain" id="company-footer">
+    <div class="blob blob-c"></div>
+    <div class="container footer-inner">
+      <div class="footer-grid">
+        <div>
+          <a href="/html/company_home.html" class="brand">
+            <span class="brand-icon"><svg class="icon"><use href="#i-sun"/></svg></span>
+            <span class="brand-name display">SHAMS<b>TECH</b></span>
+          </a>
+          <p class="footer-about">Jordan's premier solar energy marketplace connecting certified contractors and homeowners for high-efficiency installation, maintenance, cleaning, and equipment trade.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#bids-status-section">Bids Dashboard</a></li>
+            <li><a href="/html/used_market.html">Used Hardware Market</a></li>
+            <li><a href="#tenders-section">Open Tenders &amp; Requests</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support &amp; Help</h4>
+          <ul>
+            <li><a href="/html/history_archives.html">History &amp; Archives</a></li>
+            <li><a href="/html/browse_market.html">Public Equipment List</a></li>
+            <li><a href="mailto:contact@shamstech.jo">Contact Support</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact Us</h4>
+          <ul class="company-connect-list">
+            <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Irbid,+Jordan" target="_blank" rel="noopener noreferrer" class="footer-contact-link"><svg class="icon"><use href="#i-map-pin"/></svg><span>Irbid, Jordan</span></a></li>
+            <li><a href="mailto:contact@shamstech.jo" class="footer-contact-link"><svg class="icon"><use href="#i-mail"/></svg><span>contact@shamstech.jo</span></a></li>
+            <li><a href="tel:+96220000000" class="footer-contact-link"><svg class="icon"><use href="#i-phone"/></svg><span>+962 2 000 0000</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>All rights reserved © 2026 SHAMSTECH Platform</p>
+        <p>POWERED BY THE SUN · شمس الأردن</p>
+      </div>
+    </div>
+  </footer>
+<script src="/js/company_profile.js"></script>
+</body>
+</html>

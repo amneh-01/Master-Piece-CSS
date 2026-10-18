@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Solar Equipment Listings — ShamsTech Jo</title>
+  <!-- Fonts: Inter (text) and Lexend (headings) - identical to Home screen -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/public_market.css">
+  <link rel="stylesheet" href="/css/ux.css"> <!-- UX layer: loads last -->
+</head>
+<body>
+<!-- =====================================================
+     SHAMSTECH JO - PUBLIC BROWSE-ONLY MARKETPLACE PAGE
+     File: html/public_market.html
+     Explanation of what was done in this file:
+     1. Opens when a visitor on the main Home Screen clicks
+        "View all listings" ("View List") in the Marketplace section.
+     2. Designed strictly for browsing inspected solar items
+        (panels, inverters, batteries, mounting rails) without
+        any purchase buttons or "Sell Your System" forms.
+     3. Includes the Dark / Light Mode toggle in the navbar and
+        the widened "Company Connect" footer with functional
+        phone (tel:), email (mailto:), and Google Maps links.
+     ===================================================== -->
+<svg style="display:none" aria-hidden="true">
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-17.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+<symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+</svg>
+
+<div class="browse-wrapper">
+  <!-- ========== NAVBAR ========== -->
+  <header class="navbar solid" id="navbar">
+    <div class="container">
+      <a href="/html/home.html" class="brand">
+        <span class="brand-icon"><svg class="icon"><use href="#i-sun"/></svg></span>
+        <span>
+          <span class="brand-name display">SHAMS<b>TECH</b></span>
+          <span class="brand-sub">JORDAN · شمس الأردن</span>
+        </span>
+      </a>
+      <nav class="nav-links">
+        <a href="/html/home.html#services">Services</a>
+        <a href="/html/home.html#how">How it works</a>
+        <a href="/html/public_market.html" class="active">Marketplace</a>
+        <a href="/html/home.html#about">About</a>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="theme-toggle-btn display" id="theme-toggle-btn" aria-label="Toggle Dark or Light Mode">
+          <svg class="icon"><use id="theme-toggle-icon" href="#i-moon"/></svg>
+          <span id="theme-toggle-label">Dark</span>
+        </button>
+        <a href="/html/login.html" class="nav-login">Log In</a>
+        <a href="/html/signup.html" class="nav-cta">Sign Up</a>
+      </div>
+      <button class="menu-btn" id="menu-btn" aria-label="Menu">
+        <svg class="icon i-open"><use href="#i-menu"/></svg>
+        <svg class="icon i-close"><use href="#i-x"/></svg>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="/html/home.html#services">Services</a>
+      <a href="/html/home.html#how">How it works</a>
+      <a href="/html/public_market.html">Marketplace</a>
+      <a href="/html/home.html#about">About</a>
+      <a href="/html/login.html">Log In</a>
+      <a href="/html/signup.html" class="nav-cta">Sign Up</a>
+    </div>
+  </header>
+
+  <!-- ========== BROWSE-ONLY SOLAR EQUIPMENT CATALOG ========== -->
+  <main class="browse-main">
+    <div class="container">
+      <!-- Hero Banner -->
+      <section class="browse-hero grain">
+        <div class="sun-rays"></div>
+        <div class="sun-core"></div>
+        <div class="browse-hero-inner">
+          <div class="hero-badge"><svg class="icon"><use href="#i-sun"/></svg> SECOND-LIFE SOLAR CATALOG · شمس الأردن</div>
+          <h1 class="display">Browse Verified <em class="gold-text">Solar Equipment</em> Across Jordan</h1>
+          <p>Explore inspected second-hand solar panels, hybrid inverters, lithium storage batteries, and mounting structures graded by certified technicians.</p>
+        </div>
+      </section>
+
+      <!-- Search & Category Filter Bar -->
+      <div class="browse-controls">
+        <div class="browse-search-wrap">
+          <svg class="icon"><use href="#i-search"/></svg>
+          <input type="text" id="browse-search-input" class="browse-search-input" placeholder="Filter listings by brand, wattage, city, or condition...">
+        </div>
+        <div class="browse-cats">
+          <button type="button" class="browse-cat-btn display active" data-cat="all">All Equipment (6)</button>
+          <button type="button" class="browse-cat-btn display" data-cat="panels">Solar Panels</button>
+          <button type="button" class="browse-cat-btn display" data-cat="inverters">Inverters</button>
+          <button type="button" class="browse-cat-btn display" data-cat="batteries">Storage Batteries</button>
+          <button type="button" class="browse-cat-btn display" data-cat="rails">Mounting Rails</button>
+        </div>
+      </div>
+
+      <!-- 6-Card Browse-Only Grid (No Buy Buttons) -->
+      <div class="browse-grid" id="browse-grid">
+        <!-- Item 1 -->
+        <article class="browse-card" data-category="panels">
+          <div>
+            <div class="browse-img-wrap">
+              <img src="/images/panel.jpg" alt="Tier-1 Mono Panel · 550W">
+              <span class="browse-grade-badge display">Grade A · 92% Health</span>
+            </div>
+            <h3 class="display">Jinko Tiger Pro 550W Panels (x10)</h3>
+            <div class="browse-specs-list">
+              <span class="browse-spec-pill">Used · 1 Year</span>
+              <span class="browse-spec-pill">Monocrystalline</span>
+              <span class="browse-spec-pill">EL Tested</span>
+            </div>
+            <p class="browse-desc">Dismantled carefully during a rooftop expansion. Verified output with zero micro-cracks or shading defects.</p>
+          </div>
+          <div class="browse-card-foot">
+            <span class="browse-price display">200 JOD</span>
+            <span class="browse-loc"><svg class="icon"><use href="#i-map-pin"/></svg> Irbid, Jordan</span>
+          </div>
+        </article>
+
+        <!-- Item 2 -->
+        <article class="browse-card" data-category="inverters">
+          <div>
+            <div class="browse-img-wrap">
+              <img src="/images/inverter.jpg" alt="Growatt 5kW On-Grid Inverter">
+              <span class="browse-grade-badge display">Refurbished · 1-Yr Warranty</span>
+            </div>
+            <h3 class="display">Growatt 5kW On-Grid Inverter</h3>
+            <div class="browse-specs-list">
+              <span class="browse-spec-pill">Used · 8 Months</span>
+              <span class="browse-spec-pill">Single-Phase</span>
+              <span class="browse-spec-pill">Wi-Fi Module</span>
+            </div>
+            <p class="browse-desc">Clean condition with original DC connectors, wall bracket, and full load test certificate.</p>
+          </div>
+          <div class="browse-card-foot">
+            <span class="browse-price display">320 JOD</span>
+            <span class="browse-loc"><svg class="icon"><use href="#i-map-pin"/></svg> Amman, Jordan</span>
+          </div>
+        </article>
+
+        <!-- Item 3 -->
+        <article class="browse-card" data-category="batteries">
+          <div>
+            <div class="browse-img-wrap">
+              <img src="/images/battery.jpg" alt="Lithium Storage · 10kWh">
+              <span class="browse-grade-badge display">85% Cycle Life Left</span>
+            </div>
+            <h3 class="display">Felicity Lithium Battery · 10kWh</h3>
+            <div class="browse-specs-list">
+              <span class="browse-spec-pill">LiFePO4</span>
+              <span class="browse-spec-pill">Smart BMS</span>
+              <span class="browse-spec-pill">Wall-Mount</span>
+            </div>
+            <p class="browse-desc">Operated in a temperature-controlled residential storage room with complete BMS cycle health logs.</p>
+          </div>
+          <div class="browse-card-foot">
+            <span class="browse-price display">600 JOD</span>
+            <span class="browse-loc"><svg class="icon"><use href="#i-map-pin"/></svg> Zarqa, Jordan</span>
+          </div>
+        </article>
+
+        <!-- Item 4 -->
+        <article class="browse-card" data-category="rails">
+          <div>
+            <div class="browse-img-wrap">
+              <img src="/images/racks.jpg" alt="Longi Solar 450W Panels & Rails">
+              <span class="browse-grade-badge display">Includes Mounting Rails</span>
+            </div>
+            <h3 class="display">Longi 450W Panels (x4) + Aluminum Rails</h3>
+            <div class="browse-specs-list">
+              <span class="browse-spec-pill">Used · 2 Years</span>
+              <span class="browse-spec-pill">Anodized Alloy</span>
+              <span class="browse-spec-pill">Rust-Free</span>
+            </div>
+            <p class="browse-desc">Complete 4-panel array with heavy-duty aluminum rails and mid/end clamps ready for roof installation.</p>
+          </div>
+          <div class="browse-card-foot">
+            <span class="browse-price display">130 JOD</span>
+            <span class="browse-loc"><svg class="icon"><use href="#i-map-pin"/></svg> Madaba, Jordan</span>
+          </div>
+        </article>
+
+        <!-- Item 5 -->
+        <article class="browse-card" data-category="inverters">
+          <div>
+            <div class="browse-img-wrap">
+              <img src="/images/inverter.jpg" alt="Deye 8kW Hybrid Inverter">
+              <span class="browse-grade-badge display">Used · 6 Months</span>
+            </div>
+            <h3 class="display">Deye 8kW Hybrid Inverter</h3>
+            <div class="browse-specs-list">
+              <span class="browse-spec-pill">Hybrid Grid-Tie</span>
+              <span class="browse-spec-pill">Dual MPPT</span>
+              <span class="browse-spec-pill">Tested 100%</span>
+            </div>
+            <p class="browse-desc">Supports battery storage, net metering, and backup load management. Upgraded to a 3-phase system.</p>
+          </div>
+          <div class="browse-card-foot">
+            <span class="browse-price display">720 JOD</span>
+            <span class="browse-loc"><svg class="icon"><use href="#i-map-pin"/></svg> Aqaba, Jordan</span>
+          </div>
+        </article>
+
+        <!-- Item 6 -->
+        <article class="browse-card" data-category="panels">
+          <div>
+            <div class="browse-img-wrap">
+              <img src="/images/panel.jpg" alt="Jinko 540W Panel Brand New">
+              <span class="browse-grade-badge display">Unopened Box</span>
+            </div>
+            <h3 class="display">Jinko 540W Mono PERC Panel</h3>
+            <div class="browse-specs-list">
+              <span class="browse-spec-pill">Brand New</span>
+              <span class="browse-spec-pill">Dealer Warranty</span>
+              <span class="browse-spec-pill">Half-Cell</span>
+            </div>
+            <p class="browse-desc">Surplus brand-new solar panel from a completed agricultural project in Mafraq with factory packaging.</p>
+          </div>
+          <div class="browse-card-foot">
+            <span class="browse-price display">100 JOD</span>
+            <span class="browse-loc"><svg class="icon"><use href="#i-map-pin"/></svg> Mafraq, Jordan</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========== FOOTER (Widened with Functional "Company Connect" Links) ========== -->
+  <footer class="footer grain">
+    <div class="blob blob-c"></div>
+    <div class="container footer-inner">
+      <div class="footer-grid">
+        <div>
+          <a href="/html/home.html" class="brand"><span class="brand-icon"><svg class="icon"><use href="#i-sun"/></svg></span><span class="brand-name display">SHAMS<b>TECH</b></span></a>
+          <p class="footer-about">Jordan’s marketplace connecting homes and businesses with certified solar companies — for installation, maintenance, cleaning and second-life parts.</p>
+          <div class="contact">
+            <a href="tel:+96265000000"><svg class="icon"><use href="#i-phone"/></svg> +962 6 500 0000</a>
+            <a href="mailto:hello@shamstech.jo"><svg class="icon"><use href="#i-mail"/></svg> hello@shamstech.jo</a>
+            <a href="https://maps.google.com/?q=Amman,Jordan" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-map-pin"/></svg> Amman, Jordan</a>
+          </div>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/html/request_solar.html?service=solar">Installation</a></li>
+            <li><a href="/html/request_solar.html?service=maintenance">Maintenance</a></li>
+            <li><a href="/html/request_solar.html?service=cleaning">Cleaning</a></li>
+            <li><a href="/html/request_solar.html?service=other">Other Services</a></li>
+            <li><a href="/html/used_market.html">Selling Used Parts</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Marketplace</h4>
+          <ul>
+            <li><a href="/html/public_market.html">Browse listings</a></li>
+            <li><a href="/html/public_market.html">Price guide</a></li>
+            <li><a href="/html/public_market.html">Certified grading</a></li>
+            <li><a href="/html/used_market.html">Used Equipment</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company Connect</h4>
+          <ul>
+            <li><a href="mailto:hello@shamstech.jo"><svg class="icon"><use href="#i-mail"/></svg> hello@shamstech.jo</a></li>
+            <li><a href="tel:+96265000000"><svg class="icon"><use href="#i-phone"/></svg> +962 6 500 0000</a></li>
+            <li><a href="https://maps.google.com/?q=Amman,Jordan" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-map-pin"/></svg> Amman, Jordan (Google Maps)</a></li>
+            <li><a href="/html/home.html#about">About us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 ShamsTech Jo. All rights reserved.</p><p>POWERED BY THE SUN · شمس الأردن</p></div>
+    </div>
+  </footer>
+</div>
+
+<script src="/js/public_market.js"></script>
+</body>
+</html>

@@ -1,0 +1,753 @@
+/* =====================================================
+   SHAMSTECH JO - SOLAR COMPANY HOME DASHBOARD CSS (css/company_home.css)
+   Design, Font & Color Harmony:
+   1. Imports css/client_home.css & css/home.css to inherit the
+      exact typography (Lexend for headings & buttons, Inter for text),
+      color variables (--forest, --cream, --cream-2, --gold, --gold-2),
+      grain background textures, navbar dropdown, and footer layout.
+   2. Styles the 4 elevated KPI summary cards, the Bids & Offers
+      Submitted Status table, the Requests & Tenders near location cards,
+      and interactive proposal modal dialogues.
+   3. Uses the signature ShamsTech green & gold button system for
+      consistent visual rhythm across the application.
+   ===================================================== */
+@import url('/css/client_home.css');
+
+/* =====================================================
+   1. WELCOME HERO BANNER & 4 KPI SUMMARY CARDS
+   ===================================================== */
+.company-hero-frame {
+  position: relative;
+  border-radius: 2.5rem;
+  background: var(--forest);
+  padding: 2.75rem 2rem;
+  overflow: hidden;
+  color: var(--cream);
+  box-shadow: 0 28px 60px -28px rgba(12, 36, 26, 0.45);
+}
+
+.company-hero-frame .sun-rays {
+  right: -10rem;
+  top: -10rem;
+  width: 36rem;
+  height: 36rem;
+  opacity: 0.68;
+}
+
+.company-hero-frame .sun-core {
+  right: -5rem;
+  top: -5rem;
+  width: 20rem;
+  height: 20rem;
+}
+
+.company-hero-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.company-hero-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.company-hero-titles {
+  max-width: 44rem;
+}
+
+.company-hero-titles h1 {
+  margin-top: 0.9rem;
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+}
+
+.company-hero-titles .hero-subtext {
+  margin-top: 0.6rem;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(242, 237, 223, 0.78);
+}
+
+.company-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+/* 4 KPI Summary Cards Grid */
+.company-kpi-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 2.25rem;
+}
+
+.company-kpi-card {
+  position: relative;
+  padding: 1.4rem 1.45rem;
+  border-radius: 1.65rem;
+  background: var(--cream-2);
+  border: 1.5px solid rgba(201, 162, 39, 0.32);
+  color: var(--forest);
+  box-shadow: 0 18px 36px -22px rgba(6, 20, 14, 0.45);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
+}
+
+.company-kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.company-kpi-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+  box-shadow: 0 22px 42px -20px rgba(6, 20, 14, 0.55);
+}
+
+.company-kpi-card:hover::before {
+  opacity: 1;
+}
+
+.kpi-top-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.kpi-icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.kpi-icon-badge .icon {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+/* Card 1: Gold / Solar Theme */
+.kpi-icon-badge.gold {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+.company-kpi-tag.gold {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+/* Card 2: Warm Orange / Amber Theme */
+.kpi-icon-badge.amber {
+  background: #ffedd5;
+  color: #c2410c;
+  border: 1px solid #fed7aa;
+}
+.company-kpi-tag.amber {
+  background: #ffedd5;
+  color: #c2410c;
+  border: 1px solid #fed7aa;
+}
+
+/* Card 3: Fresh Emerald Green Theme */
+.kpi-icon-badge.green {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+.company-kpi-tag.green {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+/* Card 4: Sky Blue Theme */
+.kpi-icon-badge.blue,
+.kpi-icon-badge.forest {
+  background: #e0f2fe;
+  color: #0284c7;
+  border: 1px solid #bae6fd;
+}
+.company-kpi-tag.blue,
+.company-kpi-tag.muted {
+  background: #e0f2fe;
+  color: #0284c7;
+  border: 1px solid #bae6fd;
+}
+
+/* =====================================================
+   2. SECTION HEADERS WITH GOLD ACCENT BAR
+   ===================================================== */
+.comp-sec-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.comp-sec-title-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.comp-gold-bar {
+  width: 0.32rem;
+  height: 2.2rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--gold-2) 0%, var(--gold) 100%);
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.comp-sec-title-wrap h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--forest);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+.comp-sec-title-wrap p {
+  margin-top: 0.25rem;
+  font-size: 13.5px;
+  color: rgba(22, 33, 27, 0.62);
+  line-height: 1.5;
+}
+
+/* =====================================================
+   3. BIDS & OFFERS SUBMITTED STATUS TABLE
+   ===================================================== */
+.bids-table-card {
+  border-radius: 2rem;
+  background: var(--cream-2);
+  border: 1px solid rgba(22, 33, 27, 0.12);
+  overflow: hidden;
+  box-shadow: 0 24px 50px -28px rgba(12, 36, 26, 0.22);
+}
+
+.bids-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.bids-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 680px;
+}
+
+.bids-table thead tr {
+  background: var(--forest);
+  color: var(--cream);
+}
+
+.bids-table th {
+  padding: 1.05rem 1.4rem;
+  text-align: left;
+  font-family: Lexend, Inter, system-ui, sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold-2);
+}
+
+.bids-table th:last-child,
+.bids-table td:last-child {
+  text-align: right;
+}
+
+.bids-table tbody tr {
+  border-bottom: 1px solid rgba(22, 33, 27, 0.08);
+  transition: background 0.2s ease;
+}
+
+.bids-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.bids-table tbody tr:hover {
+  background: rgba(201, 162, 39, 0.07);
+}
+
+.bids-table td {
+  padding: 1.2rem 1.4rem;
+  font-size: 14px;
+  color: var(--forest);
+  vertical-align: middle;
+}
+
+.bid-req-title {
+  font-weight: 600;
+  color: var(--forest);
+  line-height: 1.4;
+}
+
+.bid-req-id {
+  color: rgba(22, 33, 27, 0.58);
+  font-weight: 500;
+  font-size: 12.5px;
+}
+
+.bid-client-name {
+  color: rgba(22, 33, 27, 0.72);
+  font-weight: 500;
+}
+
+.bid-offer-val {
+  font-weight: 700;
+  color: var(--forest);
+  font-size: 14.5px;
+}
+
+/* Status Pills inside Bids Table */
+.bid-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.32rem 0.85rem;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.bid-status-pill.review {
+  background: rgba(201, 162, 39, 0.2);
+  border: 1px solid rgba(201, 162, 39, 0.48);
+  color: #92400e;
+}
+
+.bid-status-pill.eval {
+  background: rgba(22, 163, 74, 0.14);
+  border: 1px solid rgba(22, 163, 74, 0.38);
+  color: #15803d;
+}
+
+.bid-status-pill.negotiation {
+  background: rgba(29, 78, 216, 0.1);
+  border: 1px solid rgba(29, 78, 216, 0.3);
+  color: #1e40af;
+}
+
+/* Table Action Buttons */
+.btn-table-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid rgba(22, 33, 27, 0.2);
+  background: var(--cream);
+  color: var(--forest);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.btn-table-outline:hover {
+  border-color: var(--gold);
+  background: rgba(201, 162, 39, 0.15);
+  color: var(--forest);
+}
+
+.btn-table-solid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid #143d29;
+  background: linear-gradient(135deg, #1f5c3e 0%, #12281e 100%);
+  color: var(--cream);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 18px -8px rgba(18, 53, 36, 0.45);
+  transition: all 0.22s ease;
+}
+
+.btn-table-solid:hover {
+  background: linear-gradient(135deg, #28704c 0%, #1b4d35 100%);
+  transform: translateY(-1px);
+}
+
+/* =====================================================
+   4. LATEST REQUESTS & TENDERS NEAR YOUR LOCATION
+   ===================================================== */
+.tender-filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.tender-filter-btn {
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid rgba(22, 33, 27, 0.16);
+  background: var(--cream-2);
+  color: var(--forest);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.tender-filter-btn:hover {
+  border-color: var(--gold);
+  background: rgba(201, 162, 39, 0.12);
+}
+
+.tender-filter-btn.active {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: var(--gold-2);
+  box-shadow: 0 8px 18px -8px rgba(12, 36, 26, 0.45);
+}
+
+.tenders-stack {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.tender-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.35rem;
+  padding: 1.75rem 1.85rem;
+  border-radius: 1.75rem;
+  background: var(--cream-2);
+  border: 1.5px solid rgba(22, 33, 27, 0.11);
+  box-shadow: 0 16px 36px -24px rgba(12, 36, 26, 0.18);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.tender-card.featured-tender {
+  border-color: rgba(201, 162, 39, 0.55);
+  background: linear-gradient(135deg, rgba(227, 199, 102, 0.1) 0%, var(--cream-2) 100%);
+  box-shadow: 0 20px 42px -24px rgba(12, 36, 26, 0.25);
+}
+
+.tender-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+  box-shadow: 0 24px 48px -24px rgba(12, 36, 26, 0.28);
+}
+
+.tender-info {
+  flex: 1;
+  min-width: 280px;
+}
+
+.tender-tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.55rem;
+}
+
+.tender-type-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.72rem;
+  border-radius: 0.55rem;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 1px solid transparent;
+}
+
+/* 1. Solar Installation: Warm Solar Orange */
+.tender-type-badge.solar-installation,
+.tender-type-badge.residential,
+.tender-type-badge.installation {
+  background: #ffedd5;
+  color: #c2410c;
+  border-color: #fdba74;
+}
+
+/* 2. Maintenance & Wash: Sky Blue / Cyan */
+.tender-type-badge.maint-wash,
+.tender-type-badge.maintenance {
+  background: #e0f2fe;
+  color: #0369a1;
+  border-color: #7dd3fc;
+}
+
+/* 3. Maintenance: Fresh Emerald Green */
+.tender-type-badge.maintenance-only,
+.tender-type-badge.commercial,
+.tender-type-badge.institutional {
+  background: #dcfce7;
+  color: #15803d;
+  border-color: #86efac;
+}
+
+/* 4. Wash: Royal Azure Blue */
+.tender-type-badge.wash-only,
+.tender-type-badge.ai {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-color: #93c5fd;
+}
+
+.tender-id-label {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: rgba(22, 33, 27, 0.55);
+}
+
+.tender-time-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 12px;
+  font-weight: 600;
+  color: #92400e;
+  background: rgba(201, 162, 39, 0.16);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+.tender-time-badge .icon {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+.tender-info h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--forest);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.tender-meta-line {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.45rem;
+  font-size: 13.5px;
+  color: rgba(22, 33, 27, 0.65);
+}
+
+.tender-meta-line .icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.tender-req-note {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+  font-size: 13px;
+  font-weight: 600;
+  color: #15803d;
+}
+
+.tender-req-note .icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex-shrink: 0;
+}
+
+/* Green Action Button matching other ShamsTech screens */
+.btn-submit-green {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #1f5c3e 0%, #12281e 100%);
+  color: var(--cream);
+  font-size: 13.5px;
+  font-weight: 600;
+  border: 1px solid #143d29;
+  cursor: pointer;
+  box-shadow: 0 10px 22px -8px rgba(18, 53, 36, 0.45);
+  transition: all 0.22s ease;
+}
+
+.btn-submit-green:hover {
+  background: linear-gradient(135deg, #28704c 0%, #1b4d35 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px -8px rgba(18, 53, 36, 0.55);
+}
+
+.btn-submit-green .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Toast Message */
+.req-toast {
+  padding: 1rem 1.4rem;
+  border-radius: 1.25rem;
+  background: var(--forest);
+  border: 1px solid var(--gold);
+  color: var(--cream);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 14px 30px -10px rgba(12, 36, 26, 0.6);
+  animation: compToastSlide 0.3s ease;
+}
+
+@keyframes compToastSlide {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =====================================================
+   5. INTERACTIVE PROPOSAL & BID MODALS
+   ===================================================== */
+.comp-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 250;
+  background: rgba(12, 36, 26, 0.72);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  overflow-y: auto;
+}
+
+.comp-modal-backdrop.open {
+  display: flex;
+}
+
+.comp-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 35rem;
+  border-radius: 2.25rem;
+  background: var(--cream-2);
+  border: 1.5px solid rgba(201, 162, 39, 0.55);
+  padding: 2.25rem 2rem;
+  box-shadow: 0 32px 72px -18px rgba(6, 20, 14, 0.78);
+  animation: compModalPop 0.28s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@keyframes compModalPop {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.comp-modal-close {
+  position: absolute;
+  top: 1.35rem;
+  right: 1.35rem;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 50%;
+  border: 1px solid rgba(22, 33, 27, 0.15);
+  background: var(--cream);
+  color: var(--forest);
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.comp-modal-close:hover {
+  background: var(--forest);
+  color: var(--cream);
+}
+
+.comp-modal-field {
+  margin-top: 1.15rem;
+}
+
+.comp-modal-field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--forest);
+  margin-bottom: 0.4rem;
+}
+
+.comp-modal-input {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(22, 33, 27, 0.18);
+  background: var(--cream);
+  color: var(--forest);
+  font: 14px/1.45 Inter, system-ui, sans-serif;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.comp-modal-input:focus {
+  border-color: var(--gold);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.15);
+}
+
+.comp-modal-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  margin-top: 1.6rem;
+}
+
+/* =====================================================
+   6. RESPONSIVE BREAKPOINTS
+   ===================================================== */
+@media (min-width: 640px) {
+  .company-hero-frame {
+    padding: 3.25rem 2.75rem;
+  }
+  .company-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .company-kpi-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

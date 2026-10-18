@@ -1,0 +1,252 @@
+/* =====================================================
+   SHAMSTECH JO - AI FAULT DIAGNOSIS CSS (css/ai_diagnosis.css)
+   Imports css/request_solar.css (which imports css/client_home.css
+   & css/home.css) so the AI Fault Diagnosis screen matches the
+   Home Screen layout, fonts (Lexend & Inter), colors (--forest,
+   --cream, --gold), Navbar with Client Name + Arrow dropdown,
+   and Footer.
+   ===================================================== */
+@import url('/css/request_solar.css');
+
+/* Instant Analysis Result Card (Matches screenshot client-ai2 1) */
+.ai-result-card {
+  margin-top: 2rem;
+  border-radius: 1.75rem;
+  border: 1.5px solid rgba(201, 162, 39, 0.55);
+  background: var(--cream);
+  overflow: hidden;
+  box-shadow: 0 22px 44px -24px rgba(12, 36, 26, 0.25);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.ai-result-card.scanning {
+  opacity: 0.6;
+  transform: scale(0.99);
+}
+
+.ai-result-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 1.5rem;
+  background: var(--forest);
+  color: var(--cream);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.ai-status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.85);
+}
+
+.ai-result-body {
+  padding: 2rem 1.75rem;
+}
+
+.ai-issue-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+.ai-confidence {
+  margin-top: 0.35rem;
+  font-size: 13.5px;
+  color: rgba(22, 33, 27, 0.58);
+}
+
+.ai-impact {
+  margin-top: 0.25rem;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+.ai-impact em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.ai-divider {
+  margin: 1.5rem 0;
+  height: 1px;
+  background: rgba(22, 33, 27, 0.1);
+}
+
+.ai-rec-heading {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 0.85rem;
+}
+
+.ai-rec-list {
+  display: grid;
+  gap: 0.65rem;
+  font-size: 14.5px;
+  color: rgba(22, 33, 27, 0.78);
+  line-height: 1.55;
+}
+
+.ai-rec-action {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Distinct Button Palette on AI Diagnosis Page:
+   - #start-ai-btn uses a Rich Emerald-Sage gradient
+   - .ai-rec-action .btn uses Warm Solar Gold so the two buttons contrast harmoniously */
+#start-ai-btn {
+  background: linear-gradient(135deg, #1f5c3e 0%, #143d29 100%);
+  border: 1px solid rgba(227, 199, 102, 0.4);
+  color: var(--cream);
+  box-shadow: 0 16px 32px -12px rgba(20, 61, 41, 0.45);
+}
+
+#start-ai-btn:hover {
+  background: linear-gradient(135deg, #28704c 0%, #1b4d35 100%);
+  color: var(--cream);
+}
+
+.ai-rec-action .btn {
+  background: linear-gradient(135deg, #e3c766 0%, #c9a227 55%, #b58d18 100%);
+  color: var(--forest);
+  font-weight: 600;
+  box-shadow: 0 14px 28px -10px rgba(201, 162, 39, 0.5);
+}
+
+.ai-rec-action .btn:hover {
+  background: linear-gradient(135deg, #ebd37d 0%, #d4af37 100%);
+  color: var(--forest);
+}
+
+@media (min-width: 640px) {
+  .ai-result-body {
+    padding: 2.25rem 2.5rem;
+  }
+}
+
+/* =====================================================
+   AI SINGLE-IMAGE UPLOAD WITH SMALL SQUARE & 'X' REMOVE
+   "بس عند ال ِAI صورة وحده بس يدخل"
+   "بس يحمل صورة خليها تظهر مربع ضغير ويكون عليها اكس لو بده يشيلها"
+   ===================================================== */
+.ai-photo-preview-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.15rem 1.35rem;
+  border-radius: 1.35rem;
+  background: rgba(22, 33, 27, 0.04);
+  border: 1.5px solid rgba(201, 162, 39, 0.45);
+  box-shadow: 0 4px 18px rgba(12, 36, 26, 0.06);
+  animation: aiThumbPop 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes aiThumbPop {
+  0% { transform: scale(0.92); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.ai-photo-thumb-card {
+  position: relative;
+  width: 82px;
+  height: 82px;
+  border-radius: 0.95rem;
+  border: 2px solid var(--gold);
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(12, 36, 26, 0.16);
+  flex-shrink: 0;
+}
+
+.ai-photo-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: calc(0.95rem - 2px);
+  display: block;
+}
+
+.ai-photo-remove-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #dc2626;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.55);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s;
+  z-index: 10;
+  line-height: 1;
+}
+
+.ai-photo-remove-btn:hover {
+  background: #991b1b;
+  transform: scale(1.18);
+}
+
+.ai-photo-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.ai-photo-name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.ai-photo-filename {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--forest);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 260px;
+}
+
+.ai-single-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(201, 162, 39, 0.18);
+  color: #854d0e;
+  border: 1px solid rgba(201, 162, 39, 0.45);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.ai-photo-status {
+  font-size: 13px;
+  color: rgba(22, 33, 27, 0.65);
+}
+
+.sanad-upload-box.drag-over {
+  border-color: var(--gold);
+  background: rgba(201, 162, 39, 0.18);
+  transform: scale(1.01);
+}

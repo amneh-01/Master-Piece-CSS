@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipment Details &amp; Instant Buy — ShamsTech Jo</title>
+  <!-- Fonts: Inter (text) and Lexend (headings) - identical to Home screen -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/market_item.css">
+</head>
+<body>
+<!-- =====================================================
+     SHAMSTECH JO - USED ITEM DETAILS & INSTANT BUY PAGE
+     File: html/market_item.html
+     Description:
+     - Opens when a user selects any solar equipment item from
+       the Used Marketplace (html/used_market.html) or Home/Client
+       marketplace sliders.
+     - Includes the unified Navbar with main Home Screen links
+       and the logged-in user's name + arrow dropdown (containing
+       Client Home Page, Main Home Page, Settings, all Services,
+       and Log Out).
+     - Displays the "Complete Purchase & Secure Payment" modal
+       when the user clicks "Buy Now / Instant Buy".
+     ===================================================== -->
+<svg style="display:none" aria-hidden="true">
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-17.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+<symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10M7 17 17 7"/></symbol>
+<symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5m7 7-7-7 7-7"/></symbol>
+<symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+<symbol id="i-badge-check" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+<symbol id="i-cpu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></symbol>
+<symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></symbol>
+<symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+<symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+<symbol id="i-log-out" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+<symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+</svg>
+
+<div class="req-wrapper">
+  <!-- ========== NAVBAR (Home Screen navigation words + User Name & Arrow Dropdown) ========== -->
+  <header class="navbar solid" id="navbar">
+    <div class="container">
+      <a href="/html/client_home.html" class="brand">
+        <span class="brand-icon"><svg class="icon"><use href="#i-sun"/></svg></span>
+        <span>
+          <span class="brand-name display">SHAMS<b>TECH</b></span>
+          <span class="brand-sub">JORDAN · شمس الأردن</span>
+        </span>
+      </a>
+      <nav class="nav-links">
+        <a href="/html/client_home.html#quick-services">Services</a>
+        <a href="/html/client_home.html#active-orders">How it works</a>
+        <a href="/html/used_market.html" class="active">Marketplace</a>
+        <a href="/html/client_home.html#weather-advisor">About</a>
+      </nav>
+
+      <!-- Logged-in User Button with Name & Arrow Dropdown -->
+      <div class="nav-actions">
+        <div class="client-menu-wrap" id="client-menu-wrap">
+          <button type="button" class="client-name-btn" id="client-name-btn">
+            <span class="client-avatar display" id="nav-user-avatar">A</span>
+            <span class="display" id="nav-user-name">Ahmad Ali</span>
+            <svg class="icon client-arrow"><use href="#i-chevron-down"/></svg>
+          </button>
+
+          <div class="client-dropdown" id="client-dropdown">
+            <div class="dropdown-label">Account &amp; History</div>
+            <a href="/html/client_home.html" class="dropdown-item">
+              <svg class="icon"><use href="#i-sun"/></svg>
+              <span>User's Home Page</span>
+            </a>
+            <a href="/html/my_requests.html" class="dropdown-item">
+              <svg class="icon"><use href="#i-zap"/></svg>
+              <span>My Submitted Requests</span>
+            </a>
+            <a href="/html/history_archives.html" class="dropdown-item">
+              <svg class="icon"><use href="#i-box"/></svg>
+              <span>History &amp; Archives</span>
+            </a>
+            <a href="/html/client_home.html#settings" class="dropdown-item">
+              <svg class="icon"><use href="#i-settings"/></svg>
+              <span>Settings</span>
+            </a>
+
+            <div class="dropdown-label">Available Services</div>
+            <a href="/html/request_solar.html?service=solar" class="dropdown-item">
+              <svg class="icon"><use href="#i-zap"/></svg>
+              <span>Request Solar System</span>
+            </a>
+            <a href="/html/request_solar.html?service=maintenance" class="dropdown-item">
+              <svg class="icon"><use href="#i-wrench"/></svg>
+              <span>Solar Maintenance &amp; Repair</span>
+            </a>
+            <a href="/html/request_solar.html?service=cleaning" class="dropdown-item">
+              <svg class="icon"><use href="#i-sun"/></svg>
+              <span>Panel Cleaning</span>
+            </a>
+            <a href="/html/request_solar.html?service=other" class="dropdown-item">
+              <svg class="icon"><use href="#i-settings"/></svg>
+              <span>Other Services</span>
+            </a>
+            <a href="/html/used_market.html" class="dropdown-item">
+              <svg class="icon"><use href="#i-box"/></svg>
+              <span>Selling Used Parts</span>
+            </a>
+
+            <a href="/html/home.html" class="dropdown-item logout">
+              <svg class="icon"><use href="#i-log-out"/></svg>
+              <span>Log Out</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <button class="menu-btn" id="menu-btn" aria-label="Menu">
+        <svg class="icon i-open"><use href="#i-menu"/></svg>
+        <svg class="icon i-close"><use href="#i-x"/></svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="/html/client_home.html">User's Home Page</a>
+      <a href="/html/my_requests.html">My Submitted Requests</a>
+      <a href="/html/history_archives.html">History &amp; Archives</a>
+      <a href="/html/request_solar.html?service=solar">Request Solar System</a>
+      <a href="/html/request_solar.html?service=maintenance">Solar Maintenance</a>
+      <a href="/html/request_solar.html?service=cleaning">Panel Cleaning</a>
+      <a href="/html/request_solar.html?service=other">Other Services</a>
+      <a href="/html/used_market.html">Selling Used Parts</a>
+      <a href="/html/home.html" class="nav-cta">Log Out</a>
+    </div>
+  </header>
+
+  <!-- ========== ITEM DETAILS MAIN SECTION ========== -->
+  <main class="item-page-main">
+    <div class="container">
+      <!-- Top Back Bar -->
+      <div class="item-breadcrumb-row">
+        <a href="/html/used_market.html" class="back-market-link display">
+          <svg class="icon"><use href="#i-arrow-left"/></svg>
+          <span>Back to Used Marketplace</span>
+        </a>
+        <span class="item-verified-pill display">
+          <svg class="icon"><use href="#i-badge-check"/></svg>
+          <span>ShamsTech Inspected &amp; Verified Hardware</span>
+        </span>
+      </div>
+
+      <!-- 2-Column Equipment Detail Card -->
+      <section class="item-detail-card">
+        <!-- Left: Photo Gallery + Product Condition & Technical Details -->
+        <div class="item-gallery">
+          <div class="item-main-img-wrap">
+            <span class="item-condition-badge display" id="detail-badge">Used · 1 Year</span>
+            <img src="/images/panel.jpg" alt="Solar Equipment" id="detail-main-img">
+          </div>
+          <div class="item-thumbs-row">
+            <button type="button" class="item-thumb-btn active" data-src="/images/panel.jpg">
+              <img src="/images/panel.jpg" alt="Thumbnail 1" id="thumb-img-1">
+            </button>
+            <button type="button" class="item-thumb-btn" data-src="/images/inverter.jpg">
+              <img src="/images/inverter.jpg" alt="Thumbnail 2">
+            </button>
+            <button type="button" class="item-thumb-btn" data-src="/images/racks.jpg">
+              <img src="/images/racks.jpg" alt="Thumbnail 3">
+            </button>
+          </div>
+
+          <!-- Product Condition & Technical Details Card (Reflects Usage Period, Condition, and Warranty) -->
+          <div class="tech-details-card">
+            <h3 class="tech-details-heading display">
+              <svg class="icon"><use href="#i-box"/></svg>
+              <span>Product Condition &amp; Technical Details</span>
+            </h3>
+            <div class="tech-details-list">
+              <div class="tech-detail-row">
+                <span class="tech-detail-label">Usage Period:</span>
+                <span class="tech-detail-val display" id="spec-usage">1 Year</span>
+              </div>
+              <div class="tech-detail-row">
+                <span class="tech-detail-label">Condition:</span>
+                <span class="tech-detail-val green display" id="spec-condition">Excellent</span>
+              </div>
+              <div class="tech-detail-row">
+                <span class="tech-detail-label">Warranty:</span>
+                <span class="tech-detail-val display" id="detail-warranty">Has Official Warranty</span>
+              </div>
+              <div class="tech-detail-row">
+                <span class="tech-detail-label">Power Efficiency:</span>
+                <span class="tech-detail-val green display" id="spec-status">98% Tested</span>
+              </div>
+              <div class="tech-detail-row">
+                <span class="tech-detail-label">Physical Details:</span>
+                <span class="tech-detail-val display" id="spec-brand">Clean surface, zero micro-cracks</span>
+              </div>
+              <div class="tech-detail-row">
+                <span class="tech-detail-label">Included Accessories:</span>
+                <span class="tech-detail-val display" id="spec-accessories">Original MC4 Cables + Aluminum Rails</span>
+              </div>
+              <div class="tech-detail-row">
+                <span class="tech-detail-label">Reason for Sale:</span>
+                <span class="tech-detail-val display" id="detail-desc">Upgrading to Commercial 1MW System</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Price, Seller Profile & Encrypted Protected Contact Info Box -->
+        <div class="item-info-col">
+          <div>
+            <p class="item-cat-eyebrow" id="detail-category">VERIFIED SECOND-LIFE SOLAR EQUIPMENT</p>
+            <h1 class="item-title display" id="detail-title">Jinko Solar 550W Mono-PERC Panels (Set of 10)</h1>
+            <p class="item-posted-loc">
+              <svg class="icon"><use href="#i-map-pin"/></svg>
+              <span id="spec-location">Irbid, Jordan</span> — Posted 2 days ago
+            </p>
+
+            <!-- Price + Seller Summary Card -->
+            <div class="price-seller-panel">
+              <span class="total-price-caption display" id="price-caption">TOTAL PRICE FOR ALL 10 PANELS</span>
+              <div class="item-price-value display" id="detail-price">200 JOD</div>
+
+              <div class="seller-info-card">
+                <div class="seller-left">
+                  <span class="seller-avatar display" id="seller-avatar">A</span>
+                  <div>
+                    <p class="seller-name display" id="seller-name">Ahmad (Private Seller)</p>
+                    <p class="seller-sub" id="seller-sub">✓ Identity Verified by ShamsTech</p>
+                  </div>
+                </div>
+                <span class="item-verified-pill display">Verified</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DARK PROTECTED CONTACT INFO CARD (Encrypted Phone + Unlock Button) -->
+          <div class="protected-contact-card" id="protected-contact-card">
+            <div class="protected-contact-head">
+              <h3 class="display">
+                <svg class="icon"><use href="#i-lock"/></svg>
+                <span id="protected-card-title">Protected Contact Info</span>
+              </h3>
+              <p id="protected-card-sub">Small fee to ensure buyer seriousness &amp; prevent spam</p>
+            </div>
+
+            <!-- Encrypted / Masked Phone Number Box -->
+            <div class="masked-phone-box" id="masked-phone-box">
+              <div class="masked-phone-left">
+                <svg class="icon"><use href="#i-phone"/></svg>
+                <span class="masked-phone-number display" id="masked-phone-number">+962 79 *** ****</span>
+              </div>
+              <span class="masked-status-badge display" id="masked-status-badge">HIDDEN</span>
+            </div>
+
+            <!-- Unlock Contact Button (Opens Payment Modal) -->
+            <button type="button" class="btn-unlock-contact display" id="open-buy-modal-btn">
+              <span id="unlock-btn-text">Unlock Seller Contact ( 2.50 JOD )</span>
+              <svg class="icon"><use href="#i-lock"/></svg>
+            </button>
+
+            <!-- Secondary Contact Trigger (Also opens the Unlock Modal if locked, or calls if unlocked) -->
+            <button type="button" class="btn-contact-secondary display" id="contact-seller-btn">
+              <svg class="icon"><use href="#i-phone"/></svg>
+              <span id="secondary-contact-text">Contact Seller Directly</span>
+            </button>
+
+            <!-- Direct Call & WhatsApp Actions (Revealed after payment) -->
+            <div class="unlocked-direct-actions" id="unlocked-direct-actions">
+              <a href="tel:+962795428810" class="btn-direct-call display" id="direct-call-link">
+                <svg class="icon"><use href="#i-phone"/></svg>
+                <span>Call Seller Now</span>
+              </a>
+              <a href="https://wa.me/962795428810" target="_blank" rel="noopener noreferrer" class="btn-direct-wa display" id="direct-wa-link">
+                <span>💬 Direct WhatsApp</span>
+              </a>
+            </div>
+
+            <p class="protected-foot-note">Instant access to Phone Call &amp; Direct WhatsApp</p>
+          </div>
+
+          <!-- Buyer Safety / Viewing Period Note -->
+          <div class="viewing-period-banner">
+            <strong>ShamsTech Buyer Guarantee:</strong> Inspect and verify the equipment in person during a 48-hour viewing period before finalizing hardware payment with the seller.
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ========== UNLOCK SELLER CONTACT INFO PAYMENT MODAL (Matches Screenshot) ========== -->
+  <div class="buy-modal-backdrop" id="buy-modal-backdrop" aria-hidden="true">
+    <div class="unlock-modal-card" role="dialog" aria-modal="true" aria-labelledby="buy-modal-title">
+      <button type="button" class="unlock-modal-close" id="close-buy-modal-btn" aria-label="Close">
+        <svg class="icon"><use href="#i-x"/></svg>
+      </button>
+
+      <!-- Modal Header with Gold Circle Lock Icon -->
+      <div class="unlock-modal-header">
+        <div class="unlock-lock-circle">
+          <svg class="icon"><use href="#i-lock"/></svg>
+        </div>
+        <div>
+          <h2 class="display" id="buy-modal-title">Unlock Seller Contact Info</h2>
+          <p>Instant access to phone &amp; direct WhatsApp messaging</p>
+        </div>
+      </div>
+
+      <!-- Item & Fee Amount Summary Box -->
+      <div class="unlock-summary-box">
+        <div class="unlock-summary-left">
+          <p class="unlock-item-line">Item: <span id="modal-summary-title">Jinko Solar 550W Panels (x10)</span></p>
+          <p class="unlock-seller-line display" id="modal-summary-seller">Seller: Ahmad (Irbid)</p>
+        </div>
+        <div class="unlock-summary-right">
+          <span class="unlock-fee-label display">FEE AMOUNT</span>
+          <strong class="unlock-fee-amount display" id="modal-summary-total">2.50 JOD</strong>
+        </div>
+      </div>
+
+      <!-- Payment Form -->
+      <form id="checkout-payment-form">
+        <p class="unlock-section-label display">Select Payment Method:</p>
+
+        <!-- Radio-Style Payment Options -->
+        <div class="unlock-methods-stack">
+          <button type="button" class="unlock-method-card active" data-method="card">
+            <span class="unlock-radio-dot"></span>
+            <span class="unlock-method-icon">💳</span>
+            <span class="unlock-method-title display">Credit / Debit Card (Visa / Mastercard)</span>
+          </button>
+
+          <button type="button" class="unlock-method-card" data-method="cliq">
+            <span class="unlock-radio-dot"></span>
+            <span class="unlock-method-icon">⚡</span>
+            <span class="unlock-method-title display">CliQ / Mobile Wallet (Orange Money, Zain Cash)</span>
+          </button>
+        </div>
+
+        <!-- Card Input Fields -->
+        <div id="card-fields-group" class="unlock-inputs-wrap">
+          <input type="text" id="card-num" class="unlock-input" placeholder="Card Number (4000 1234 5678 9010)" maxlength="19" required>
+          <div class="unlock-row-2">
+            <input type="text" id="card-exp" class="unlock-input" placeholder="MM / YY" maxlength="5" required>
+            <input type="password" id="card-cvv" class="unlock-input" placeholder="CVV (3 digits)" maxlength="4" required>
+          </div>
+        </div>
+
+        <!-- CliQ / Mobile Wallet Fields (Shown when CliQ option is chosen) -->
+        <div id="cliq-fields-group" class="unlock-inputs-wrap" style="display:none;">
+          <input type="tel" id="wallet-phone" class="unlock-input" placeholder="Mobile Wallet / CliQ Phone Number (079XXXXXXX)">
+          <div class="cliq-alias-hint">
+            Instant CliQ Alias: <strong>SHAMSTECHJO</strong> · Orange Money &amp; Zain Cash supported
+          </div>
+        </div>
+
+        <button type="submit" class="btn-pay-reveal display" id="confirm-pay-btn">
+          <span id="confirm-pay-btn-label">Pay 2.50 JOD &amp; Reveal Phone Number →</span>
+        </button>
+
+        <p class="unlock-ssl-note">
+          🔒 256-Bit SSL Encrypted &amp; Guaranteed by ShamsTech
+        </p>
+      </form>
+
+      <!-- Unlocked Success State inside Modal -->
+      <div class="buy-success-box" id="buy-success-box">
+        <div class="buy-success-icon">
+          <svg class="icon"><use href="#i-badge-check"/></svg>
+        </div>
+        <h3 class="display" style="font-size:1.35rem;color:var(--forest);">Seller Contact Unlocked!</h3>
+        <p style="margin-top:0.35rem;font-size:14px;color:rgba(22,33,27,0.72);">
+          You now have full access to the seller's phone number and WhatsApp:
+        </p>
+        <div class="modal-revealed-phone display" id="modal-revealed-phone">+962 79 542 8810</div>
+        <div style="margin-top:1.25rem;display:flex;justify-content:center;gap:0.75rem;flex-wrap:wrap;">
+          <a href="tel:+962795428810" class="btn-direct-call display" id="modal-call-btn" style="padding:0.75rem 1.35rem;">Call Seller</a>
+          <button type="button" class="btn-pay-reveal display" id="done-unlock-btn" style="margin-top:0;width:auto;padding:0.75rem 1.5rem;">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== WIDE FOOTER WITH "COMPANY CONNECT" ========== -->
+  <footer class="footer grain">
+    <div class="blob blob-c"></div>
+    <div class="container footer-inner">
+      <div class="footer-grid">
+        <div>
+          <a href="/html/home.html" class="brand"><span class="brand-icon"><svg class="icon"><use href="#i-sun"/></svg></span><span class="brand-name display">SHAMS<b>TECH</b></span></a>
+          <p class="footer-about">Jordan’s marketplace connecting homes and businesses with certified solar companies — for installation, maintenance, cleaning and second-life parts.</p>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul>
+            <li><a href="/html/request_solar.html?service=solar">Installation</a></li>
+            <li><a href="/html/request_solar.html?service=maintenance">Maintenance</a></li>
+            <li><a href="/html/request_solar.html?service=cleaning">Cleaning</a></li>
+            <li><a href="/html/request_solar.html?service=other">Other Services</a></li>
+            <li><a href="/html/used_market.html">Used Marketplace</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Account</h4>
+          <ul>
+            <li><a href="/html/client_home.html">User's Home Page</a></li>
+            <li><a href="/html/my_requests.html">My Submitted Requests</a></li>
+            <li><a href="/html/browse_market.html">Public Equipment List</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company Connect</h4>
+          <ul class="company-connect-list">
+            <li><a href="tel:+96265000000" class="footer-contact-link"><svg class="icon"><use href="#i-phone"/></svg><span>+962 6 500 0000</span></a></li>
+            <li><a href="mailto:hello@shamstech.jo" class="footer-contact-link"><svg class="icon"><use href="#i-mail"/></svg><span>hello@shamstech.jo</span></a></li>
+            <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Amman,+Jordan" target="_blank" rel="noopener noreferrer" class="footer-contact-link"><svg class="icon"><use href="#i-map-pin"/></svg><span>Amman, Jordan (Google Maps)</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom"><p>© 2026 ShamsTech Jo. All rights reserved.</p><p>POWERED BY THE SUN · شمس الأردن</p></div>
+    </div>
+  </footer>
+</div>
+
+
+<script src="/js/market_item.js"></script>
+</body>
+</html>

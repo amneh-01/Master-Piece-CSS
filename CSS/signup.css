@@ -1,0 +1,605 @@
+/* =====================================================
+   SHAMSTECH JO - SIGN UP & AUTH SHARED CSS (css/signup.css)
+   Uses the exact Home Screen design system (css/home.css):
+   - Navbar with only Brand Logo + "Back Home" button
+   - No Footer on Auth screens
+   - Green Box features:
+     1. Dynamic Tab Switching (Fade / Smooth Slide on role change)
+     2. Breathing Ambient Sun Glow in the bottom corner
+     3. Time-of-Day Adaptive Background (Daylight vs Warm Night)
+   ===================================================== */
+@import url('/css/home.css');
+
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--cream);
+  padding-top: 5rem;
+}
+
+/* Always show the Back Home button in the navbar across all screen sizes */
+.auth-navbar .nav-actions {
+  display: flex !important;
+}
+
+.auth-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 2.5rem 0 3.5rem;
+  position: relative;
+}
+
+/* Two-column editorial layout matching Home Screen #about (.about-grid) */
+.auth-grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: stretch;
+  width: 100%;
+}
+
+/* ========== LEFT GREEN BOX: DYNAMIC ROLE CONTENT + TIME-AWARE LIGHTING ========== */
+.auth-brand-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2.5rem;
+  background: linear-gradient(145deg, #113323 0%, #0c241a 58%, #091c14 100%);
+  padding: 2.75rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--cream);
+  min-height: 35rem;
+  box-shadow: 0 28px 60px -28px rgba(12, 36, 26, 0.45);
+  transition: background 0.9s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.9s ease;
+}
+
+/* Daylight Mode (06:00 - 18:00): Brighter emerald-forest & radiant golden sunlight */
+.auth-brand-frame.is-day {
+  background: linear-gradient(145deg, #16402c 0%, #0e2b1f 55%, #194230 100%);
+}
+
+/* Night Mode (18:00 - 06:00): Deeper midnight-forest & warm amber glow */
+.auth-brand-frame.is-night {
+  background: linear-gradient(145deg, #06140e 0%, #091d14 58%, #0d261b 100%);
+}
+
+/* Soft Top-Right Canopy Glow */
+.auth-brand-frame .canopy-blob {
+  position: absolute;
+  right: -5rem;
+  top: -5rem;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 50%;
+  background: #1b4332;
+  opacity: 0.7;
+  mix-blend-mode: screen;
+  filter: blur(48px);
+  pointer-events: none;
+  transition: all 0.9s ease;
+}
+
+.auth-brand-frame.is-day .canopy-blob {
+  background: #285e43;
+  opacity: 0.85;
+}
+
+.auth-brand-frame.is-night .canopy-blob {
+  background: #123022;
+  opacity: 0.5;
+}
+
+/* Breathing Ambient Sun Glow in the Bottom Corner (Pulse Effect) */
+.ambient-sun-glow {
+  position: absolute;
+  left: -6.5rem;
+  bottom: -6.5rem;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 240, 185, 0.72) 0%,
+    rgba(227, 199, 102, 0.42) 28%,
+    rgba(201, 162, 39, 0.16) 54%,
+    transparent 74%
+  );
+  animation: ambientSunBreath 7s ease-in-out infinite;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), background 0.9s ease, opacity 0.9s ease;
+}
+
+/* Subtle secondary halo ring inside the bottom glow */
+.ambient-sun-halo {
+  position: absolute;
+  left: -9rem;
+  bottom: -9rem;
+  width: 30rem;
+  height: 30rem;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(227, 199, 102, 0.14) 0%,
+    rgba(201, 162, 39, 0.06) 45%,
+    transparent 70%
+  );
+  animation: ambientHaloBreath 7s ease-in-out infinite alternate;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.9s ease;
+}
+
+/* Daylight vs Nighttime glow warmth */
+.auth-brand-frame.is-day .ambient-sun-glow {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 246, 205, 0.82) 0%,
+    rgba(227, 199, 102, 0.48) 30%,
+    rgba(201, 162, 39, 0.18) 56%,
+    transparent 75%
+  );
+}
+
+.auth-brand-frame.is-night .ambient-sun-glow {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(245, 196, 98, 0.62) 0%,
+    rgba(201, 152, 39, 0.34) 30%,
+    rgba(180, 125, 25, 0.14) 55%,
+    transparent 74%
+  );
+}
+
+/* Slight position shift when Company tab is active */
+.auth-brand-frame.company-mode .ambient-sun-glow {
+  transform: translate(1.5rem, -0.75rem) scale(1.05);
+}
+
+@keyframes ambientSunBreath {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.78;
+  }
+  50% {
+    transform: scale(1.14);
+    opacity: 1;
+  }
+}
+
+@keyframes ambientHaloBreath {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+}
+
+/* Top Bar inside Green Box: Sun Brand Icon + Time-of-Day Lighting Indicator */
+.auth-brand-inner {
+  position: relative;
+  z-index: 3;
+}
+
+.auth-brand-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.auth-brand-frame .brand-icon {
+  width: 3.35rem;
+  height: 3.35rem;
+  box-shadow: 0 10px 24px -6px rgba(201, 162, 39, 0.45);
+}
+
+.auth-brand-frame .brand-icon .icon {
+  width: 1.65rem;
+  height: 1.65rem;
+}
+
+.time-mode-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(227, 199, 102, 0.28);
+  background: rgba(12, 36, 26, 0.45);
+  backdrop-filter: blur(8px);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(242, 237, 223, 0.78);
+  cursor: pointer;
+  transition: border-color 0.3s, color 0.3s, background 0.3s;
+}
+
+.time-mode-pill:hover {
+  border-color: var(--gold-2);
+  color: var(--gold-2);
+}
+
+.time-mode-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold-2);
+  box-shadow: 0 0 8px var(--gold-2);
+  animation: sunPulse 3s ease-in-out infinite;
+}
+
+.brand-identity-block {
+  margin-top: 2rem;
+}
+
+.brand-identity-block .brand-big {
+  margin-top: 0;
+  font-size: 2.15rem;
+}
+
+/* Dynamic Role Content Container (Smooth Fade + Slide Transition) */
+.role-dynamic-panel {
+  position: relative;
+  z-index: 3;
+  transition: opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1), transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.role-dynamic-panel.switching {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.role-dynamic-headline {
+  margin-top: 1.75rem;
+  font-size: 1.7rem;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+}
+
+.role-dynamic-desc {
+  margin-top: 0.75rem;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(242, 237, 223, 0.7);
+}
+
+/* Dynamic Points List with Staggered Smooth Slide Animation */
+.auth-brand-points {
+  position: relative;
+  z-index: 3;
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(242, 237, 223, 0.14);
+  display: grid;
+  gap: 1.15rem;
+}
+
+.auth-brand-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.95rem;
+  transition: opacity 0.36s cubic-bezier(0.22, 1, 0.36, 1), transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.role-dynamic-panel.switching .auth-brand-point {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.auth-brand-point:nth-child(1) { transition-delay: 0.03s; }
+.auth-brand-point:nth-child(2) { transition-delay: 0.08s; }
+.auth-brand-point:nth-child(3) { transition-delay: 0.13s; }
+
+.auth-brand-point .point-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-top: 0.1rem;
+  border-color: rgba(227, 199, 102, 0.38);
+  background: rgba(227, 199, 102, 0.1);
+  color: var(--gold-2);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.auth-brand-point:hover .point-icon {
+  transform: scale(1.06);
+  background: rgba(227, 199, 102, 0.18);
+}
+
+.auth-brand-point .point-icon .icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.point-copy strong {
+  display: block;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1.35;
+}
+
+.point-copy span {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 13px;
+  color: rgba(242, 237, 223, 0.62);
+  line-height: 1.45;
+}
+
+/* Right Side Frame: Home Screen card frame (.auth-card) */
+.auth-card {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background: var(--cream-2);
+  border: 1px solid rgba(22, 33, 27, 0.1);
+  border-radius: 2.5rem;
+  padding: 2.5rem 1.75rem;
+  transition: border-color 0.5s, box-shadow 0.5s;
+  box-shadow: 0 24px 48px -28px rgba(12, 36, 26, 0.22);
+}
+
+.auth-card:hover {
+  border-color: rgba(201, 162, 39, 0.45);
+  box-shadow: 0 28px 56px -24px rgba(12, 36, 26, 0.32);
+}
+
+.auth-card-top-line {
+  display: block;
+  height: 2px;
+  width: 3.5rem;
+  background: var(--gold);
+  margin-bottom: 1.75rem;
+  transition: width 0.5s;
+}
+
+.auth-card:hover .auth-card-top-line {
+  width: 7rem;
+}
+
+/* Role Switcher: Pill frame matching Home Screen buttons */
+.role-switcher {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  background: var(--cream);
+  padding: 0.375rem;
+  border-radius: 999px;
+  border: 1px solid rgba(22, 33, 27, 0.12);
+}
+
+.role-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.1rem;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: rgba(22, 33, 27, 0.65);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.role-btn .icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--gold);
+  transition: color 0.3s;
+}
+
+.role-btn.active {
+  background: var(--forest);
+  color: var(--cream);
+  box-shadow: 0 10px 24px -8px rgba(12, 36, 26, 0.45);
+}
+
+.role-btn.active .icon {
+  color: var(--gold-2);
+}
+
+.role-btn:not(.active):hover {
+  color: var(--forest);
+  background: rgba(201, 162, 39, 0.12);
+}
+
+/* Auth Heading: Matches Home Screen .eyebrow + .title.display */
+.auth-head {
+  margin: 2rem 0 1.75rem;
+}
+
+.auth-head .eyebrow {
+  margin-bottom: 0.5rem;
+}
+
+.auth-head h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: var(--forest);
+}
+
+.auth-head h1 .gold-text {
+  color: var(--gold);
+  font-style: normal;
+}
+
+.auth-head p {
+  margin-top: 0.6rem;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(22, 33, 27, 0.62);
+}
+
+/* Form Layout & Fields */
+.auth-form {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.auth-form-row {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.field label {
+  font-family: Lexend, Inter, system-ui, sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--forest);
+}
+
+.field label span {
+  color: var(--gold);
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 0.875rem 1.15rem;
+  border-radius: 1.15rem;
+  border: 1px solid rgba(22, 33, 27, 0.15);
+  background: var(--cream);
+  font: 15px/1.45 Inter, system-ui, sans-serif;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+.field input::placeholder {
+  color: rgba(22, 33, 27, 0.4);
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: var(--gold);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.16);
+}
+
+/* Upload License Box */
+.upload-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.05rem 1.25rem;
+  border-radius: 1.15rem;
+  border: 1px dashed rgba(201, 162, 39, 0.65);
+  background: rgba(201, 162, 39, 0.08);
+  color: var(--forest);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.upload-box .icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  color: var(--gold);
+}
+
+.upload-box:hover {
+  background: rgba(201, 162, 39, 0.16);
+  border-color: var(--gold);
+}
+
+/* Submit Button: Uses Home Screen .btn pill style */
+.auth-submit-btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.5rem;
+  padding: 0.95rem 1.75rem;
+  font-size: 15px;
+}
+
+/* Bottom Switch Link */
+.switch-link {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(22, 33, 27, 0.1);
+  text-align: center;
+  font-size: 14px;
+  color: rgba(22, 33, 27, 0.62);
+}
+
+.switch-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--forest);
+  font-family: Lexend, Inter, system-ui, sans-serif;
+  font-weight: 500;
+  margin-left: 0.35rem;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 1px;
+  transition: color 0.3s;
+}
+
+.switch-link a:hover {
+  color: var(--gold);
+}
+
+.error-msg {
+  display: none;
+  padding: 0.85rem 1.1rem;
+  border-radius: 1rem;
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  color: #991b1b;
+  font-size: 13.5px;
+  font-weight: 500;
+  margin-top: 1.25rem;
+}
+
+.error-msg.show {
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .auth-card {
+    padding: 3rem 2.75rem;
+  }
+  .auth-form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .auth-head h1 {
+    font-size: 2.35rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .auth-grid {
+    grid-template-columns: repeat(12, 1fr);
+    gap: 3rem;
+  }
+  .auth-brand-frame {
+    grid-column: span 5;
+    padding: 3.25rem;
+  }
+  .auth-card {
+    grid-column: span 7;
+  }
+}

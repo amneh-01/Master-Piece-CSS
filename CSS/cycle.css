@@ -1,0 +1,53 @@
+/* =====================================================
+   SHAMSTECH JO - CYCLE PAGES CSS (css/cycle.css)
+   Shared by roi_calculator.html and plant_log.html.
+   Uses ONLY the existing tokens from home.css:
+   --forest, --cream, --gold, --ink + Lexend/Inter.
+   ===================================================== */
+.cy-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.cy-card{background:var(--cream-2);border:1px solid rgba(12,36,26,.12);border-radius:1.5rem;padding:2rem}
+.cy-card.dark{background:var(--forest);color:var(--cream)}
+.cy-label{display:flex;justify-content:space-between;margin:1.25rem 0 .5rem;font-weight:500}
+.cy-label b{color:var(--gold)}
+.cy-card input[type=range]{width:100%;accent-color:var(--gold)}
+.cy-card input:not([type=range]),.cy-card textarea{width:100%;margin-top:.75rem;padding:.8rem 1rem;border:1px solid rgba(12,36,26,.2);border-radius:.9rem;background:#fff;font:inherit}
+.cy-note{margin-top:1rem;font-size:14px;opacity:.7}
+.cy-seg{display:flex;gap:.5rem}
+.cy-seg button{flex:1;padding:.7rem;border-radius:999px;border:1px solid rgba(12,36,26,.2)}
+.cy-seg button.on{background:var(--forest);color:var(--cream)}
+.cy-kpis{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.cy-kpis small{display:block;opacity:.65;font-size:13px}
+.cy-kpis strong{font-size:1.6rem;font-weight:500;color:var(--gold-2)}
+.cy-bars{display:flex;align-items:flex-end;gap:3px;height:90px;margin:1.5rem 0}
+.cy-bars i{flex:1;background:var(--gold);border-radius:2px 2px 0 0;opacity:.85}
+.cy-bars i.neg{background:rgba(242,237,223,.25)}
+.cy-qr{width:150px;height:150px;padding:10px;background:#fff;border-radius:1rem;margin-bottom:1rem}
+.cy-track{list-style:none;display:grid;gap:.75rem;margin:1rem 0 1.5rem}
+.cy-track li{display:flex;gap:.75rem;align-items:center;opacity:.45}
+.cy-track li::before{content:'';width:14px;height:14px;border-radius:50%;border:2px solid var(--gold)}
+.cy-track li.done,.cy-track li.now{opacity:1}
+.cy-track li.done::before{background:var(--gold)}
+.cy-track li.now::before{background:var(--forest);border-color:var(--forest);box-shadow:0 0 0 4px rgba(201,162,39,.35)}
+.cy-log{list-style:none;display:grid;gap:.75rem;margin-top:1rem}
+.cy-log li{padding:.9rem 1rem;border-left:3px solid var(--gold);background:#fff;border-radius:.6rem;font-size:15px}
+.cy-log small{display:block;opacity:.6}
+.cy-modal{position:fixed;inset:0;display:none;place-items:center;background:rgba(12,36,26,.6);z-index:80}
+.cy-modal.open{display:grid}
+.cy-modal .cy-card{width:min(440px,92vw)}
+.cy-row{display:flex;gap:.75rem;margin-top:1.25rem}
+.cy-stars button{font-size:2rem;color:rgba(12,36,26,.25)}
+.cy-stars button.on{color:var(--gold)}
+@media(max-width:860px){.cy-grid{grid-template-columns:1fr}}
+
+/* ---- order tracker: chips, progress, next-up box, detailed stages ---- */
+.cy-chips{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0}
+.cy-chips button{padding:.5rem 1rem;border-radius:999px;border:1px solid rgba(12,36,26,.2);font-size:14px}
+.cy-chips button.on{background:var(--forest);color:var(--cream);border-color:var(--forest)}
+.cy-prog{height:6px;border-radius:9px;background:rgba(12,36,26,.1);overflow:hidden}
+.cy-prog i{display:block;height:100%;background:var(--gold);transition:width .5s}
+.cy-next{margin:1rem 0;padding:1rem 1.25rem;border-radius:1rem;background:var(--forest);color:var(--cream)}
+.cy-next small{display:block;color:var(--gold-2);letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+.cy-next.you{background:var(--gold);color:var(--forest)}.cy-next.you small{color:var(--forest)}
+.cy-track li{align-items:flex-start}.cy-track li::before{margin-top:5px}
+.cy-track li span{display:block;font-size:13px;opacity:.65}
+.cy-track li em{font-style:normal;font-size:11px;padding:.1rem .55rem;margin-left:.4rem;border-radius:99px;background:rgba(12,36,26,.1)}

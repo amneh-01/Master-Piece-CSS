@@ -1,0 +1,901 @@
+/* =====================================================
+   SHAMSTECH JO - MARKETPLACE ITEM DETAILS & UNLOCK CONTACT CSS
+   File: css/market_item.css
+   Description:
+   - Imports css/used_market.css (which inherits the Home Screen
+     design system: Lexend & Inter fonts, --forest, --cream,
+     --cream-2, --gold palette, Navbar with Client Name + Arrow
+     dropdown, and Footer).
+   - Styles the 2-column Equipment Details view:
+     * Left column: Photo gallery + "Product Condition & Technical Details" card.
+     * Right column: Price & Verified Seller panel + Dark Forest Green
+       "Protected Contact Info" box with encrypted phone (+962 79 *** ****)
+       and "HIDDEN" badge.
+   - Styles the "Unlock Seller Contact Info" payment modal matching
+     the user's screenshot (gold lock circle, item & fee summary box,
+     radio-style payment cards for Visa/Mastercard and CliQ/Mobile Wallet,
+     card inputs, and dark green "Pay & Reveal Phone Number ->" button).
+   ===================================================== */
+@import url('/css/used_market.css');
+
+.item-page-main {
+  flex: 1;
+  padding: 2.25rem 0 5rem;
+}
+
+/* Breadcrumb / Back Navigation Bar */
+.item-breadcrumb-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.back-market-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  background: var(--cream-2);
+  border: 1px solid rgba(22, 33, 27, 0.14);
+  color: var(--forest);
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.back-market-link:hover {
+  border-color: var(--gold);
+  background: rgba(201, 162, 39, 0.15);
+  transform: translateX(-3px);
+}
+
+.back-market-link .icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--gold);
+}
+
+.item-verified-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(27, 94, 58, 0.1);
+  border: 1px solid rgba(27, 94, 58, 0.28);
+  color: #164e33;
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.item-verified-pill .icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  color: var(--gold);
+}
+
+/* Main 2-Column Item Detail Frame */
+.item-detail-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.25rem;
+  padding: 1.75rem;
+  border-radius: 2.25rem;
+  background: var(--cream-2);
+  border: 1px solid rgba(22, 33, 27, 0.1);
+  box-shadow: 0 28px 60px -28px rgba(12, 36, 26, 0.26);
+}
+
+/* Left Column: Product Image Gallery + Technical Details Card */
+.item-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.item-main-img-wrap {
+  position: relative;
+  border-radius: 1.65rem;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: var(--cream);
+  border: 1px solid rgba(22, 33, 27, 0.1);
+}
+
+.item-main-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.item-main-img-wrap:hover img {
+  transform: scale(1.03);
+}
+
+.item-condition-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(12, 36, 26, 0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(227, 199, 102, 0.45);
+  color: var(--gold-2);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.item-thumbs-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.item-thumb-btn {
+  border-radius: 1rem;
+  overflow: hidden;
+  aspect-ratio: 16 / 11;
+  border: 2px solid transparent;
+  background: var(--cream);
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.25s ease;
+}
+
+.item-thumb-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.item-thumb-btn:hover,
+.item-thumb-btn.active {
+  opacity: 1;
+  border-color: var(--gold);
+  box-shadow: 0 8px 20px -8px rgba(12, 36, 26, 0.3);
+}
+
+/* Product Condition & Technical Details Card (Left Bottom) */
+.tech-details-card {
+  margin-top: 0.35rem;
+  padding: 1.45rem 1.5rem;
+  border-radius: 1.5rem;
+  background: var(--cream);
+  border: 1px solid rgba(22, 33, 27, 0.1);
+}
+
+.tech-details-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--forest);
+  padding-bottom: 0.9rem;
+  margin-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(22, 33, 27, 0.1);
+}
+
+.tech-details-heading .icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  color: var(--gold);
+}
+
+.tech-details-list {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.tech-detail-row {
+  display: grid;
+  grid-template-columns: 10.5rem 1fr;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-size: 13.5px;
+}
+
+.tech-detail-label {
+  color: rgba(22, 33, 27, 0.58);
+  font-weight: 500;
+}
+
+.tech-detail-val {
+  color: var(--forest);
+  font-weight: 600;
+}
+
+.tech-detail-val.green {
+  color: #1b6b42;
+}
+
+/* Right Column: Product Info, Seller & Protected Contact Card */
+.item-info-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.35rem;
+}
+
+.item-cat-eyebrow {
+  font-family: Lexend, Inter, system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+}
+
+.item-title {
+  margin-top: 0.35rem;
+  font-size: 1.85rem;
+  font-weight: 700;
+  line-height: 1.18;
+  color: var(--forest);
+  letter-spacing: -0.02em;
+}
+
+.item-posted-loc {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.45rem;
+  font-size: 13.5px;
+  color: rgba(22, 33, 27, 0.62);
+}
+
+.item-posted-loc .icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  color: #c0392b;
+}
+
+/* Price + Seller Card Panel */
+.price-seller-panel {
+  margin-top: 1.1rem;
+  padding: 1.35rem 1.5rem;
+  border-radius: 1.5rem;
+  background: var(--cream);
+  border: 1px solid rgba(22, 33, 27, 0.1);
+}
+
+.total-price-caption {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(22, 33, 27, 0.54);
+}
+
+.item-price-value {
+  margin-top: 0.2rem;
+  font-size: 2.35rem;
+  font-weight: 700;
+  color: var(--forest);
+  line-height: 1.1;
+}
+
+.seller-info-card {
+  margin-top: 1.15rem;
+  padding-top: 1.15rem;
+  border-top: 1px solid rgba(22, 33, 27, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.seller-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.seller-avatar {
+  width: 2.85rem;
+  height: 2.85rem;
+  border-radius: 50%;
+  background: rgba(22, 33, 27, 0.08);
+  border: 1px solid rgba(22, 33, 27, 0.15);
+  color: var(--forest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.seller-name {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--forest);
+}
+
+.seller-sub {
+  margin-top: 0.15rem;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #1b6b42;
+}
+
+/* =====================================================
+   DARK PROTECTED CONTACT INFO CARD (Encrypted Phone + Unlock Button)
+   Matches Right Dark Box in User's Screenshot
+   ===================================================== */
+.protected-contact-card {
+  padding: 1.6rem 1.55rem;
+  border-radius: 1.65rem;
+  background: linear-gradient(155deg, #0b2419 0%, #071911 100%);
+  border: 1px solid rgba(227, 199, 102, 0.25);
+  color: var(--cream);
+  box-shadow: 0 22px 44px -18px rgba(7, 25, 17, 0.55);
+}
+
+.protected-contact-head h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.protected-contact-head h3 .icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--gold-2);
+}
+
+.protected-contact-head p {
+  margin-top: 0.25rem;
+  font-size: 12.5px;
+  color: rgba(242, 237, 223, 0.65);
+}
+
+/* Encrypted / Masked Phone Number Strip */
+.masked-phone-box {
+  margin-top: 1.15rem;
+  padding: 0.85rem 1.1rem;
+  border-radius: 0.95rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.masked-phone-box.unlocked {
+  background: rgba(39, 174, 96, 0.16);
+  border-color: rgba(46, 204, 113, 0.45);
+}
+
+.masked-phone-left {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.masked-phone-left .icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  color: var(--gold-2);
+}
+
+.masked-phone-number {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--gold-2);
+}
+
+.masked-phone-box.unlocked .masked-phone-number {
+  color: #ffffff;
+  letter-spacing: 0.03em;
+}
+
+.masked-status-badge {
+  padding: 0.3rem 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(242, 237, 223, 0.78);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.masked-status-badge.unlocked {
+  background: #27ae60;
+  color: #ffffff;
+}
+
+/* Gold "Unlock Seller Contact" Primary Button */
+.btn-unlock-contact {
+  width: 100%;
+  margin-top: 1.1rem;
+  padding: 0.95rem 1.35rem;
+  border-radius: 0.95rem;
+  border: none;
+  background: linear-gradient(135deg, #e5c158 0%, #c9a227 100%);
+  color: #0c241a;
+  font-size: 14.5px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  cursor: pointer;
+  box-shadow: 0 12px 26px -10px rgba(201, 162, 39, 0.55);
+  transition: all 0.25s ease;
+}
+
+.btn-unlock-contact:hover {
+  background: linear-gradient(135deg, #efd070 0%, #d4af37 100%);
+  transform: translateY(-2px);
+}
+
+.btn-unlock-contact .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Secondary Contact Trigger */
+.btn-contact-secondary {
+  width: 100%;
+  margin-top: 0.65rem;
+  padding: 0.75rem 1.15rem;
+  border-radius: 0.85rem;
+  border: 1px solid rgba(242, 237, 223, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--cream);
+  font-size: 13.5px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-contact-secondary:hover {
+  border-color: var(--gold-2);
+  background: rgba(227, 199, 102, 0.14);
+  color: var(--gold-2);
+}
+
+.btn-contact-secondary .icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  color: var(--gold-2);
+}
+
+/* Direct Call & WhatsApp Buttons (Shown once unlocked) */
+.unlocked-direct-actions {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.unlocked-direct-actions.show {
+  display: grid;
+}
+
+.btn-direct-call,
+.btn-direct-wa {
+  padding: 0.85rem 1rem;
+  border-radius: 0.85rem;
+  font-size: 13.5px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+
+.btn-direct-call {
+  background: var(--gold);
+  color: var(--forest);
+}
+
+.btn-direct-call:hover {
+  background: var(--gold-2);
+}
+
+.btn-direct-call .icon {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.btn-direct-wa {
+  background: #25d366;
+  color: #072112;
+}
+
+.btn-direct-wa:hover {
+  background: #2ee673;
+}
+
+.protected-foot-note {
+  margin-top: 0.85rem;
+  text-align: center;
+  font-size: 11.5px;
+  color: rgba(242, 237, 223, 0.55);
+}
+
+/* Viewing Period Banner (Yellow/Gold Info Strip below Dark Card) */
+.viewing-period-banner {
+  padding: 1rem 1.25rem;
+  border-radius: 1.15rem;
+  background: rgba(227, 199, 102, 0.25);
+  border: 1px solid rgba(201, 162, 39, 0.5);
+  color: var(--forest);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* =====================================================
+   UNLOCK SELLER CONTACT INFO PAYMENT MODAL
+   Matches the center modal in the user's screenshot
+   ===================================================== */
+.buy-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 260;
+  background: rgba(8, 22, 15, 0.72);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  overflow-y: auto;
+}
+
+.buy-modal-backdrop.open {
+  display: flex;
+}
+
+.unlock-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 31.5rem;
+  padding: 2rem 1.85rem 1.75rem;
+  border-radius: 1.65rem;
+  background: #ffffff;
+  border: 1px solid rgba(22, 33, 27, 0.1);
+  box-shadow: 0 32px 72px -18px rgba(6, 20, 14, 0.65);
+  color: var(--forest);
+  animation: modalSlideUp 0.28s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.unlock-modal-close {
+  position: absolute;
+  top: 1.15rem;
+  right: 1.15rem;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  border: none;
+  background: #f1f4f2;
+  color: #5b6b63;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.unlock-modal-close:hover {
+  background: #e2e8e4;
+  color: var(--forest);
+}
+
+.unlock-modal-close .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Modal Header with Soft Gold Circle + Lock Icon */
+.unlock-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+  padding-right: 2rem;
+}
+
+.unlock-lock-circle {
+  width: 3.1rem;
+  height: 3.1rem;
+  border-radius: 50%;
+  background: #faeb96;
+  color: #8c6900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.unlock-lock-circle .icon {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.unlock-modal-header h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0e3b25;
+  line-height: 1.2;
+}
+
+.unlock-modal-header p {
+  margin-top: 0.2rem;
+  font-size: 12.5px;
+  color: #697870;
+}
+
+/* Item & Fee Summary Box */
+.unlock-summary-box {
+  margin-top: 1.35rem;
+  padding: 0.95rem 1.15rem;
+  border-radius: 0.85rem;
+  background: #f7f9fb;
+  border: 1px solid #e3e8ee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.unlock-item-line {
+  font-size: 12.5px;
+  color: #64748b;
+}
+
+.unlock-seller-line {
+  margin-top: 0.2rem;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #0e3b25;
+}
+
+.unlock-summary-right {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.unlock-fee-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.unlock-fee-amount {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0e5a36;
+}
+
+/* Payment Method Section */
+.unlock-section-label {
+  margin-top: 1.25rem;
+  margin-bottom: 0.65rem;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.unlock-methods-stack {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.unlock-method-card {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: 0.75rem;
+  border: 1.5px solid #dce3ea;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.unlock-method-card:hover {
+  border-color: #c9a227;
+}
+
+.unlock-method-card.active {
+  border-color: #c9a227;
+  background: #fffdf5;
+  box-shadow: 0 4px 14px -6px rgba(201, 162, 39, 0.35);
+}
+
+.unlock-radio-dot {
+  width: 1.05rem;
+  height: 1.05rem;
+  border-radius: 50%;
+  border: 2px solid #94a3b8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.unlock-method-card.active .unlock-radio-dot {
+  border-color: #b58900;
+}
+
+.unlock-method-card.active .unlock-radio-dot::after {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #b58900;
+}
+
+.unlock-method-icon {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.unlock-method-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0f291e;
+}
+
+/* Card & Wallet Inputs */
+.unlock-inputs-wrap {
+  margin-top: 1.1rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.unlock-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+}
+
+.unlock-input {
+  width: 100%;
+  padding: 0.8rem 0.95rem;
+  border-radius: 0.65rem;
+  border: 1px solid #d5dde6;
+  background: #ffffff;
+  color: #0f291e;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 13.5px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.unlock-input::placeholder {
+  color: #94a3b8;
+}
+
+.unlock-input:focus {
+  border-color: #0e3b25;
+  box-shadow: 0 0 0 3px rgba(14, 59, 37, 0.1);
+}
+
+.cliq-alias-hint {
+  padding: 0.7rem 0.9rem;
+  border-radius: 0.65rem;
+  background: #f4f8f6;
+  border: 1px solid rgba(14, 59, 37, 0.15);
+  font-size: 12.5px;
+  color: #0e3b25;
+}
+
+/* Dark Forest Green Primary Submit Button */
+.btn-pay-reveal {
+  width: 100%;
+  margin-top: 1.25rem;
+  padding: 0.95rem 1.35rem;
+  border-radius: 0.7rem;
+  border: none;
+  background: #103b28;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-pay-reveal:hover {
+  background: #175238;
+  transform: translateY(-1px);
+}
+
+.unlock-ssl-note {
+  margin-top: 0.75rem;
+  text-align: center;
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+/* Unlocked Success State inside Modal */
+.buy-success-box {
+  display: none;
+  text-align: center;
+  padding: 1.25rem 0.5rem 0.5rem;
+}
+
+.buy-success-box.show {
+  display: block;
+}
+
+.buy-success-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: rgba(39, 174, 96, 0.15);
+  border: 1.5px solid #27ae60;
+  color: #1b6b42;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.85rem;
+}
+
+.modal-revealed-phone {
+  margin-top: 0.85rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.75rem;
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  color: #0e3b25;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 640px) {
+  .item-detail-card {
+    padding: 2.25rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .item-detail-card {
+    grid-template-columns: 1.1fr 0.95fr;
+    padding: 2.5rem;
+  }
+}

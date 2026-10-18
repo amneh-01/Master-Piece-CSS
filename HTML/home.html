@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShamsTech Jo — Jordan's Solar Services Marketplace</title>
+  <!-- Marks the page as "JavaScript available" so the scroll animations can start hidden -->
+  <script>document.documentElement.classList.add('js')</script>
+  <!-- Fonts: Inter (text) and Lexend (headings) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- relative path first (works when you open the file directly); falls back to the server path /css/ -->
+  <link rel="stylesheet" href="../CSS/home.css" onerror="this.onerror=null;this.href='/css/home.css'">
+</head>
+<body>
+<!-- ICONS: drawn once here, used everywhere with <svg><use href="#i-name"/></svg> -->
+<svg style="display:none" aria-hidden="true">
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-17.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+<symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10M7 17 17 7"/></symbol>
+<symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5m7 7-7-7 7-7"/></symbol>
+<symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14m-7-7 7 7-7 7"/></symbol>
+<symbol id="i-badge-check" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-timer" viewBox="0 0 24 24"><path d="M10 2h4M12 14l3-3"/><circle cx="12" cy="14" r="8"/></symbol>
+<symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-landmark" viewBox="0 0 24 24"><path d="M3 22h18M6 18v-7m4 7v-7m4 7v-7m4 7v-7M12 2l8 5H4z"/></symbol>
+<symbol id="i-hand-coins" viewBox="0 0 24 24"><path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16m4 5 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9M2 16l6 6"/><circle cx="16" cy="9" r="2.9"/><circle cx="6" cy="5" r="3"/></symbol>
+<symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-quote" viewBox="0 0 24 24"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2zM5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+</svg>
+
+<!-- ========== NAVBAR (turns dark and blurred after you scroll) ========== -->
+<header class="navbar" id="navbar">
+  <div class="container">
+    <a href="home.html#home" class="brand">
+      <span class="brand-icon"><svg class="icon "><use href="#i-sun"/></svg></span>
+      <span>
+        <span class="brand-name display">SHAMS<b>TECH</b></span>
+        <span class="brand-sub">JORDAN · شمس الأردن</span>
+      </span>
+    </a>
+    <nav class="nav-links">   
+      <a href="#about"> About</a>
+      <a href="#how">How it works</a>
+      <a href="#services">Services</a>
+      <a href="#marketplace">Marketplace</a>
+      <a href="#footer">Contact us</a>
+    </nav>
+    <!-- Replaced "Post a request" with "Sign Up" button that takes user to Sign Up page -->
+    <div class="nav-actions">
+      <a href="login.html" class="nav-login">Log In</a>
+      <a href="signup.html" class="nav-cta">Sign Up</a>
+    </div>
+    <button class="menu-btn" id="menu-btn" aria-label="Menu"><svg class="icon i-open"><use href="#i-menu"/></svg><svg class="icon i-close"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#services">Services</a><a href="#how">How it works</a>
+    <a href="#marketplace">Marketplace</a><a href="#about">About</a>
+    <a href="login.html">Log In</a>
+    <a href="signup.html" class="nav-cta">Sign Up</a>
+  </div>
+</header>
+
+<!-- ========== HERO (English) ========== -->
+<!-- Styles: CSS/home.css -> section "5b. HERO". Keeps ids home / hero-light / hero-content used by JS/home.js -->
+<section class="nx-hero grain" id="home" aria-labelledby="nx-title">
+  <div class="hero-light" id="hero-light" aria-hidden="true">
+    <div class="nx-glow"></div>
+    <div class="nx-beam"></div>
+    <i class="nx-spark" style="--x:33%;--s:4px;--d:0.9s;--t:15s"></i><i class="nx-spark" style="--x:64%;--s:3px;--d:0.8s;--t:9s"></i><i class="nx-spark" style="--x:54%;--s:4px;--d:7.2s;--t:9s"></i><i class="nx-spark" style="--x:31%;--s:4px;--d:2.5s;--t:11s"></i><i class="nx-spark" style="--x:16%;--s:4px;--d:1.9s;--t:9s"></i><i class="nx-spark" style="--x:85%;--s:4px;--d:7.2s;--t:12s"></i><i class="nx-spark" style="--x:24%;--s:4px;--d:2.6s;--t:14s"></i><i class="nx-spark" style="--x:14%;--s:4px;--d:6.0s;--t:12s"></i><i class="nx-spark" style="--x:25%;--s:3px;--d:4.3s;--t:10s"></i><i class="nx-spark" style="--x:73%;--s:4px;--d:0.1s;--t:13s"></i><i class="nx-spark" style="--x:76%;--s:4px;--d:7.6s;--t:12s"></i><i class="nx-spark" style="--x:55%;--s:5px;--d:5.4s;--t:15s"></i><i class="nx-spark" style="--x:60%;--s:3px;--d:2.1s;--t:13s"></i><i class="nx-spark" style="--x:8%;--s:2px;--d:0.4s;--t:13s"></i><i class="nx-spark" style="--x:69%;--s:5px;--d:6.3s;--t:11s"></i><i class="nx-spark" style="--x:89%;--s:3px;--d:0.6s;--t:12s"></i><i class="nx-spark" style="--x:84%;--s:5px;--d:2.5s;--t:14s"></i><i class="nx-spark" style="--x:58%;--s:4px;--d:5.7s;--t:12s"></i>
+    <div class="nx-grid"></div>
+  </div>
+
+  <div class="container nx-inner" id="hero-content">
+
+    <!-- ===== Copy ===== -->
+    <div class="nx-copy">
+      <div class="nx-pill fade-up" style="animation-delay:.1s"><span class="nx-live"></span> Jordan's solar services marketplace</div>
+
+      <h1 id="nx-title" class="nx-title">
+        <span class="w" style="--d:0.2s">Solar</span> <span class="w" style="--d:0.3s">companies</span> <span class="w" style="--d:0.4s">compete.</span><br><em><span class="w" style="--d:0.6s">You</span> <span class="w" style="--d:0.7s">choose</span> <span class="w" style="--d:0.8s">the</span> <span class="w" style="--d:0.9s">best</span> <span class="w" style="--d:1.0s">offer.</span></em>
+      </h1>
+
+      <p class="nx-text fade-up" style="animation-delay:.35s">Post your installation or maintenance request once. Certified energy companies send you competing offers &mdash; compare price, warranty and timeline side by side, then pick the one that fits.</p>
+
+      <div class="nx-rotor fade-up" style="animation-delay:.42s">
+        <span>Get offers for</span>
+        <span class="nx-rotor-box"><span class="nx-rotor-words"><b>installation</b><b>maintenance</b><b>panel cleaning</b><b>dismantling</b><b>installation</b></span></span>
+      </div>
+
+      <div class="nx-actions fade-up" style="animation-delay:.5s">
+        <a href="signup.html" class="btn btn-gold"><span class="btn-label"><span>Request offers</span><span aria-hidden="true">Request offers</span></span><svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+        <a href="#how" class="btn btn-outline-light"><span class="btn-label"><span>See how it works</span><span aria-hidden="true">See how it works</span></span><svg class="icon"><use href="#i-arrow-up-right"/></svg></a>
+      </div>
+
+      <div class="nx-stats fade-up" style="animation-delay:.65s">
+       <!--  <div><strong class="display"><span data-count="90" data-decimals="0">0</span><i>+</i></strong><span>Certified companies</span></div>
+        <div><strong class="display"><span data-count="48" data-decimals="0">0</span><i>h</i></strong><span>To receive offers</span></div>
+        <div><strong class="display"><span data-count="390" data-decimals="0">0</span><i>+</i></strong><span>Projects completed</span></div> -->
+      </div>
+    </div>
+
+    <!-- ===== Visual: animated story (4 scenes that loop, controlled by JS/home.js section 9) ===== -->
+    <div class="nx-visual fade-up" style="animation-delay:.4s">
+      <div class="nx-float">
+      <div class="nx-stage" id="nx-stage">
+
+        <div class="nx-steps">
+          <button class="nx-step" type="button"><i></i><b>Request</b></button>
+          <button class="nx-step" type="button"><i></i><b>Notify</b></button>
+          <button class="nx-step" type="button"><i></i><b>Compare</b></button>
+          <button class="nx-step" type="button"><i></i><b>Install</b></button>
+        </div>
+
+        <div class="nx-scenes">
+
+          <!-- Scene 1: the customer posts a request -->
+          <div class="nx-scene">
+            <div class="nx-form">
+              <div class="nx-field"><small>Service</small><span class="nx-type" style="--w:19ch;--n:18;--d:.3s">Solar installation</span></div>
+              <div class="nx-field"><small>System size</small><span class="nx-type" style="--w:15ch;--n:14;--d:1.1s">5 kW &middot; Rooftop</span></div>
+              <div class="nx-field"><small>Location</small><span class="nx-type" style="--w:15ch;--n:13;--d:1.9s">Amman, Jordan</span></div>
+              <div class="nx-send">
+                <span class="nx-send-a">Post request</span>
+                <span class="nx-send-b"><svg class="icon" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></svg> Request sent</span>
+              </div>
+              <span class="nx-ripple"></span>
+              <svg class="nx-cursor" viewBox="0 0 24 24"><path d="M4 3l16 7-7 2-2 7z"/></svg>
+            </div>
+          </div>
+
+          <!-- Scene 2: certified companies get notified -->
+          <div class="nx-scene">
+            <div class="nx-radar">
+              <span class="nx-ring"></span><span class="nx-ring" style="animation-delay:.9s"></span><span class="nx-ring" style="animation-delay:1.8s"></span>
+              <svg class="nx-links" viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="50" y1="50" x2="87" y2="64" pathLength="1" style="--d:0.6s"/><line x1="50" y1="50" x2="64" y2="81" pathLength="1" style="--d:1.0s"/><line x1="50" y1="50" x2="36" y2="89" pathLength="1" style="--d:1.4s"/><line x1="50" y1="50" x2="17" y2="69" pathLength="1" style="--d:1.8s"/><line x1="50" y1="50" x2="12" y2="36" pathLength="1" style="--d:2.2s"/><line x1="50" y1="50" x2="35" y2="17" pathLength="1" style="--d:2.6s"/><line x1="50" y1="50" x2="64" y2="11" pathLength="1" style="--d:3.0s"/><line x1="50" y1="50" x2="81" y2="36" pathLength="1" style="--d:3.4s"/><line class="p" x1="50" y1="50" x2="87" y2="64" pathLength="1" style="--d:1.0s"/><line class="p" x1="50" y1="50" x2="64" y2="81" pathLength="1" style="--d:1.4s"/><line class="p" x1="50" y1="50" x2="36" y2="89" pathLength="1" style="--d:1.8s"/><line class="p" x1="50" y1="50" x2="17" y2="69" pathLength="1" style="--d:2.2s"/><line class="p" x1="50" y1="50" x2="12" y2="36" pathLength="1" style="--d:2.6s"/><line class="p" x1="50" y1="50" x2="35" y2="17" pathLength="1" style="--d:3.0s"/><line class="p" x1="50" y1="50" x2="64" y2="11" pathLength="1" style="--d:3.4s"/><line class="p" x1="50" y1="50" x2="81" y2="36" pathLength="1" style="--d:3.8s"/></svg>
+              <span class="nx-sweep"></span>
+              <span class="nx-me"><svg class="icon"><use href="#i-sun"/></svg></span>
+              <i class="nx-dot" style="left:87%;top:64%;--d:.6s"></i>
+              <i class="nx-dot" style="left:64%;top:81%;--d:1s"></i>
+              <i class="nx-dot" style="left:36%;top:89%;--d:1.4s"></i>
+              <i class="nx-dot" style="left:17%;top:69%;--d:1.8s"></i>
+              <i class="nx-dot" style="left:12%;top:36%;--d:2.2s"></i>
+              <i class="nx-dot" style="left:35%;top:17%;--d:2.6s"></i>
+              <i class="nx-dot" style="left:64%;top:11%;--d:3s"></i>
+              <i class="nx-dot" style="left:81%;top:36%;--d:3.4s"></i>
+            </div>
+            <div class="nx-notified"><b class="display">90+</b> certified companies notified</div>
+          </div>
+
+          <!-- Scene 3: offers arrive, the best one is highlighted -->
+          <div class="nx-scene">
+            <div class="nx-offers-head"><small>Offers for</small><strong class="display">Rooftop solar &middot; 5 kW</strong></div>
+            <div class="nx-offer l" style="--d:.3s">
+              <span class="nx-logo">S</span>
+              <div class="nx-offer-main"><strong>Solaris Energy</strong><small>25-yr warranty &middot; 10 days</small></div>
+              <div class="nx-price">JD 4,850</div>
+            </div>
+            <div class="nx-offer nx-best r" style="--d:.8s">
+              <span class="nx-logo">A</span>
+              <div class="nx-offer-main"><strong>Al-Noor Solar</strong><small>25-yr warranty &middot; 7 days</small></div>
+              <div class="nx-price">JD <span class="nx-num" data-from="4850" data-to="4600" data-delay="1500" data-dur="800">4,850</span><em>Best value</em></div>
+            </div>
+            <div class="nx-offer l" style="--d:1.3s">
+              <span class="nx-logo">G</span>
+              <div class="nx-offer-main"><strong>GreenGrid Jordan</strong><small>20-yr warranty &middot; 12 days</small></div>
+              <div class="nx-price">JD 4,950</div>
+            </div>
+            <div class="nx-pick"><span>Sample offers for illustration</span><b>Choose offer <svg class="icon"><use href="#i-arrow-right"/></svg></b></div>
+          </div>
+
+          <!-- Scene 4: accepted, installed, monitored -->
+          <div class="nx-scene">
+            <div class="nx-okrow">
+              <span class="nx-burst"><svg class="nx-okring" viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l8 8 14-16"/></svg><i style="--a:0deg"></i><i style="--a:45deg"></i><i style="--a:90deg"></i><i style="--a:135deg"></i><i style="--a:180deg"></i><i style="--a:225deg"></i><i style="--a:270deg"></i><i style="--a:315deg"></i></span>
+              <div><strong class="display">Offer accepted</strong><small>Al-Noor Solar &middot; JD 4,600</small></div>
+            </div>
+            <ul class="nx-timeline">
+              <li style="--d:.8s"><i></i>Site visit booked</li>
+              <li style="--d:1.2s"><i></i>Installation &middot; 7 days</li>
+              <li style="--d:1.6s"><i></i>Live monitoring &amp; AI diagnosis</li>
+            </ul>
+            <div class="nx-power">
+              <div class="nx-power-top"><small>Live output</small><span><b id="nx-kw" class="nx-num display" data-from="0" data-to="5.2" data-delay="1200" data-dur="2200" data-dec="1">0.0</b> kW</span></div>
+              <svg viewBox="0 0 300 70" preserveAspectRatio="none">
+                <defs><linearGradient id="nx-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3c766" stop-opacity=".35"/><stop offset="1" stop-color="#e3c766" stop-opacity="0"/></linearGradient></defs>
+                <path class="nx-area" d="M0 60C40 58 60 50 90 40S150 10 190 14 260 30 300 20V70H0Z" fill="url(#nx-area)"/>
+                <path class="nx-line" d="M0 60C40 58 60 50 90 40S150 10 190 14 260 30 300 20" pathLength="1"/>
+              </svg>
+            </div>
+          </div>
+
+        </div>
+
+        <p class="nx-caption" id="nx-caption"></p>
+      </div>
+
+      <div class="nx-chip">
+        <span class="nx-chip__icon"><svg class="icon" viewBox="0 0 24 24"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg></span>
+        <div><strong>AI fault diagnosis</strong><small>Spot panel efficiency drops early</small></div>
+      </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== MARQUEE (scrolling words) ========== -->
+<div class="marquee"><div class="marquee-track"><div class="marquee-half"><span class="marquee-item"><span class="display">Installation</span><i></i></span><span class="marquee-item"><span class="display">Maintenance</span><i></i></span><span class="marquee-item"><span class="display">Cleaning</span><i></i></span><span class="marquee-item"><span class="display">Dismantling</span><i></i></span><span class="marquee-item"><span class="display">Parts Resale</span><i></i></span><span class="marquee-item"><span class="display">Certified Companies</span><i></i></span><span class="marquee-item"><span class="display">Installation</span><i></i></span><span class="marquee-item"><span class="display">Maintenance</span><i></i></span><span class="marquee-item"><span class="display">Cleaning</span><i></i></span><span class="marquee-item"><span class="display">Dismantling</span><i></i></span><span class="marquee-item"><span class="display">Parts Resale</span><i></i></span><span class="marquee-item"><span class="display">Certified Companies</span><i></i></span></div><div class="marquee-half" aria-hidden="true"><span class="marquee-item"><span class="display">Installation</span><i></i></span><span class="marquee-item"><span class="display">Maintenance</span><i></i></span><span class="marquee-item"><span class="display">Cleaning</span><i></i></span><span class="marquee-item"><span class="display">Dismantling</span><i></i></span><span class="marquee-item"><span class="display">Parts Resale</span><i></i></span><span class="marquee-item"><span class="display">Certified Companies</span><i></i></span><span class="marquee-item"><span class="display">Installation</span><i></i></span><span class="marquee-item"><span class="display">Maintenance</span><i></i></span><span class="marquee-item"><span class="display">Cleaning</span><i></i></span><span class="marquee-item"><span class="display">Dismantling</span><i></i></span><span class="marquee-item"><span class="display">Parts Resale</span><i></i></span><span class="marquee-item"><span class="display">Certified Companies</span><i></i></span></div></div></div>
+
+<!-- ========== NUMBERS (count up when visible) ========== -->
+<section><div class="container stats"><div class="stat"><div class="stat-number display"><span data-count="90" data-decimals="0">0</span><i>+</i></div><p>Certified energy companies</p></div><div class="stat"><div class="stat-number display"><span data-count="1.1" data-decimals="1">0</span><i> MW</i></div><p>Total capacity installed</p></div><div class="stat"><div class="stat-number display"><span data-count="390" data-decimals="0">0</span><i>+</i></div><p>Projects completed</p></div><div class="stat"><div class="stat-number display"><span data-count="1500" data-decimals="0">0</span><i>+</i></div><p>Parts listed for resale</p></div></div></section>
+
+<!-- ========== ABOUT ========== -->
+<section class="section" id="about">
+  <div class="container about-grid">
+    <div class="reveal">
+      <div class="brand-card grain">
+        <div class="blob blob-a"></div>
+        <div class="sun-core"></div>
+        <div class="brand-card-inner">
+          <span class="brand-icon"><svg class="icon "><use href="#i-sun"/></svg></span>
+          <p class="brand-big display">SHAMS<b>TECH</b></p>
+          <p class="brand-tag">Solar services · Marketplace</p>
+          <div class="brand-line"></div>
+          <p class="brand-desc">One platform where homeowners meet Jordan’s best solar companies — from first panel to final resale.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="reveal">
+        <p class="eyebrow">Who we are</p>
+        <h2 class="title display" style="max-width:36rem">Empowering Jordan’s transition to clean energy</h2>
+        <p class="about-text">ShamsTech is the bridge between households and certified energy companies. Post a request, compare transparent offers, and manage the full life cycle of your solar system — installation, upkeep, and even selling your parts when you dismantle.</p>
+      </div>
+      <div class="points reveal" data-stagger="0.12"><div class="point"><span class="point-icon"><svg class="icon "><use href="#i-badge-check"/></svg></span><div><h3 class="display">Verified &amp; accredited</h3><p>Every company on ShamsTech is licensed and quality-checked before it can send you an offer.</p></div></div><div class="point"><span class="point-icon"><svg class="icon "><use href="#i-landmark"/></svg></span><div><h3 class="display">Tax exemptions guidance</h3><p>We help you benefit from Jordan’s renewable-energy exemptions and net-metering programs.</p></div></div><div class="point"><span class="point-icon"><svg class="icon "><use href="#i-hand-coins"/></svg></span><div><h3 class="display">Money-back confidence</h3><p>Clear quotes, documented work and guaranteed workmanship on every job.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== HOW IT WORKS ========== -->
+<section class="section how" id="how">
+  <div class="container">
+    <div class="head-row reveal">
+      <div><p class="eyebrow">The process</p><h2 class="title display" style="max-width:32rem">How ShamsTech works</h2></div>
+      <p>Three steps between you and a working, warrantied solar system — or cash back for the one you’re retiring.</p>
+    </div>
+    <div class="steps reveal" data-stagger="0.12"><div class="step"><span class="step-n display">01</span><h3 class="display">Post your request</h3><p>Tell us what you need — a new installation, a maintenance visit, a deep clean, or parts to sell. It takes two minutes.</p><span class="step-line"></span></div><div class="step"><span class="step-n display">02</span><h3 class="display">Compare certified offers</h3><p>Vetted energy companies respond with transparent quotes within 48 hours. Compare price, timeline and ratings side by side.</p><span class="step-line"></span></div><div class="step"><span class="step-n display">03</span><h3 class="display">Get it done, guaranteed</h3><p>Choose your company, track the job in one place, and pay with confidence — every project is documented and guaranteed.</p><span class="step-line"></span></div></div>
+  </div>
+</section>
+
+<!-- ========== SERVICES (click a title to change the picture) ========== -->
+<section class="section services" id="services">
+  <div class="container">
+    <div class="reveal" style="max-width:42rem">
+      <p class="eyebrow light">What we do</p>
+      <h2 class="title light display">Every service your system needs, in one place</h2>
+    </div>
+    <div class="services-grid">
+      <div class="acc-list reveal" id="accordion">
+        <div class="acc-item open" data-index="0" data-href="">
+          <button class="acc-btn" type="button">
+            <span class="acc-bar"><i></i></span>
+            <span class="acc-title display">Installation</span><svg class="icon "><use href="#i-arrow-up-right"/></svg>
+          </button>
+          <div class="acc-body"><div><div class="acc-inner">
+            <p>Complete rooftop and ground-mount systems — design, permits, net-metering paperwork and commissioning, handled by certified installers.</p><div class="tags"><span>On-grid &amp; hybrid</span><span>Net metering</span><span>5-year workmanship warranty</span></div>
+           <!-- <div style="margin-top:1.1rem;"><a href="request_solar.html" class="btn btn-gold" style="padding:0.65rem 1.25rem;font-size:13.5px;"><span class="btn-label"><span>Open Installation Service</span><span aria-hidden="true">Open Installation Service</span></span><svg class="icon"><use href="#i-arrow-up-right"/></svg></a></div> -->
+            <div class="acc-img" onclick="window.location.href='/html/request_solar.html'" style="cursor:pointer;"><img src="../images/install.jpg" alt="Installation"></div>
+          </div></div></div>
+        </div>
+        <div class="acc-item" data-index="1" data-href="">
+          <button class="acc-btn" type="button">
+            <span class="acc-bar"><i></i></span>
+            <span class="acc-title display">Maintenance</span><svg class="icon "><use href="#i-arrow-up-right"/></svg>
+          </button>
+          <div class="acc-body"><div><div class="acc-inner">
+            <p>Scheduled inspections, inverter diagnostics, cabling checks and performance reports that keep your yield at its peak year after year.</p><div class="tags"><span>Annual plans</span><span>Fault diagnostics</span><span>Performance reports</span></div>
+           <!-- <div style="margin-top:1.1rem;"><a href="ai_diagnosis.html" class="btn btn-gold" style="padding:0.65rem 1.25rem;font-size:13.5px;"><span class="btn-label"><span>Open AI Fault Diagnosis</span><span aria-hidden="true">Open AI Fault Diagnosis</span></span><svg class="icon"><use href="#i-arrow-up-right"/></svg></a></div> -->
+            <div class="acc-img" onclick="window.location.href='/html/ai_diagnosis.html'" style="cursor:pointer;"><img src="../images/maintain.jpg" alt="Maintenance"></div>
+          </div></div></div>
+        </div>
+        <div class="acc-item" data-index="2" data-href="">
+          <button class="acc-btn" type="button">
+            <span class="acc-bar"><i></i></span>
+            <span class="acc-title display">Cleaning</span><svg class="icon "><use href="#i-arrow-up-right"/></svg>
+          </button>
+          <div class="acc-body"><div><div class="acc-inner">
+            <p>Dust can cut output by up to 25% in Jordan’s climate. Professional soft-wash cleaning restores production safely, without scratching panels.</p><div class="tags"><span>Soft-wash system</span><span>Deionised water</span><span>Before/after yield check</span></div>
+           <!-- <div style="margin-top:1.1rem;"><a href="maintenance_cleaning.html" class="btn btn-gold" style="padding:0.65rem 1.25rem;font-size:13.5px;"><span class="btn-label"><span>Book Cleaning Service</span><span aria-hidden="true">Book Cleaning Service</span></span><svg class="icon"><use href="#i-arrow-up-right"/></svg></a></div> -->
+            <div class="acc-img" onclick="window.location.href='/html/maintenance_cleaning.html'" style="cursor:pointer;"><img src="../images/clean.jpg" alt="Cleaning"></div>
+          </div></div></div>
+        </div>
+        <div class="acc-item" data-index="3" data-href="">  <!--  data-href="" هون بتوديه لاي مكان لغيناها -->
+          <button class="acc-btn" type="button">
+            <span class="acc-bar"><i></i></span>
+            <span class="acc-title display">Dismantling &amp; parts resale</span><svg class="icon "><use href="#i-arrow-up-right"/></svg>
+          </button>
+          <div class="acc-body"><div><div class="acc-inner">
+            <p>Upgrading or moving? Certified teams dismantle your system safely, then list your panels, inverters and rails on our marketplace for you.</p><div class="tags"><span>Safe removal</span><span>Certified valuation</span><span>Marketplace listing</span></div>
+           <!-- <div style="margin-top:1.1rem;"><a href="used_market.html" class="btn btn-gold" style="padding:0.65rem 1.25rem;font-size:13.5px;"><span class="btn-label"><span>Open Used Marketplace</span><span aria-hidden="true">Open Used Marketplace</span></span><svg class="icon"><use href="#i-arrow-up-right"/></svg></a></div>-->
+            <div class="acc-img" onclick="window.location.href='/html/used_market.html'" style="cursor:pointer;"><img src="../images/dismantle.jpg" alt="Dismantling &amp; parts resale"></div>
+          </div></div></div>
+        </div>
+      </div>
+      <div class="preview-wrap"><div class="reveal"><div class="preview" id="service-preview-box" style="cursor:pointer;"><img src="../images/install.jpg" alt="Installation" class="on"><img src="../images/maintain.jpg" alt="Maintenance" class=""><img src="../images/clean.jpg" alt="Cleaning" class=""><img src="../images/dismantle.jpg" alt="Dismantling &amp; parts resale" class="">
+        <div class="preview-caption"><span class="display" id="preview-title">Installation</span><span class="display" id="preview-count">01 / 04</span></div>
+      </div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MARKETPLACE (slider with arrows) ========== -->
+<section class="section market" id="marketplace">
+  <div class="container">
+    <div class="head-row reveal">
+      <div><p class="eyebrow">Second-life solar</p><h2 class="title display" style="max-width:36rem">The parts marketplace</h2></div>
+      <div class="arrows"><button class="arrow-btn" id="prev" aria-label="Previous"><svg class="icon "><use href="#i-arrow-left"/></svg></button><button class="arrow-btn" id="next" aria-label="Next"><svg class="icon "><use href="#i-arrow-right"/></svg></button></div>
+    </div>
+  </div>
+  <div class="reveal"><div class="track" id="track">
+        <article class="product" onclick="window.location.href='/html/browse_market.html'" style="cursor:pointer;">
+          <div class="product-img"><img src="../images/panel.jpg" alt="Tier-1 mono panel · 550W"><span class="price">90 JOD</span></div>
+          <h3 class="display">Tier-1 mono panel · 550W</h3><p class="product-meta">Used · Grade A · 92% health</p>
+          <p class="product-loc"><svg class="icon "><use href="#i-map-pin"/></svg> Amman, Jordan</p>
+        </article>
+        <article class="product" onclick="window.location.href='/html/browse_market.html'" style="cursor:pointer;">
+          <div class="product-img"><img src="../images/inverter.jpg" alt="Hybrid inverter · 5kW"><span class="price">120 JOD</span></div>
+          <h3 class="display">Hybrid inverter · 5kW</h3><p class="product-meta">Refurbished · 1-year warranty</p>
+          <p class="product-loc"><svg class="icon "><use href="#i-map-pin"/></svg> Irbid, Jordan</p>
+        </article>
+        <article class="product" onclick="window.location.href='/html/browse_market.html'" style="cursor:pointer;">
+          <div class="product-img"><img src="../images/battery.jpg" alt="Lithium storage · 10kWh"><span class="price">600 JOD</span></div>
+          <h3 class="display">Lithium storage · 10kWh</h3><p class="product-meta">Used · 80% cycle life left</p>
+          <p class="product-loc"><svg class="icon "><use href="#i-map-pin"/></svg> Zarqa, Jordan</p>
+        </article>
+        <article class="product" onclick="window.location.href='/html/browse_market.html'" style="cursor:pointer;">
+          <div class="product-img"><img src="../images/panel.jpg" alt="Bifacial panel · 450W"><span class="price">65 JOD</span></div>
+          <h3 class="display">Bifacial panel · 450W</h3><p class="product-meta">Used · Grade B · tested</p>
+          <p class="product-loc"><svg class="icon "><use href="#i-map-pin"/></svg> Madaba, Jordan</p>
+        </article>
+        <article class="product" onclick="window.location.href='/html/browse_market.html'" style="cursor:pointer;">
+          <div class="product-img"><img src="../images/inverter.jpg" alt="String inverter · 3kW"><span class="price">85 JOD</span></div>
+          <h3 class="display">String inverter · 3kW</h3><p class="product-meta">Used · fully serviced</p>
+          <p class="product-loc"><svg class="icon "><use href="#i-map-pin"/></svg> Aqaba, Jordan</p>
+        </article>
+    <a href="browse_market.html" class="end-card"><span class="big display">1.5k+</span>
+      <div><p class="display">Browse every panel, inverter &amp; rail listed across Jordan</p><span>View List <svg class="icon "><use href="#i-arrow-right"/></svg></span></div></a>
+  </div></div>
+
+</section>
+
+<!-- ========== CALL TO ACTION (for companies) ========== -->
+<section class="cta">
+  <div class="reveal"><div class="cta-box grain">
+    <div class="sun-rays"></div><div class="sun-core"></div><div class="blob blob-b"></div>
+    <div class="cta-row">
+      <div><p class="eyebrow light">For companies &amp; technicians</p><h2 class="display">Grow your solar business with us</h2>
+        <p>Join Jordan’s solar marketplace: receive qualified project requests, win maintenance contracts, and reach buyers for certified used parts.</p></div>
+      <a href="signup.html?role=company" class="btn btn-gold "><span class="btn-label"><span>Become a partner</span><span aria-hidden="true">Become a partner</span></span><svg class="icon "><use href="#i-arrow-up-right"/></svg></a>
+    </div>
+  </div></div>
+</section>
+
+<!-- ========== TESTIMONIALS ========== -->
+<section class="section quotes">
+  <div class="container">
+    <div class="reveal"><p class="eyebrow">Testimonials</p><h2 class="title display" style="max-width:32rem">What our users say</h2></div>
+    <div class="quote-grid reveal" data-stagger="0.12"><figure class="quote"><div><svg class="icon "><use href="#i-quote"/></svg><blockquote>“I posted my request on Monday and had three certified offers by Wednesday. The installation was finished in a week — and the price beat every quote I collected on my own.”</blockquote></div><figcaption><p class="display">Rana Haddad</p><p>Homeowner · Amman</p></figcaption></figure><figure class="quote"><div><svg class="icon "><use href="#i-quote"/></svg><blockquote>“As a company, ShamsTech sends us serious, ready-to-buy clients. We’ve grown our maintenance contracts by 40% since joining the platform.”</blockquote></div><figcaption><p class="display">Omar Al-Fayez</p><p>Director · Future Energy Co.</p></figcaption></figure><figure class="quote"><div><svg class="icon "><use href="#i-quote"/></svg><blockquote>“When we upgraded our system, the team dismantled the old one and sold our panels on the marketplace within days. We recovered money we thought was lost.”</blockquote></div><figcaption><p class="display">Khalil Nasser</p><p>Farm owner · Jordan Valley</p></figcaption></figure></div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer grain" id="footer">
+  <div class="blob blob-c"></div>
+  <div class="container footer-inner">
+    <div class="footer-grid">
+      <div>
+        <a href="#home" class="brand"><span class="brand-icon"><svg class="icon "><use href="#i-sun"/></svg></span><span class="brand-name display">SHAMS<b>TECH</b></span></a>
+        <p class="footer-about">Jordan’s marketplace connecting homes and businesses with certified solar companies — for installation, maintenance, cleaning and second-life parts.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Installation</a></li>
+          <li><a href="#services">Maintenance</a></li>
+          <li><a href="#services">Cleaning</a></li>
+          <li><a href="browse_market.html">View Equipment List</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="signup.html?role=company">For energy companies</a></li>
+          <li><a href="login.html?role=company">Company Log In</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company Connect</h4>
+        <ul class="company-connect-list">
+          <li><a href="tel:+96265000000" class="footer-contact-link"><svg class="icon"><use href="#i-phone"/></svg><span>+962 6 500 0000</span></a></li>
+          <li><a href="mailto:hello@shamstech.jo" class="footer-contact-link"><svg class="icon"><use href="#i-mail"/></svg><span>hello@shamstech.jo</span></a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Amman,+Jordan" target="_blank" rel="noopener noreferrer" class="footer-contact-link"><svg class="icon"><use href="#i-map-pin"/></svg><span>Amman, Jordan (Google Maps)</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 ShamsTech Jo. All rights reserved.</p><p>POWERED BY THE SUN · شمس الأردن</p></div>
+  </div>
+</footer>
+
+
+<script src="../JS/home.js" onerror="this.onerror=null;var s=document.createElement('script');s.src='/js/home.js';document.body.appendChild(s)"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+/* =====================================================================
+   SHAMSTECH JO - UX LAYER (css/ux.css)
+   Loaded LAST on every page. It only restyles: no content is removed.
+   Uses the same tokens (--forest, --cream, --gold, --ink) and fonts.
+   Goals: clear hierarchy, readable data, obvious actions, accessible
+   focus, comfortable touch targets, calm motion, good mobile layout.
+   ===================================================================== */
+
+/* ---------- 1. TOKENS: status colors + shadows (one source of truth) ---------- */
+:root {
+  --ux-ok: #1f7a4d;   --ux-ok-bg: rgba(31,122,77,.12);       /* approved / completed */
+  --ux-wait: #9a6b00; --ux-wait-bg: rgba(201,162,39,.18);    /* pending / waiting */
+  --ux-info: #1d5f8a; --ux-info-bg: rgba(29,95,138,.12);     /* in progress / info */
+  --ux-bad: #b42318;  --ux-bad-bg: rgba(180,35,24,.10);      /* rejected / error */
+  --ux-line: rgba(22,33,27,.12);
+  --ux-radius: 1.15rem;
+  --ux-shadow: 0 1px 2px rgba(12,36,26,.06), 0 10px 24px -16px rgba(12,36,26,.28);
+  --ux-shadow-up: 0 2px 4px rgba(12,36,26,.08), 0 18px 34px -18px rgba(12,36,26,.36);
+  --ux-ring: 0 0 0 3px rgba(201,162,39,.45);
+}
+
+/* ---------- 2. TYPOGRAPHY: calmer base size, tighter headings, aligned numbers ---------- */
+body { font-size: 16px; line-height: 1.6; text-rendering: optimizeLegibility; }
+h1, h2, h3, .title { text-wrap: balance; }
+p { text-wrap: pretty; max-width: 68ch; }
+.price, .browse-card-price, .bid-offer-val, .metric-item strong, .company-kpi-card strong,
+.accepted-metric-box strong, [class*="kpi"] strong, table td, table th { font-variant-numeric: tabular-nums lining-nums; }
+.eyebrow { letter-spacing: .2em; }
+
+/* ---------- 3. ACCESSIBILITY: visible keyboard focus everywhere ---------- */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible,
+[tabindex]:focus-visible { outline: 2px solid var(--forest); outline-offset: 2px; box-shadow: var(--ux-ring); }
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+
+/* ---------- 4. BUTTONS: one size system, 44px touch target, clear states ---------- */
+.btn, .btn-req-outline, .btn-compare-offers, .btn-track-work, .btn-danger-solid, .btn-cancel-req,
+.btn-table-solid, .btn-table-outline, .btn-submit-green, .sub-req-btn, .archive-history-btn {
+  min-height: 44px; border-radius: 999px; font-weight: 600; letter-spacing: .01em;
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, border-color .18s ease;
+}
+.btn:hover, .btn-req-outline:hover, .btn-compare-offers:hover, .btn-track-work:hover, .btn-table-solid:hover,
+.btn-submit-green:hover { transform: translateY(-1px); box-shadow: var(--ux-shadow); }
+.btn:active, .btn-req-outline:active, .btn-compare-offers:active, .btn-table-solid:active { transform: translateY(0); box-shadow: none; }
+.btn[disabled], button[disabled] { opacity: .5; cursor: not-allowed; transform: none; box-shadow: none; }
+.btn-gold { box-shadow: 0 8px 20px -10px rgba(201,162,39,.8); }
+
+/* ---------- 5. FORMS: roomy fields, strong labels, clear focus + error ---------- */
+.req-input, .field, .comp-modal-input, input[type=text], input[type=email], input[type=tel], input[type=number],
+input[type=password], input[type=date], select, textarea {
+  min-height: 46px; border-radius: .9rem; border: 1.5px solid var(--ux-line); background: #fff;
+  font: inherit; font-size: 15px; transition: border-color .18s ease, box-shadow .18s ease;
+}
+textarea { min-height: 96px; line-height: 1.5; }
+.req-input:hover, .field:hover, select:hover, textarea:hover { border-color: rgba(22,33,27,.3); }
+.req-input:focus, .field:focus, .comp-modal-input:focus, input:focus, select:focus, textarea:focus {
+  outline: none; border-color: var(--gold); box-shadow: var(--ux-ring);
+}
+::placeholder { color: rgba(22,33,27,.5); }
+label, .um-field-label, .req-field > label, .comp-modal-field > label { font-weight: 600; font-size: 14px; color: var(--forest); }
+input:invalid:not(:placeholder-shown):not(:focus) { border-color: var(--ux-bad); }
+
+/* ---------- 6. CARDS: unified radius, border, shadow and calm hover lift ---------- */
+.submitted-req-card, .tender-card, .browse-card, .company-kpi-card, .requests-frame-card, .bids-table-card,
+.accepted-scope-box, .accepted-contact-box, .accepted-pdf-box, .req-modal-card, .comp-modal-card {
+  border-radius: var(--ux-radius); border: 1px solid var(--ux-line); box-shadow: var(--ux-shadow);
+}
+.submitted-req-card:hover, .tender-card:hover, .browse-card:hover, .company-kpi-card:hover {
+  transform: translateY(-3px); box-shadow: var(--ux-shadow-up); border-color: rgba(201,162,39,.55);
+}
+.submitted-req-card, .tender-card { padding: clamp(1.1rem, 2.4vw, 1.6rem); }
+
+/* ---------- 7. STATUS BADGES: same shape, meaning carried by color AND text ---------- */
+.sub-req-badge, .bid-status-pill, .tender-type-badge, .tender-time-badge, .browse-grade-badge, .browse-verified-tag, .browse-spec-pill {
+  padding: .28rem .75rem; border-radius: 999px; font-size: 12px; font-weight: 600; line-height: 1.4; letter-spacing: .02em; white-space: nowrap;
+}
+.sub-req-badge.completed, .sub-req-badge.offers-ready, .bid-status-pill.won, .browse-verified-tag { background: var(--ux-ok-bg); color: var(--ux-ok); }
+.sub-req-badge.pending, .bid-status-pill.eval, .tender-time-badge { background: var(--ux-wait-bg); color: var(--ux-wait); }
+.sub-req-badge.progress, .sub-req-badge.in-execution, .bid-status-pill.review, .bid-status-pill.negotiation { background: var(--ux-info-bg); color: var(--ux-info); }
+.sub-req-badge.rejected, .bid-status-pill.lost { background: var(--ux-bad-bg); color: var(--ux-bad); }
+
+/* ---------- 8. FILTER TABS: clear selected state (company + client) ---------- */
+.req-filter-tab, .tender-filter-btn, .browse-cat-btn, .history-main-tab {
+  min-height: 40px; border-radius: 999px; font-weight: 600; transition: background-color .18s ease, color .18s ease, border-color .18s ease;
+}
+.req-filter-tab:hover, .tender-filter-btn:hover, .browse-cat-btn:hover { border-color: var(--gold); }
+.req-filter-tab.active, .tender-filter-btn.active, .browse-cat-btn.active, .history-main-tab.active {
+  background: var(--forest); color: var(--cream); border-color: var(--forest);
+}
+.requests-filter-bar, .tender-filter-pills { gap: .6rem; flex-wrap: wrap; }
+
+/* ---------- 9. DATA TABLES (company bids): sticky header, zebra, hover, scroll ---------- */
+.bids-table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; max-height: 70vh; }
+.bids-table { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 640px; }
+.bids-table thead th { position: sticky; top: 0; z-index: 1; }
+.bids-table tbody tr:nth-child(even) { background: rgba(12,36,26,.025); }
+.bids-table tbody tr { transition: background-color .15s ease; }
+.bids-table tbody tr:hover { background: rgba(201,162,39,.1); }
+.bids-table td { padding: 1rem 1.4rem; border-top: 1px solid var(--ux-line); vertical-align: middle; }
+
+/* ---------- 10. KPI CARDS (company dashboard): numbers first ---------- */
+.company-kpi-card strong, .company-kpi-card [class*="value"], .company-kpi-card [class*="num"] { font-family: Lexend, Inter, sans-serif; letter-spacing: -.02em; }
+.company-kpi-grid { gap: 1rem; }
+
+/* ---------- 11. MODALS & TOASTS: focus on the task, readable on mobile ---------- */
+.req-modal-backdrop, .comp-modal-backdrop { backdrop-filter: blur(6px); background: rgba(12,36,26,.55); }
+.req-modal-card, .comp-modal-card { max-height: 90vh; overflow-y: auto; box-shadow: 0 30px 70px -30px rgba(0,0,0,.6); }
+.req-toast { border-radius: 999px; box-shadow: var(--ux-shadow-up); font-weight: 500; }
+
+/* ---------- 12. NAVIGATION + DROPDOWN: clearer hover, active page, spacing ---------- */
+.nav-links a, .nav-links button { position: relative; transition: color .18s ease; }
+.nav-links a.active::after { content: ''; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; border-radius: 2px; background: var(--gold); }
+.client-dropdown { border-radius: var(--ux-radius); box-shadow: var(--ux-shadow-up); }
+.dropdown-item { min-height: 44px; border-radius: .7rem; }
+.dropdown-label { letter-spacing: .14em; }
+
+/* ---------- 13. IMAGES: no layout jump, consistent crop ---------- */
+.browse-card img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+
+/* ---------- 14. RESPONSIVE: phone-first fixes ---------- */
+@media (max-width: 640px) {
+  .container, .client-section { padding-left: 1rem; padding-right: 1rem; }
+  .title { font-size: 1.75rem; }
+  .submitted-req-card, .tender-card { padding: 1.1rem; }
+  .sub-req-btn-group, .company-hero-actions, .comp-modal-actions, .confirm-modal-actions, .sub-req-actions { flex-direction: column; align-items: stretch; }
+  .sub-req-btn-group > *, .company-hero-actions > *, .comp-modal-actions > *, .confirm-modal-actions > *, .sub-req-actions > * { width: 100%; justify-content: center; }
+  .requests-filter-bar, .tender-filter-pills { overflow-x: auto; flex-wrap: nowrap; padding-bottom: .4rem; scrollbar-width: none; }
+  .req-filter-tab, .tender-filter-btn { flex-shrink: 0; }
+  .metric-item, .accepted-metric-box { min-width: 0; }
+}
+@media (min-width: 1280px) { .company-kpi-grid { gap: 1.25rem; } }
+
+/* ---------- 15. FOOTER: wide band, content spans almost the full screen with a small even margin on every page ---------- */
+.footer .container.footer-inner { max-width: 1840px; width: 100%; margin-left: auto; margin-right: auto; padding-left: clamp(1.25rem, 3.5vw, 4rem); padding-right: clamp(1.25rem, 3.5vw, 4rem); }
+@media (min-width: 1024px) {
+  .footer-grid { grid-template-columns: 1.8fr 1fr 1fr 1.3fr; gap: clamp(2rem, 5vw, 6rem); }
+  .footer-grid > * { grid-column: auto !important; }
+}
+.footer-about { max-width: 32rem; }
+.footer-bottom { justify-content: space-between; }
+
+/* ---------- 16. NAVBAR SECTION LINKS: smooth scroll, and sections are not hidden under the fixed navbar ---------- */
+html { scroll-behavior: smooth; }
+#bids-status-section, #tenders-section, #company-market-section, #company-footer,
+#quick-services, #active-orders, #used-marketplace, #weather-advisor { scroll-margin-top: 96px; }

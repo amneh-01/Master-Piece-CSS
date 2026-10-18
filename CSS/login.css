@@ -1,0 +1,149 @@
+/* =====================================================
+   SHAMSTECH JO - LOG IN PAGE CSS (css/login.css)
+   Explanation of what was done in this file:
+   1. Imports css/signup.css (which imports css/home.css).
+   2. Positions the "Forgot Password?" option below the password
+      input box.
+   3. Styles the interactive "Forgot Password" modal where the
+      user enters their email and clicks "OK" to receive a password
+      reset email (fully compatible with both Light and Dark mode).
+   ===================================================== */
+@import url('/css/signup.css');
+
+.forgot-below {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.25rem;
+}
+
+.forgot-link {
+  font-family: Lexend, Inter, system-ui, sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--gold);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(201, 162, 39, 0.45);
+  padding: 0 0 1px;
+  cursor: pointer;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.forgot-link:hover {
+  color: var(--forest);
+  border-color: var(--forest);
+}
+
+/* ========== FORGOT PASSWORD MODAL ========== */
+.forgot-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 250;
+  background: rgba(8, 22, 15, 0.72);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.forgot-modal-backdrop.open {
+  display: flex;
+}
+
+.forgot-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 30rem;
+  background: var(--cream-2);
+  border: 1px solid rgba(201, 162, 39, 0.38);
+  border-radius: 2rem;
+  padding: 2.35rem 2.15rem;
+  box-shadow: 0 32px 64px -20px rgba(8, 22, 15, 0.55);
+  animation: fadeUp 0.28s ease forwards;
+}
+
+.forgot-modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 50%;
+  border: 1px solid rgba(22, 33, 27, 0.14);
+  background: var(--cream);
+  color: var(--forest);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.forgot-modal-close:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--forest);
+}
+
+.forgot-modal-icon {
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 1rem;
+  background: rgba(201, 162, 39, 0.14);
+  border: 1px solid rgba(201, 162, 39, 0.38);
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.forgot-modal-icon .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.forgot-modal-icon.success {
+  background: rgba(29, 138, 86, 0.15);
+  border-color: rgba(29, 138, 86, 0.4);
+  color: #1d8a56;
+}
+
+.forgot-modal-card h2 {
+  font-size: 1.65rem;
+  font-weight: 600;
+  color: var(--forest);
+  margin-top: 0.25rem;
+}
+
+.forgot-modal-sub {
+  margin-top: 0.5rem;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: rgba(22, 33, 27, 0.68);
+}
+
+.forgot-modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.btn-forgot-cancel {
+  padding: 0.85rem 1.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(22, 33, 27, 0.18);
+  background: var(--cream);
+  color: var(--forest);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.btn-forgot-cancel:hover {
+  border-color: var(--gold);
+}

@@ -1,0 +1,8 @@
+/* =====================================================
+   SHAMSTECH JO - MAINTENANCE & CLEANING CSS (css/maintenance_cleaning.css)
+   Imports css/request_solar.css so the Request Maintenance &
+   Routine Cleaning screen shares the exact Home Screen layout,
+   fonts (Lexend & Inter), colors (--forest, --cream, --gold),
+   Navbar with Client Name + Arrow dropdown, and Footer.
+   ===================================================== */
+@import url('/css/request_solar.css');

@@ -1,0 +1,279 @@
+/* =====================================================
+   SHAMSTECH JO - PUBLIC BROWSE-ONLY MARKETPLACE CSS
+   File: css/public_market.css
+   Explanation of what was done in this file:
+   1. Imports css/home.css so the Browse-Only Marketplace page
+      matches the exact typography (Lexend & Inter), colors
+      (--forest, --cream, --cream-2, --gold), Dark/Light mode
+      support, Navbar, and Footer of the main Home screen.
+   2. Styles the category filter pills, live search bar, and
+      the 3-column showcase grid for browsing solar equipment
+      without purchase buttons or selling forms.
+   ===================================================== */
+@import url('/css/home.css');
+
+.browse-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--cream);
+  padding-top: 5.5rem;
+}
+
+.browse-main {
+  flex: 1;
+  padding: 2.5rem 0 5rem;
+}
+
+/* Top Hero Banner for Browse Page */
+.browse-hero {
+  position: relative;
+  border-radius: 2.25rem;
+  background: var(--forest);
+  padding: 2.75rem 2rem;
+  overflow: hidden;
+  color: var(--cream);
+  margin-bottom: 2.5rem;
+}
+
+.browse-hero .sun-rays {
+  right: -10rem;
+  top: -10rem;
+  width: 32rem;
+  height: 32rem;
+  opacity: 0.65;
+}
+
+.browse-hero .sun-core {
+  right: -5rem;
+  top: -5rem;
+  width: 18rem;
+  height: 18rem;
+}
+
+.browse-hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 46rem;
+}
+
+.browse-hero-inner h1 {
+  margin-top: 0.9rem;
+  font-size: 2.35rem;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+}
+
+.browse-hero-inner p {
+  margin-top: 0.85rem;
+  font-size: 16px;
+  color: rgba(242, 237, 223, 0.74);
+  max-width: 38rem;
+}
+
+/* Search & Category Filter Controls */
+.browse-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  margin-bottom: 2.25rem;
+}
+
+.browse-search-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.browse-search-wrap .icon {
+  position: absolute;
+  left: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(22, 33, 27, 0.45);
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.browse-search-input {
+  width: 100%;
+  padding: 0.95rem 1.25rem 0.95rem 3rem;
+  border-radius: 1.15rem;
+  border: 1px solid rgba(22, 33, 27, 0.15);
+  background: var(--cream-2);
+  font: 15px/1.45 Inter, system-ui, sans-serif;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.browse-search-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.16);
+}
+
+.browse-cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.browse-cat-btn {
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid rgba(22, 33, 27, 0.15);
+  background: var(--cream-2);
+  color: var(--forest);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.browse-cat-btn:hover {
+  border-color: var(--gold);
+  background: rgba(201, 162, 39, 0.14);
+}
+
+.browse-cat-btn.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--forest);
+}
+
+/* Browse-Only Catalog Grid */
+.browse-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.browse-card {
+  background: var(--cream-2);
+  border: 1px solid rgba(22, 33, 27, 0.1);
+  border-radius: 1.75rem;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.browse-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201, 162, 39, 0.55);
+  box-shadow: 0 24px 48px -24px rgba(12, 36, 26, 0.3);
+}
+
+.browse-img-wrap {
+  position: relative;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  aspect-ratio: 16 / 11;
+  background: var(--cream);
+  margin-bottom: 1.1rem;
+}
+
+.browse-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s ease;
+}
+
+.browse-card:hover .browse-img-wrap img {
+  transform: scale(1.05);
+}
+
+.browse-grade-badge {
+  position: absolute;
+  right: 0.85rem;
+  top: 0.85rem;
+  padding: 0.32rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(12, 36, 26, 0.86);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(227, 199, 102, 0.4);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--gold-2);
+}
+
+.browse-card h3 {
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+.browse-specs-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.65rem;
+}
+
+.browse-spec-pill {
+  padding: 0.25rem 0.65rem;
+  border-radius: 0.6rem;
+  background: rgba(201, 162, 39, 0.14);
+  border: 1px solid rgba(201, 162, 39, 0.32);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--forest);
+}
+
+.browse-desc {
+  margin-top: 0.65rem;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: rgba(22, 33, 27, 0.66);
+}
+
+.browse-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1.15rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(22, 33, 27, 0.08);
+}
+
+.browse-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--forest);
+}
+
+.browse-loc {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(22, 33, 27, 0.6);
+}
+
+.browse-loc .icon {
+  width: 0.9rem;
+  height: 0.9rem;
+  color: var(--gold);
+}
+
+
+@media (min-width: 640px) {
+  .browse-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .browse-hero {
+    padding: 3.25rem 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .browse-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -1,0 +1,511 @@
+/* =====================================================
+   SHAMSTECH JO - OPEN REQUESTS & TENDERS MARKET CSS (css/company_requests.css)
+   Matches Image 2 ("comp-requ1 2" & "copm-req 0 1") exactly:
+   1. Inherits fonts (Lexend & Inter) and color scheme (--forest,
+      --cream, --cream-2, --gold, --gold-2).
+   2. Styles the two primary tab switchers:
+      - 🏢 Institutional & Major Project Tenders
+      - 👤 Individual & Residential Requests
+   3. Styles the unified filter bar (Search Input, Category Pills,
+      and City Selector).
+   4. Styles the rich tender / request cards with specs chips,
+      deadlines, submitted counts, and quotation buttons.
+   ===================================================== */
+@import url('/css/company_home.css');
+
+.market-main {
+  flex: 1;
+  padding: 2.5rem 0 5rem;
+}
+
+/* Page Header */
+.market-header-block {
+  margin-bottom: 2rem;
+}
+
+.market-header-block .hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(18, 53, 36, 0.08);
+  border: 1px solid rgba(22, 33, 27, 0.14);
+  color: var(--forest);
+  font-family: Lexend, sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.85rem;
+}
+
+.market-header-block h1 {
+  font-size: 2.35rem;
+  font-weight: 700;
+  color: var(--forest);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.market-header-block p {
+  margin-top: 0.5rem;
+  font-size: 15px;
+  color: rgba(22, 33, 27, 0.68);
+  max-width: 48rem;
+  line-height: 1.6;
+}
+
+/* Two Primary Tabs Switcher (Matching Image 2) */
+.market-primary-switcher {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  margin-bottom: 1.75rem;
+}
+
+@media (min-width: 720px) {
+  .market-primary-switcher {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.switcher-tab-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.4rem;
+  border-radius: 1.5rem;
+  border: 1.5px solid rgba(22, 33, 27, 0.14);
+  background: var(--cream-2);
+  color: var(--forest);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
+}
+
+.switcher-tab-btn:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -14px rgba(12, 36, 26, 0.2);
+}
+
+.switcher-tab-btn.active {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: var(--cream);
+  box-shadow: 0 16px 36px -16px rgba(12, 36, 26, 0.5);
+}
+
+.switcher-tab-left {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.switcher-tab-left .icon {
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+  color: var(--gold);
+}
+
+.switcher-tab-title {
+  font-family: Lexend, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.switcher-tab-count {
+  font-family: Lexend, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 0.28rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(22, 33, 27, 0.08);
+  color: var(--forest);
+  transition: all 0.25s ease;
+}
+
+.switcher-tab-btn.active .switcher-tab-count {
+  background: var(--gold);
+  color: var(--forest);
+}
+
+/* Filter Card Container */
+.market-filter-box {
+  background: var(--cream-2);
+  border: 1px solid rgba(22, 33, 27, 0.12);
+  border-radius: 1.75rem;
+  padding: 1.25rem 1.4rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 16px 36px -24px rgba(12, 36, 26, 0.18);
+}
+
+.market-filter-top-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 840px) {
+  .market-filter-top-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.market-search-wrap {
+  position: relative;
+  flex: 1;
+  max-width: 100%;
+}
+
+@media (min-width: 840px) {
+  .market-search-wrap {
+    max-width: 26rem;
+  }
+}
+
+.market-search-wrap .search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  color: rgba(22, 33, 27, 0.45);
+  pointer-events: none;
+}
+
+.market-search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(22, 33, 27, 0.16);
+  background: #ffffff;
+  color: var(--forest);
+  font: 14px/1.4 Inter, sans-serif;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.market-search-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.15);
+}
+
+.market-filter-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.cat-pill-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(22, 33, 27, 0.14);
+  background: #ffffff;
+  color: var(--forest);
+  font-family: Lexend, sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cat-pill-btn:hover {
+  border-color: var(--gold);
+  background: rgba(201, 162, 39, 0.1);
+}
+
+.cat-pill-btn.active {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: var(--gold-2);
+}
+
+.city-select-wrap {
+  position: relative;
+}
+
+.city-select {
+  appearance: none;
+  padding: 0.5rem 2rem 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(22, 33, 27, 0.16);
+  background: #ffffff;
+  color: var(--forest);
+  font-family: Lexend, sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+}
+
+.city-select:focus {
+  border-color: var(--gold);
+}
+
+.city-select-arrow {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.75rem;
+  height: 0.75rem;
+  color: var(--forest);
+  pointer-events: none;
+}
+
+/* =====================================================
+   TENDERS & REQUESTS FULL CARDS (Image 2 style)
+   ===================================================== */
+.market-cards-stack {
+  display: grid;
+  gap: 1.35rem;
+}
+
+.market-item-card {
+  border-radius: 1.85rem;
+  background: #ffffff;
+  border: 1.5px solid rgba(22, 33, 27, 0.1);
+  padding: 1.85rem 2rem;
+  box-shadow: 0 18px 40px -26px rgba(12, 36, 26, 0.2);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.market-item-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--gold);
+  box-shadow: 0 24px 50px -24px rgba(12, 36, 26, 0.26);
+}
+
+.tender-compact-card .market-item-title {
+  margin-bottom: 1rem;
+}
+
+.tender-compact-card .card-specs-row {
+  margin-bottom: 1.1rem;
+}
+
+.tender-compact-card .tender-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+}
+
+.tender-compact-card .tender-link .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.market-card-top-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.card-badges-left {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.card-type-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.75rem;
+  border-radius: 0.55rem;
+  font-family: Lexend, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 1px solid transparent;
+}
+
+/* =====================================================
+   4 DEDICATED SERVICE TYPES & DISTINCT COLORS:
+   1. Solar Installation: Warm Solar Orange (#ffedd5, #c2410c, #fdba74)
+   2. Maintenance & Wash: Sky Blue / Cyan (#e0f2fe, #0369a1, #7dd3fc)
+   3. Wash: Pure Teal / Mint (#ccfbf1, #0f766e, #5eead4)
+   4. Maintenance: Deep Indigo (#ede9fe, #4338ca, #a5b4fc)
+   ===================================================== */
+.card-type-tag.solar-installation,
+.card-type-tag.residential,
+.card-type-tag.installation {
+  background: #ffedd5;
+  color: #c2410c;
+  border-color: #fdba74;
+}
+
+.card-type-tag.maint-wash,
+.card-type-tag.maintenance {
+  background: #e0f2fe;
+  color: #0369a1;
+  border-color: #7dd3fc;
+}
+
+.card-type-tag.wash-only,
+.card-type-tag.wash,
+.card-type-tag.tag-wash {
+  background: #ccfbf1;
+  color: #0f766e;
+  border-color: #5eead4;
+}
+
+.card-type-tag.maintenance-only,
+.card-type-tag.commercial,
+.card-type-tag.institutional,
+.card-type-tag.ai {
+  background: #ede9fe;
+  color: #4338ca;
+  border-color: #a5b4fc;
+}
+
+.card-no-label {
+  font-family: Lexend, sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: rgba(22, 33, 27, 0.58);
+}
+
+.card-loc-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 13px;
+  font-weight: 500;
+  color: #dc2626;
+}
+
+.card-loc-right .icon {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.market-item-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--forest);
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.1rem;
+}
+
+/* Specs Chips Row */
+.card-specs-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.4rem;
+}
+
+.spec-chip {
+  padding: 0.4rem 0.9rem;
+  border-radius: 0.65rem;
+  background: var(--cream);
+  border: 1px solid rgba(22, 33, 27, 0.09);
+  font-size: 12.5px;
+  color: var(--forest);
+  font-weight: 500;
+}
+
+.spec-chip strong {
+  font-weight: 600;
+  color: var(--forest);
+}
+
+/* Card Footer Row */
+.market-card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(22, 33, 27, 0.08);
+}
+
+.footer-meta-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.meta-stat-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(22, 33, 27, 0.68);
+}
+
+.meta-stat-item.deadline {
+  color: #92400e;
+  font-weight: 600;
+}
+
+.meta-stat-item.competitors {
+  color: #15803d;
+  font-weight: 600;
+}
+
+.meta-stat-item .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Pagination Row */
+.market-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2.75rem;
+}
+
+.pag-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.4rem;
+  height: 2.4rem;
+  padding: 0 0.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(22, 33, 27, 0.15);
+  background: var(--cream-2);
+  color: var(--forest);
+  font-family: Lexend, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pag-btn:hover {
+  border-color: var(--gold);
+  background: rgba(201, 162, 39, 0.15);
+}
+
+.pag-btn.active {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: var(--gold-2);
+}
+
+.pag-btn.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

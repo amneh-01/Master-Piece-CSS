@@ -1,0 +1,679 @@
+/* =====================================================
+   SHAMSTECH JO - REQUEST SOLAR SYSTEM CSS (css/request_solar.css)
+   Imports css/client_home.css (which imports css/home.css) so
+   all service screens share the exact Home Screen design,
+   Navbar with Client Name + Arrow dropdown, and Footer.
+   ===================================================== */
+@import url('/css/client_home.css');
+
+.req-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--cream);
+  padding-top: 5.5rem;
+}
+
+.req-main {
+  flex: 1;
+  padding: 3rem 0 5rem;
+  position: relative;
+}
+
+/* Main Frame Card matching the Home Screen frame design (Widened for service pages) */
+.req-card {
+  position: relative;
+  overflow: hidden;
+  max-width: 60rem;
+  margin: 0 auto;
+  background: var(--cream-2);
+  border: 1px solid rgba(22, 33, 27, 0.1);
+  border-radius: 2.5rem;
+  padding: 2.5rem 1.75rem;
+  box-shadow: 0 28px 60px -28px rgba(12, 36, 26, 0.25);
+  transition: border-color 0.5s, box-shadow 0.5s;
+}
+
+.req-card:hover {
+  border-color: rgba(201, 162, 39, 0.45);
+  box-shadow: 0 32px 64px -24px rgba(12, 36, 26, 0.34);
+}
+
+.req-top-line {
+  display: block;
+  height: 2px;
+  width: 4rem;
+  background: var(--gold);
+  margin: 0 auto 1.5rem;
+  transition: width 0.5s;
+}
+
+.req-card:hover .req-top-line {
+  width: 8rem;
+}
+
+/* Header */
+.req-head {
+  text-align: center;
+  padding-bottom: 1.75rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px dashed rgba(22, 33, 27, 0.14);
+}
+
+.req-head-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 162, 39, 0.4);
+  background: rgba(201, 162, 39, 0.1);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--forest);
+  margin-bottom: 1rem;
+}
+
+.req-head-badge .icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  color: var(--gold);
+}
+
+.req-head h1 {
+  font-size: 1.95rem;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--forest);
+}
+
+.req-head h1 .gold-text {
+  color: var(--gold);
+  font-style: normal;
+}
+
+.req-head p {
+  margin-top: 0.6rem;
+  font-size: 15px;
+  color: rgba(22, 33, 27, 0.64);
+}
+
+/* Form Layout */
+.req-form {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.req-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.req-field > label {
+  font-family: Lexend, Inter, system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--forest);
+}
+
+.req-field > label span {
+  color: var(--gold);
+}
+
+/* Service Main Dropdown (First Option on Page) */
+.main-service-field {
+  padding: 1.35rem 1.45rem;
+  border-radius: 1.5rem;
+  background: rgba(201, 162, 39, 0.08);
+  border: 1.5px solid rgba(201, 162, 39, 0.55);
+  margin-bottom: 0.5rem;
+  box-shadow: 0 4px 18px rgba(12, 36, 26, 0.04);
+}
+
+.main-service-field > label {
+  font-size: 13.5px;
+  color: var(--forest);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.service-main-dropdown {
+  background: #ffffff !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: var(--forest) !important;
+  border: 1.5px solid rgba(201, 162, 39, 0.8) !important;
+  box-shadow: 0 2px 10px rgba(12, 36, 26, 0.06);
+}
+
+.service-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: panelFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes panelFadeIn {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.used-parts-portal-card {
+  padding: 2.25rem 2rem;
+  border-radius: 1.75rem;
+  background: rgba(22, 33, 27, 0.04);
+  border: 1.5px dashed rgba(201, 162, 39, 0.65);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.used-parts-portal-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--forest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.used-parts-portal-icon .icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.used-parts-portal-card h3 {
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+.used-parts-portal-card p {
+  max-width: 32rem;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(22, 33, 27, 0.7);
+}
+
+/* 1. Upload Box */
+.sanad-upload-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2.15rem 1.5rem;
+  border-radius: 1.5rem;
+  border: 1.5px dashed rgba(201, 162, 39, 0.65);
+  background: var(--cream);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sanad-upload-box:hover,
+.sanad-upload-box.has-file {
+  border-color: var(--gold);
+  background: rgba(201, 162, 39, 0.1);
+  transform: translateY(-2px);
+}
+
+.sanad-cam-circle {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background: rgba(12, 36, 26, 0.08);
+  border: 1px solid rgba(201, 162, 39, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--forest);
+  margin-bottom: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.sanad-upload-box:hover .sanad-cam-circle,
+.sanad-upload-box.has-file .sanad-cam-circle {
+  background: var(--forest);
+  color: var(--gold-2);
+}
+
+.sanad-cam-circle .icon {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.sanad-upload-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+.sanad-upload-sub {
+  margin-top: 0.25rem;
+  font-size: 12.5px;
+  color: rgba(22, 33, 27, 0.55);
+}
+
+/* Multi-photo small squares preview grid with 'X' remove button */
+.sell-photos-preview-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  border-radius: 1.15rem;
+  background: rgba(22, 33, 27, 0.05);
+  border: 1.5px dashed rgba(201, 162, 39, 0.45);
+  align-items: center;
+}
+
+.sell-photo-thumb-card {
+  position: relative;
+  width: 82px;
+  height: 82px;
+  border-radius: 0.95rem;
+  border: 2px solid var(--gold);
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(12, 36, 26, 0.16);
+  flex-shrink: 0;
+  animation: thumbPop 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes thumbPop {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.sell-photo-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: calc(0.95rem - 2px);
+  display: block;
+}
+
+.sell-photo-remove-btn {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #dc2626;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.55);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s;
+  z-index: 10;
+  line-height: 1;
+}
+
+.sell-photo-remove-btn:hover {
+  background: #991b1b;
+  transform: scale(1.18);
+}
+
+/* Sleek 'Add More Photos' button underneath preview grid (Image 2 style) */
+.sell-upload-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.15rem;
+  border-radius: 1.1rem;
+  background: linear-gradient(135deg, rgba(227, 199, 102, 0.38), rgba(201, 162, 39, 0.24));
+  border: 1.5px dashed var(--gold);
+  color: var(--forest);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 0.85rem;
+  box-shadow: 0 2px 8px rgba(12, 36, 26, 0.04);
+}
+
+.sell-upload-btn:hover {
+  background: rgba(201, 162, 39, 0.38);
+  transform: translateY(-1px);
+}
+
+.sell-upload-btn .icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  color: var(--forest);
+}
+
+/* 2. Inputs, Selects & Textarea */
+.req-select-wrap {
+  position: relative;
+}
+
+.req-input,
+.req-select,
+.req-textarea {
+  width: 100%;
+  padding: 0.95rem 1.2rem;
+  border-radius: 1.15rem;
+  border: 1px solid rgba(22, 33, 27, 0.15);
+  background: var(--cream);
+  font: 15px/1.45 Inter, system-ui, sans-serif;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+.req-select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 2.75rem;
+  cursor: pointer;
+}
+
+.req-select-arrow {
+  position: absolute;
+  right: 1.15rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--forest);
+  width: 1rem;
+  height: 1rem;
+}
+
+.req-textarea {
+  min-height: 7.5rem;
+  resize: vertical;
+}
+
+.req-input::placeholder,
+.req-textarea::placeholder {
+  color: rgba(22, 33, 27, 0.42);
+}
+
+.req-input:focus,
+.req-select:focus,
+.req-textarea:focus {
+  border-color: var(--gold);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.16);
+}
+
+/* 3. Interactive 3-Button Toggle Grid */
+.sys-type-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.sys-type-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1rem;
+  border-radius: 1.1rem;
+  border: 1.5px solid rgba(31, 92, 62, 0.22);
+  background: var(--cream);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--forest);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.sys-type-btn:hover:not(.active) {
+  border-color: #1f5c3e;
+  background: rgba(31, 92, 62, 0.1);
+  color: #143d29;
+}
+
+.sys-type-btn.active {
+  background: linear-gradient(135deg, #1f5c3e 0%, #143d29 100%);
+  border: 1.5px solid #143d29;
+  color: var(--cream);
+  font-weight: 600;
+  box-shadow: 0 12px 24px -10px rgba(20, 61, 41, 0.45);
+}
+
+/* Submit Button: Harmonious Emerald-Forest Green Gradient */
+.req-submit-btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.5rem;
+  padding: 1rem 1.75rem;
+  font-size: 15.5px;
+  background: linear-gradient(135deg, #1f5c3e 0%, #143d29 100%);
+  color: var(--cream);
+  font-weight: 600;
+  box-shadow: 0 16px 32px -12px rgba(20, 61, 41, 0.48);
+}
+
+.req-submit-btn:hover {
+  background: linear-gradient(135deg, #28704c 0%, #1b4d35 100%);
+  color: #ffffff;
+}
+
+/* Security Footnote */
+.req-security-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  font-size: 13px;
+  color: rgba(22, 33, 27, 0.58);
+  text-align: center;
+}
+
+.req-security-note .icon {
+  width: 0.95rem;
+  height: 0.95rem;
+  color: var(--gold);
+}
+
+/* Toast Notification Banner */
+.req-toast {
+  display: none;
+  padding: 1rem 1.25rem;
+  border-radius: 1.15rem;
+  background: var(--forest);
+  border: 1px solid var(--gold);
+  color: var(--cream);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.req-toast.show {
+  display: block;
+}
+
+/* =====================================================
+   SERVICE REQUEST CONFIRMED MODAL (Shared across all service pages)
+   ===================================================== */
+.service-confirm-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 260;
+  background: rgba(12, 36, 26, 0.72);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.service-confirm-backdrop.open {
+  display: flex;
+}
+
+.service-confirm-modal {
+  position: relative;
+  width: 100%;
+  max-width: 31rem;
+  border-radius: 2rem;
+  background: var(--cream-2);
+  border: 1.5px solid rgba(201, 162, 39, 0.55);
+  padding: 2.25rem 1.85rem;
+  text-align: center;
+  box-shadow: 0 32px 72px -18px rgba(6, 20, 14, 0.78);
+  animation: serviceConfirmPop 0.28s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@keyframes serviceConfirmPop {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.service-confirm-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: rgba(22, 163, 74, 0.14);
+  border: 1.5px solid rgba(22, 163, 74, 0.42);
+  color: #15803d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.1rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.service-confirm-modal h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--forest);
+}
+
+.service-confirm-sub {
+  margin-top: 0.4rem;
+  font-size: 13.8px;
+  line-height: 1.55;
+  color: rgba(22, 33, 27, 0.68);
+}
+
+.service-confirm-summary {
+  margin-top: 1.2rem;
+  padding: 1rem 1.2rem;
+  border-radius: 1.2rem;
+  background: var(--cream);
+  border: 1px solid rgba(22, 33, 27, 0.1);
+  text-align: left;
+  display: grid;
+  gap: 0.5rem;
+  font-size: 13px;
+}
+
+.service-confirm-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.service-confirm-row span {
+  color: rgba(22, 33, 27, 0.58);
+}
+
+.service-confirm-row strong {
+  color: var(--forest);
+  font-weight: 600;
+  text-align: right;
+}
+
+.service-confirm-actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.btn-modal-requests {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: 0.95rem;
+  background: linear-gradient(135deg, #1f5c3e 0%, #143d29 100%);
+  color: var(--cream);
+  font-size: 13.5px;
+  font-weight: 700;
+  box-shadow: 0 12px 24px -10px rgba(20, 61, 41, 0.45);
+  transition: all 0.22s ease;
+  text-decoration: none;
+}
+
+.btn-modal-requests:hover {
+  background: linear-gradient(135deg, #28704c 0%, #1b4d35 100%);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.btn-modal-home {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: 0.95rem;
+  background: var(--cream);
+  border: 1.5px solid rgba(22, 33, 27, 0.18);
+  color: var(--forest);
+  font-size: 13.5px;
+  font-weight: 600;
+  transition: all 0.22s ease;
+  text-decoration: none;
+}
+
+.btn-modal-home:hover {
+  border-color: var(--gold);
+  background: rgba(201, 162, 39, 0.14);
+}
+
+@media (min-width: 520px) {
+  .service-confirm-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 640px) {
+  .req-card {
+    padding: 3.25rem 3rem;
+  }
+  .req-head h1 {
+    font-size: 2.35rem;
+  }
+  .sys-type-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

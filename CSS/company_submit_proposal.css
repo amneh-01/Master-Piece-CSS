@@ -1,0 +1,848 @@
+/* =====================================================
+   SHAMSTECH JO - SUBMIT PROPOSAL FULL PAGE CSS (css/company_submit_proposal.css)
+   Matches Image 1 ("comp-requ2 2") exactly:
+   1. 2-Column Split Layout:
+      - Left: Technical & Engineering Details (Customer Request)
+      - Right: Submit Proposal Form (Bid Form) - with EMPTY inputs for company entry
+   2. Colors: Deep Forest Green (#12281e), Solar Gold (#c9a227), Warm Cream (#faf6ee, #f4ede0)
+   3. Fonts: Lexend (headings, badges, buttons) & Inter (text, inputs)
+   ===================================================== */
+@import url('/css/company_home.css');
+
+.proposal-page-main {
+  flex: 1;
+  padding: 2rem 0 5rem;
+}
+
+/* Back Link & Header */
+.proposal-top-nav {
+  margin-bottom: 1.5rem;
+}
+
+.back-to-requests-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: Lexend, sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--forest);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.back-to-requests-link:hover {
+  color: var(--gold);
+  transform: translateX(-3px);
+}
+
+.proposal-heading-block h1 {
+  font-size: 2.15rem;
+  font-weight: 700;
+  color: var(--forest);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.proposal-meta-line {
+  margin-top: 0.5rem;
+  font-size: 13.5px;
+  color: rgba(22, 33, 27, 0.65);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.proposal-meta-line strong {
+  color: var(--forest);
+}
+
+.proposal-loc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #dc2626;
+  font-weight: 600;
+}
+
+/* 2-Column Grid Layout */
+.proposal-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  margin-top: 1.75rem;
+  align-items: start;
+}
+
+@media (min-width: 960px) {
+  .proposal-grid-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Common Column Card Wrapper */
+.proposal-col-card {
+  border-radius: 1.85rem;
+  background: #ffffff;
+  border: 1px solid rgba(22, 33, 27, 0.12);
+  box-shadow: 0 20px 48px -24px rgba(12, 36, 26, 0.2);
+  overflow: hidden;
+}
+
+/* Column Headers */
+.col-card-header {
+  padding: 1.15rem 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: Lexend, sans-serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.col-card-header .icon {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+/* Left Column: Forest Green Header */
+.col-card-header.green {
+  background: var(--forest);
+  color: #ffffff;
+}
+
+/* Right Column: Warm Gold / Bronze Header */
+.col-card-header.gold {
+  background: linear-gradient(135deg, #d4af37 0%, #c9a227 100%);
+  color: var(--forest);
+}
+
+.col-card-body {
+  padding: 1.6rem;
+}
+
+/* Customer Summary Block */
+.customer-summary-box {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+  padding: 1rem 1.25rem;
+  border-radius: 1.25rem;
+  background: var(--cream);
+  border: 1px solid rgba(22, 33, 27, 0.08);
+  margin-bottom: 1.25rem;
+}
+
+.customer-avatar-circle {
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: rgba(29, 78, 216, 0.12);
+  color: #1d4ed8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.customer-avatar-circle .icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.customer-name-row h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--forest);
+}
+
+.customer-sub-meta {
+  font-size: 12.5px;
+  color: rgba(22, 33, 27, 0.62);
+  margin-top: 0.15rem;
+}
+
+/* 4 Metrics Grid (2x2) */
+.customer-metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.metric-data-card {
+  padding: 0.95rem 1.15rem;
+  border-radius: 1.15rem;
+  background: var(--cream);
+  border: 1px solid rgba(22, 33, 27, 0.08);
+}
+
+.metric-card-label {
+  font-family: Lexend, sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: rgba(22, 33, 27, 0.58);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: block;
+}
+
+.metric-card-val {
+  font-family: Lexend, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--forest);
+  margin-top: 0.35rem;
+  display: block;
+}
+
+/* Customer Special Instructions Box (Yellow / Amber) */
+.customer-instructions-box {
+  border-radius: 1.25rem;
+  background: #fef9c3;
+  border: 1px solid #fde047;
+  padding: 1.15rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.customer-instructions-box h4 {
+  font-family: Lexend, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #854d0e;
+  margin-bottom: 0.45rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.customer-instructions-box p {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #713f12;
+  font-style: italic;
+}
+
+/* Customer Roof Photos & Layouts */
+.attached-photos-section {
+  margin-bottom: 1.25rem;
+}
+
+.attached-photos-section[hidden],
+.photo-thumbnail-card[hidden] {
+  display: none !important;
+}
+
+.attached-photos-section h4 {
+  font-family: Lexend, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.attached-photos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+
+.photo-thumbnail-card {
+  border-radius: 1.15rem;
+  background: #ffffff;
+  border: 1.5px solid rgba(22, 33, 27, 0.12);
+  padding: 0.65rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px -4px rgba(12, 36, 26, 0.08);
+}
+
+.photo-thumbnail-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -10px rgba(12, 36, 26, 0.22);
+}
+
+.photo-thumb-wrapper {
+  position: relative;
+  width: 100%;
+  height: 110px;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.photo-thumbnail-card:hover .thumb-img {
+  transform: scale(1.08);
+}
+
+.thumb-zoom-badge {
+  position: absolute;
+  bottom: 0.4rem;
+  right: 0.4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.22rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(12, 36, 26, 0.82);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  font-family: Lexend, sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background 0.2s ease;
+}
+
+.thumb-zoom-badge .icon {
+  width: 0.75rem;
+  height: 0.75rem;
+  color: var(--gold-2);
+}
+
+.photo-thumbnail-card:hover .thumb-zoom-badge {
+  background: var(--forest);
+  border-color: var(--gold);
+}
+
+.thumb-caption {
+  display: block;
+  font-family: Lexend, sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-top: 0.45rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Location Bar */
+.location-display-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.15rem;
+  border-radius: 1.15rem;
+  background: var(--cream);
+  border: 1px solid rgba(22, 33, 27, 0.08);
+  font-size: 13px;
+  color: var(--forest);
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+
+.location-display-bar strong {
+  font-weight: 700;
+}
+
+/* Competitive Bidding Tip (Soft Green) */
+.bidding-tip-box {
+  border-radius: 1.25rem;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  padding: 1.15rem 1.25rem;
+}
+
+.bidding-tip-box h4 {
+  font-family: Lexend, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #166534;
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.bidding-tip-box p {
+  font-size: 13px;
+  color: #14532d;
+  line-height: 1.5;
+}
+
+/* =====================================================
+   RIGHT COLUMN: BID PROPOSAL FORM
+   ===================================================== */
+.bid-form-group {
+  margin-bottom: 1.35rem;
+}
+
+.bid-form-group label {
+  display: block;
+  font-family: Lexend, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 0.5rem;
+}
+
+.bid-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.bid-input-wrap input {
+  width: 100%;
+  padding: 0.85rem 3.5rem 0.85rem 1.15rem;
+  border-radius: 1rem;
+  border: 1.5px solid rgba(22, 33, 27, 0.18);
+  background: var(--cream);
+  color: var(--forest);
+  font: 15px/1.4 Inter, sans-serif;
+  font-weight: 600;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.bid-input-wrap input:focus {
+  border-color: var(--gold);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.15);
+}
+
+.bid-currency-badge {
+  position: absolute;
+  right: 1.15rem;
+  font-family: Lexend, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--forest);
+  pointer-events: none;
+}
+
+.bid-regular-input {
+  width: 100%;
+  padding: 0.85rem 1.15rem;
+  border-radius: 1rem;
+  border: 1.5px solid rgba(22, 33, 27, 0.18);
+  background: var(--cream);
+  color: var(--forest);
+  font: 14px/1.4 Inter, sans-serif;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.bid-regular-input:focus {
+  border-color: var(--gold);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.15);
+}
+
+/* File Drop Zone */
+.pdf-upload-dropzone {
+  border: 2px dashed rgba(201, 162, 39, 0.7);
+  background: #fffdf5;
+  border-radius: 1.25rem;
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pdf-upload-dropzone:hover {
+  background: #fff9e6;
+  border-color: var(--gold);
+}
+
+.pdf-drop-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-family: Lexend, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--forest);
+}
+
+.pdf-drop-sub {
+  font-size: 12px;
+  color: rgba(22, 33, 27, 0.58);
+  margin-top: 0.35rem;
+}
+
+.selected-pdf-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(22, 163, 74, 0.15);
+  color: #15803d;
+  font-family: Lexend, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.bid-textarea {
+  width: 100%;
+  padding: 0.85rem 1.15rem;
+  border-radius: 1rem;
+  border: 1.5px solid rgba(22, 33, 27, 0.18);
+  background: var(--cream);
+  color: var(--forest);
+  font: 14px/1.5 Inter, sans-serif;
+  outline: none;
+  resize: vertical;
+  min-height: 6.5rem;
+  transition: all 0.2s ease;
+}
+
+.bid-textarea:focus {
+  border-color: var(--gold);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.15);
+}
+
+/* Submit Button */
+.btn-submit-proposal-now {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 1rem 1.5rem;
+  border-radius: 1.15rem;
+  background: linear-gradient(135deg, #1f5c3e 0%, #12281e 100%);
+  color: #ffffff;
+  font-family: Lexend, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  border: 1px solid #143d29;
+  cursor: pointer;
+  box-shadow: 0 14px 28px -10px rgba(18, 53, 36, 0.5);
+  transition: all 0.25s ease;
+  margin-top: 1.5rem;
+}
+
+.btn-submit-proposal-now:hover {
+  background: linear-gradient(135deg, #28704c 0%, #1b4d35 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px -10px rgba(18, 53, 36, 0.6);
+}
+
+.bid-security-footnote {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+  font-size: 12px;
+  color: rgba(22, 33, 27, 0.6);
+  justify-content: center;
+}
+
+.bid-security-footnote .icon {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+/* Image Preview Modal */
+.image-preview-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(12, 36, 26, 0.85);
+  backdrop-filter: blur(8px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.image-preview-modal-backdrop.open {
+  display: flex;
+}
+
+.image-preview-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 1.75rem;
+  padding: 1.5rem;
+  max-width: 32rem;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 28px 60px -20px rgba(0, 0, 0, 0.8);
+}
+
+.image-preview-card img {
+  max-width: 100%;
+  border-radius: 1.25rem;
+  display: block;
+  margin: 0 auto;
+}
+
+.image-preview-card h3 {
+  font-family: Lexend, sans-serif;
+  font-size: 16px;
+  color: var(--forest);
+  margin-top: 1rem;
+}
+
+.image-preview-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  border: 1px solid rgba(22, 33, 27, 0.15);
+  background: var(--cream);
+  color: var(--forest);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+/* =====================================================
+   PROPOSAL SUBMISSION SUCCESS MODAL
+   ===================================================== */
+.proposal-success-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 350;
+  background: rgba(12, 36, 26, 0.88);
+  backdrop-filter: blur(10px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.proposal-success-modal-backdrop.open {
+  display: flex;
+  animation: modalFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.proposal-success-card {
+  position: relative;
+  background: #fdfbf7;
+  border-radius: 2.25rem;
+  border: 1.5px solid rgba(201, 162, 39, 0.3);
+  box-shadow: 0 35px 80px -20px rgba(0, 0, 0, 0.7);
+  padding: 2.5rem 2.25rem;
+  max-width: 36rem;
+  width: 100%;
+  text-align: center;
+}
+
+.success-icon-badge {
+  width: 4.25rem;
+  height: 4.25rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #15803d 0%, #0d4a2f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  box-shadow: 0 16px 36px -12px rgba(21, 128, 61, 0.6);
+  border: 3px solid #bbf7d0;
+}
+
+.success-icon-badge .icon {
+  width: 2.2rem;
+  height: 2.2rem;
+  color: #ffffff;
+}
+
+.success-sub-badge {
+  display: inline-block;
+  padding: 0.28rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(201, 162, 39, 0.16);
+  color: #854d0e;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.65rem;
+}
+
+.success-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--forest);
+  margin-bottom: 0.65rem;
+  letter-spacing: -0.015em;
+}
+
+.success-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(22, 33, 27, 0.7);
+  margin-bottom: 1.75rem;
+}
+
+.success-summary-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  background: #f4ede4;
+  border: 1px solid rgba(22, 33, 27, 0.08);
+  border-radius: 1.5rem;
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.success-summary-item .sum-label {
+  display: block;
+  font-family: Lexend, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgba(22, 33, 27, 0.55);
+  letter-spacing: 0.04em;
+}
+
+.success-summary-item .sum-val {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--forest);
+  margin-top: 0.25rem;
+}
+
+.success-actions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.btn-success-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 1rem 1.25rem;
+  border-radius: 1.25rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
+}
+
+.btn-success-action .icon {
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+}
+
+.btn-success-action strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.btn-success-action small {
+  display: block;
+  font-size: 11px;
+  opacity: 0.8;
+  margin-top: 0.15rem;
+}
+
+.btn-success-action.home {
+  background: #ffffff;
+  color: var(--forest);
+  border: 1.5px solid rgba(22, 33, 27, 0.15);
+}
+
+.btn-success-action.home:hover {
+  background: var(--cream);
+  border-color: var(--forest);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -10px rgba(12, 36, 26, 0.2);
+}
+
+.btn-success-action.proposals {
+  background: linear-gradient(135deg, #1f5c3e 0%, #12281e 100%);
+  color: #ffffff;
+  border: 1.5px solid #143d29;
+  box-shadow: 0 12px 28px -12px rgba(18, 53, 36, 0.6);
+}
+
+.btn-success-action.proposals:hover {
+  background: linear-gradient(135deg, #28704c 0%, #1b4d35 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -12px rgba(18, 53, 36, 0.8);
+}
+
+/* Category Badge Colors */
+.card-type-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.75rem;
+  border-radius: 0.55rem;
+  font-family: Lexend, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 1px solid transparent;
+}
+
+.card-type-tag.maintenance,
+.card-type-tag.tag-maint {
+  background: #e0f2fe;
+  color: #0369a1;
+  border-color: #7dd3fc;
+}
+
+.card-type-tag.residential,
+.card-type-tag.installation,
+.card-type-tag.tag-install {
+  background: #ffedd5;
+  color: #c2410c;
+  border-color: #fdba74;
+}
+
+.card-type-tag.commercial,
+.card-type-tag.institutional,
+.card-type-tag.tag-inst {
+  background: #dcfce7;
+  color: #14532d;
+  border-color: #86efac;
+}
+
+.card-type-tag.ai,
+.card-type-tag.tag-ai {
+  background: #f3e8ff;
+  color: #6b21a8;
+  border-color: #d8b4fe;
+}
+
+.proposal-time-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.26rem 0.65rem;
+  border-radius: 0.55rem;
+  background: rgba(22, 33, 27, 0.06);
+  color: rgba(22, 33, 27, 0.65);
+  font-size: 11.5px;
+  font-weight: 600;
+}
